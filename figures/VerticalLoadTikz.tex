@@ -1,0 +1,136 @@
+\begin{center}
+    \begin{figure}
+    \centering
+    \begin{subfigure}{.48\linewidth}
+    \usetikzlibrary {3d}
+    \begin{tikzpicture}
+     
+    %Base
+    \draw[fill=gray, semitransparent] (-3,0,-1) -- (3,0,-1) -- (3,0,4) -- (-3,0,4) -- cycle;
+    %\draw [ draw=blue] (3,0,0) circle (1pt);
+    \def\cost{0.98}
+    \def\sint{-0.198 }
+    \def\t{0,2}
+    %top
+     \draw[line width=2pt,domain=-pi:pi]   plot ({2*1.23*cos(\x r)},5,{1.8*sin(\x r)+1.5});
+    
+    %bottom
+      \draw[line width=2pt,domain=-0.25:pi-0.2]   plot ({2*1.23*cos(\x r)},0,{1.8*sin(\x r)+1.5});
+    %back bottom
+     \draw[line width=2pt,dashed,domain=-0.25-pi:-0.2]   plot ({2*1.23*cos(\x r)},0,{1.8*sin(\x r)+1.5});
+    
+    %side
+    \draw [line width=2pt](-\cost*2*5^0.5+2,5,-\sint*5^0.5+1.5) -- (-\cost*2*5^0.5+2,0,-\sint*5^0.5+1.5);
+    \draw [line width=2pt](\cost*2*5^0.5-2,5,\sint*5^0.5+1.5) -- (\cost*2*5^0.5-2,0,\sint*5^0.5+1.5);
+    
+    
+    %Arrows
+    \def\top{6}
+    \def\tip{5.1}
+    %\def\cost{1}
+    %\def\sint{0 }
+    \draw[-{Latex[length=15pt]}, line width=4pt]({2*1.23*\cost},\top,{-1.8*\sint+1.5})-- ({2*1.23*\cost},\tip,{-1.8*\sint+1.5});
+    \draw[-{Latex[length=15pt]}, line width=4pt]({-2*1.23*\cost},\top,{1.8*\sint+1.5})-- ({-2*1.23*\cost},\tip,{1.8*\sint+1.5});
+    
+    \def\cost{0.866}
+    \def\sint{0.5}
+    \draw[-{Latex[length=15pt]}, line width=4pt]({2*1.23*\cost},\top,{1.8*\sint+1.5})-- ({2*1.23*\cost},\tip,{1.8*\sint+1.5});
+    \draw[-{Latex[length=15pt]}, line width=4pt]({-2*1.23*\cost},\top,{1.8*\sint+1.5})-- ({-2*1.23*\cost},\tip,{1.8*\sint+1.5});
+    \draw[-{Latex[length=15pt]}, line width=4pt]({2*1.23*\cost},\top,{-1.8*\sint+1.5})-- ({2*1.23*\cost},\tip,{-1.8*\sint+1.5});
+    \draw[-{Latex[length=15pt]}, line width=4pt]({-2*1.23*\cost},\top,{-1.8*\sint+1.5})-- ({-2*1.23*\cost},\tip,{-1.8*\sint+1.5});
+    
+    \def\cost{0.5}
+    \def\sint{0.866}
+    \draw[-{Latex[length=15pt]}, line width=4pt]({2*1.23*\cost},\top,{1.8*\sint+1.5})-- ({2*1.23*\cost},\tip,{1.8*\sint+1.5});
+    \draw[-{Latex[length=15pt]}, line width=4pt]({-2*1.23*\cost},\top,{1.8*\sint+1.5})-- ({-2*1.23*\cost},\tip,{1.8*\sint+1.5});
+    \draw[-{Latex[length=15pt]}, line width=4pt]({2*1.23*\cost},\top,{-1.8*\sint+1.5})-- ({2*1.23*\cost},\tip,{-1.8*\sint+1.5});
+    \draw[-{Latex[length=15pt]}, line width=4pt]({-2*1.23*\cost},\top,{-1.8*\sint+1.5})-- ({-2*1.23*\cost},\tip,{-1.8*\sint+1.5});
+    \def\cost{0}
+    \def\sint{1}
+    \draw[-{Latex[length=15pt]}, line width=4pt]({2*1.23*\cost},\top,{1.8*\sint+1.5})-- ({2*1.23*\cost},\tip,{1.8*\sint+1.5});
+    \draw[-{Latex[length=15pt]}, line width=4pt]({-2*1.23*\cost},\top,{-1.8*\sint+1.5})-- ({-2*1.23*\cost},\tip,{-1.8*\sint+1.5});
+    
+    
+     \draw[line width=0.2pt,domain=-pi:pi]   plot ({2*1.23*cos(\x r)},\top,{1.8*sin(\x r)+1.5});
+     \draw[line width=0.2pt,domain=-pi:pi]   plot ({2*1.23*cos(\x r)},\tip,{1.8*sin(\x r)+1.5});
+    
+     
+    \end{tikzpicture}
+    
+    \caption{Case (i) in Theorem 3.1: uniformly positive positive curvature, $k_\theta>k>0$}
+    \end{subfigure}%
+    \hspace{0.5cm}
+    \begin{subfigure}{.45\textwidth}
+    %\includegraphics[scale=1]{0Curvature.jpg}
+    %\centering
+    \usetikzlibrary {3d}
+    \begin{tikzpicture}
+     
+    %Base
+    \draw[fill=gray, semitransparent] (-3,0,-1) -- (3,0,-1) -- (3,0,4) -- (-3,0,4) -- cycle;
+    %\draw [ draw=blue] (3,0,0) circle (1pt);
+    \def\cost{0.98}
+    \def\sint{-0.198 }
+    \def\t{0,2}
+    %top
+     \draw[line width=2pt,domain=-0.4636476:0.4636476]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)-1)},5,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+     \draw[line width=2pt,domain=pi-0.4636476:pi+0.4636476]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)+1)},5,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+     \draw[line width=2pt,black, domain=-1:1]   plot (2*\x,5,\x^2*\x^2/2);
+     \draw[line width=2pt,black, domain=-1:1]   plot (2*\x,5,-\x^2*\x^2/2+3);
+    
+    %bottom
+     \draw[line width=2pt,domain=-0.2:0.4636476]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)-1)},0,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+     \draw[line width=2pt,domain=pi-0.4636476:pi-0.2]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)+1)},0,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+     \draw[line width=2pt,black, domain=-1:1]   plot (2*\x,0,-\x^2*\x^2/2+3);
+    %back bottom
+    \draw[line width=2pt,dashed, domain=-1:1]   plot (2*\x,0,\x^2*\x^2/2);
+    \draw[line width=2pt,dashed, domain=-0.4636476:-0.2]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)-1)},0,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+    \draw[line width=2pt,dashed, domain=pi-0.2:pi+0.4636476]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)+1)},0,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+    %Side
+    \draw [line width=2pt](-\cost*2*5^0.5+2,5,-\sint*5^0.5+1.5) -- (-\cost*2*5^0.5+2,0,-\sint*5^0.5+1.5);
+    \draw [line width=2pt](\cost*2*5^0.5-2,5,\sint*5^0.5+1.5) -- (\cost*2*5^0.5-2,0,\sint*5^0.5+1.5);
+    
+    \draw [line width=1pt ] (0,0,3)-- node[above=1mm, rotate = 90] {\large{$\boldsymbol{k}\mathbf{(\theta_0)=0}$} } (0,5,3);
+    %\draw (1,-0.5,0) node[anchor=north west] {{{\footnotesize{\color{black}$k(\theta_0)=0$}}}};
+    
+    
+    %Arrows
+    \def\top{6}
+    \def\tip{5.1}
+    
+    \draw[-{Latex[length=15pt]}, line width=4pt] (-\cost*2*5^0.5+2,\top,\sint*5^0.5+1.5) -- (-\cost*2*5^0.5+2,\tip,\sint*5^0.5+1.5);
+    \draw[-{Latex[length=15pt]}, line width=4pt] (+\cost*2*5^0.5-2,\top,-\sint*5^0.5+1.5) -- (+\cost*2*5^0.5-2,\tip,-\sint*5^0.5+1.5);
+    \def\t{-1}
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,\t^2*\t^2/2)-- (2*\t,\tip,\t^2*\t^2/2);
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,-\t^2*\t^2/2+3)-- (2*\t,\tip,-\t^2*\t^2/2+3);
+    \def\t{-0.5}
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,\t^2*\t^2/2)-- (2*\t,\tip,\t^2*\t^2/2);
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,-\t^2*\t^2/2+3)-- (2*\t,\tip,-\t^2*\t^2/2+3);
+    \def\t{0}
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,\t^2*\t^2/2)-- (2*\t,\tip,\t^2*\t^2/2);
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,-\t^2*\t^2/2+3)-- (2*\t,\tip,-\t^2*\t^2/2+3);
+    \def\t{0.5}
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,\t^2*\t^2/2)-- (2*\t,\tip,\t^2*\t^2/2);
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,-\t^2*\t^2/2+3)-- (2*\t,\tip,-\t^2*\t^2/2+3);
+    \def\t{1}
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,\t^2*\t^2/2)-- (2*\t,\tip,\t^2*\t^2/2);
+    \draw[-{Latex[length=15pt]}, line width=4pt] (2*\t,\top,-\t^2*\t^2/2+3)-- (2*\t,\tip,-\t^2*\t^2/2+3);
+    
+    %top
+     \draw[line width=0.2pt,domain=-0.4636476:0.4636476]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)-1)},\tip,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+     \draw[line width=0.2pt,domain=pi-0.4636476:pi+0.4636476]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)+1)},\tip,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+     \draw[line width=0.2pt,black, domain=-1:1]   plot (2*\x,\tip,\x^2*\x^2/2);
+     \draw[line width=0.2pt,black, domain=-1:1]   plot (2*\x,\tip,-\x^2*\x^2/2+3);
+    
+     \draw[line width=0.2pt,domain=-0.4636476:0.4636476]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)-1)},\top,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+     \draw[line width=0.2pt,domain=pi-0.4636476:pi+0.4636476]   plot ({2*(((-1-1)^2+(1.5-0.5)^2)^0.5*cos(\x r)+1)},\top,{((-1-1)^2+(1.5-0.5)^2)^0.5*sin(\x r)+1.5});
+     \draw[line width=0.2pt,black, domain=-1:1]   plot (2*\x,\top,\x^2*\x^2/2);
+     \draw[line width=0.2pt,black, domain=-1:1]   plot (2*\x,\top,-\x^2*\x^2/2+3);
+     %\draw (-0.5,0) node[anchor=north west] {{{\footnotesize{\color{black}$k(\theta_0)=0$}}}};
+    \end{tikzpicture}
+    
+    \caption{Case (ii) in Theorem 3.1: curvature vanish in 2 isolated points. Around $\theta_0$ the curve behaves like $\bm\alpha(\theta)=(\theta, \theta^4).$}
+    \end{subfigure}
+    \caption{Possible Cross-sections,  with positive curvatures}
+    \end{figure}
+    \end{center}

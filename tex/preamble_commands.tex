@@ -1,0 +1,343 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Preamble: New Commands
+
+%Theorems and Proofs
+\newtheorem{theorem}{{\sc Theorem}}[section]
+\newtheorem{proposition}[theorem]{{\sc Proposition}}
+\newtheorem{claim}[theorem]{{\sc Claim}}
+\newtheorem{lemma}[theorem]{{\sc Lemma}}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{reflist}[theorem]{List}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{postulate}[theorem]{{\sc Postulate}}
+\newtheorem{conjecture}[theorem]{Conjecture}
+%Question and Comments
+\newcounter{question}
+\newenvironment{question}[1][]{\refstepcounter{question}\par\medskip
+	\noindent \color{red}{Question~\thequestion. #1} \rmfamily}{\medskip}
+
+\newcounter{com}	
+\newenvironment{com}[1][]{\refstepcounter{com}\par\medskip
+	\noindent \color{blue}{Comment~\thecom. #1} \rmfamily}{\medskip}
+
+\newcommand{\bl}[1]{\textcolor{blue}{\textsf{#1}}}
+
+% Equation numbering ????????????????????????????????????????
+\renewcommand{\theequation}{{\thesection}.{\arabic{equation}}}
+
+%Useful miscellania (More in mymacrosAndre.tex)
+\newcommand{\thus}{\Rightarrow}
+\newcommand{\Skew}{\mathrm{Skew}}
+\newcommand{\dOm}{\partial\Omega}
+\newcommand{\eqv}{\Longleftrightarrow}
+\newcommand{\curl}{\mathrm{curl}\,}
+\newcommand{\Grad}{\nabla}
+\newcommand{\Div}{\nabla \cdot}
+\newcommand{\Curl}{\nabla \times}
+\renewcommand{\Hat}[1]{\widehat{#1}}
+\newcommand{\Tld}[1]{\widetilde{#1}}
+\DeclareMathOperator{\liminfj}{\liminf\limits_{j\rightarrow\infty} }
+\DeclareMathOperator{\limsupj}{\limsup\limits_{j\rightarrow\infty} }
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\dist}{\operatorname{dist}}
+
+% Dash Integral
+
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+%Mathbb stuff
+\newcommand{\R}{\mathbb{R}}
+
+%Hot words
+\newcommand{\WLOG}{without loss of generality}
+\newcommand{\nbh}{neighborhood}
+\newcommand{\IFF}{if and only if }
+\newcommand{\CoV}{Calculus of Variations}
+
+
+% Abbreviate symbols for caligraphic letters
+\newcommand{\CA}{{\mathcal A}}
+\newcommand{\CB}{{\mathcal B}}
+\newcommand{\CC}{{\mathcal C}}
+%\newcommand{\CD}{{\mathcal D}}  % conflicts with commutative diagram package
+\newcommand{\ClD}{{\mathcal D}}
+\newcommand{\CE}{{\mathcal E}}
+\newcommand{\CF}{{\mathcal F}}
+\newcommand{\CG}{{\mathcal G}}
+\newcommand{\CH}{{\mathcal H}}
+\newcommand{\CI}{{\mathcal I}}
+\newcommand{\CJ}{{\mathcal J}}
+\newcommand{\CK}{{\mathcal K}}
+\newcommand{\CL}{{\mathcal L}}
+\newcommand{\CM}{{\mathcal M}}
+\newcommand{\CN}{{\mathcal N}}
+\newcommand{\CO}{{\mathcal O}}
+\newcommand{\CP}{{\mathcal P}}
+\newcommand{\CQ}{{\mathcal Q}}
+\newcommand{\CR}{{\mathcal R}}
+\newcommand{\CS}{{\mathcal S}}
+\newcommand{\CT}{{\mathcal T}}
+\newcommand{\CU}{{\mathcal U}}
+\newcommand{\CV}{{\mathcal V}}
+\newcommand{\CW}{{\mathcal W}}
+\newcommand{\CX}{{\mathcal X}}
+\newcommand{\CY}{{\mathcal Y}}
+\newcommand{\CZ}{{\mathcal Z}}
+
+% Abbreviate definitions of greek symbols
+\newcommand{\Ga}{\alpha}
+\newcommand{\Gb}{\beta}
+\newcommand{\Gd}{\delta}
+\newcommand{\Ge}{\epsilon}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Gve}{\varepsilon}
+\newcommand{\Gf}{\phi}
+\newcommand{\Gvf}{\varphi}
+\newcommand{\Gg}{\gamma}
+\newcommand{\Gc}{\chi}
+\newcommand{\Gi}{\iota}
+\newcommand{\Gk}{\kappa}
+\newcommand{\Gvk}{\varkappa}
+\newcommand{\Gl}{\lambda}
+\newcommand{\Gn}{\eta}
+\newcommand{\Gm}{\mu}
+\newcommand{\Gv}{\nu}
+\newcommand{\Gp}{\pi}
+\newcommand{\Gvp}{\varpi}
+\newcommand{\Gth}{\theta}
+\newcommand{\Gvt}{\vartheta}
+\newcommand{\Gr}{\rho}
+\newcommand{\Gvr}{\varrho}
+\newcommand{\Gs}{\sigma}
+\newcommand{\Gvs}{\varsigma}
+\newcommand{\Gj}{\tau}
+\newcommand{\Gu}{\upsilon}
+\newcommand{\Go}{\omega}
+\newcommand{\Gx}{\xi}
+\newcommand{\Gy}{\psi}
+\newcommand{\Gz}{\zeta}
+\newcommand{\GD}{\Delta}
+\newcommand{\GF}{\Phi}
+\newcommand{\GG}{\Gamma}
+\newcommand{\TG}{\tilde{\Gamma}}
+\newcommand{\TL}{\tilde{L}}
+\newcommand{\GL}{\Lambda}
+\newcommand{\GP}{\Pi}
+\newcommand{\GT}{\Theta}
+\newcommand{\GS}{\Sigma}
+\newcommand{\GU}{\Upsilon}
+\newcommand{\GO}{\Omega}
+\newcommand{\GX}{\Xi}
+\newcommand{\GY}{\Psi}
+
+% Abbreviate definitions of bold greek symbols
+\bmdefine\BGa{\alpha}
+\bmdefine\BGb{\beta}
+\bmdefine\BGd{\delta}
+\bmdefine\BGe{\epsilon}
+\bmdefine\BGve{\varepsilon}
+\bmdefine\BGf{\phi}
+\bmdefine\BGvf{\varphi}
+\bmdefine\BGg{\gamma}
+\bmdefine\BGc{\chi}
+\bmdefine\BGi{\iota}
+\bmdefine\BGk{\kappa}
+\bmdefine\BGl{\lambda}
+\bmdefine\BGn{\eta}
+\bmdefine\BGm{\mu}
+\bmdefine\BGv{\nu}
+\bmdefine\BGp{\pi}
+\bmdefine\BGth{\theta}
+\bmdefine\BGvth{\vartheta}
+\bmdefine\BGr{\rho}
+\bmdefine\BGvr{\varrho}
+\bmdefine\BGs{\sigma}
+\bmdefine\BGvs{\varsigma}
+\bmdefine\BGt{\tau}
+\bmdefine\BGj{\tau}
+\bmdefine\BGu{\upsilon}
+\bmdefine\BGo{\omega}
+\bmdefine\BGx{\xi}
+\bmdefine\BGy{\psi}
+\bmdefine\BGz{\zeta}
+\bmdefine\BGD{\Delta}
+\bmdefine\BGF{\Phi}
+\bmdefine\BGG{\Gamma}
+\bmdefine\BGL{\Lambda}
+\bmdefine\BGP{\Pi}
+\bmdefine\BGT{\Theta}
+\bmdefine\BGS{\Sigma}
+\bmdefine\BGU{\Upsilon}
+\bmdefine\BGO{\Omega}
+\bmdefine\BGX{\Xi}
+\bmdefine\BGY{\Psi}
+
+% Abbreviate symbols for bold caligraphic letters
+\bmdefine\BCA{{\mathcal A}}
+\bmdefine\BCB{{\mathcal B}}
+\bmdefine\BCC{{\mathcal C}}
+\bmdefine\BCD{{\mathcal D}}
+\bmdefine\BCE{{\mathcal E}}
+\bmdefine\BCF{{\mathcal F}}
+\bmdefine\BCG{{\mathcal G}}
+\bmdefine\BCH{{\mathcal H}}
+\bmdefine\BCI{{\mathcal I}}
+\bmdefine\BCJ{{\mathcal J}}
+\bmdefine\BCK{{\mathcal K}}
+\bmdefine\BCL{{\mathcal L}}
+\bmdefine\BCM{{\mathcal M}}
+\bmdefine\BCN{{\mathcal N}}
+\bmdefine\BCO{{\mathcal O}}
+\bmdefine\BCP{{\mathcal P}}
+\bmdefine\BCQ{{\mathcal Q}}
+\bmdefine\BCR{{\mathcal R}}
+\bmdefine\BCS{{\mathcal S}}
+\bmdefine\BCT{{\mathcal T}}
+\bmdefine\BCU{{\mathcal U}}
+\bmdefine\BCV{{\mathcal V}}
+\bmdefine\BCW{{\mathcal W}}
+\bmdefine\BCX{{\mathcal X}}
+\bmdefine\BCY{{\mathcal Y}}
+\bmdefine\BCZ{{\mathcal Z}}
+
+% Abbreviate symbols for bold-face letters
+\bmdefine\Bzr{ 0}
+\bmdefine\Ba{ a}
+\bmdefine\Bb{ b}
+\bmdefine\Bc{ c}
+\bmdefine\Bd{ d}
+\bmdefine\Be{ e}
+\bmdefine\Bf{ f}
+\bmdefine\Bg{ g}
+\bmdefine\Bh{ h}
+\bmdefine\Bi{ i}
+\bmdefine\Bj{ j}
+\bmdefine\Bk{ k}
+\bmdefine\Bl{ l}
+\bmdefine\Bm{ m}
+\bmdefine\Bn{ n}
+\bmdefine\Bo{ o}
+\bmdefine\Bp{ p}
+\bmdefine\Bq{ q}
+\bmdefine\Br{ r}
+\bmdefine\Bs{ s}
+\bmdefine\Bt{ t}
+\bmdefine\Bu{ u}
+\bmdefine\Bv{ v}
+\bmdefine\Bw{ w}
+\bmdefine\Bx{ x}
+\bmdefine\By{ y}
+\bmdefine\Bz{ z}
+\bmdefine\BA{ A}
+\bmdefine\BB{ B}
+\bmdefine\BC{ C}
+\bmdefine\BD{ D}
+\bmdefine\BE{ E}
+\bmdefine\BF{ F}
+\bmdefine\BG{ G}
+\bmdefine\BH{ H}
+\bmdefine\BI{ I}
+\bmdefine\BJ{ J}
+\bmdefine\BK{ K}
+\bmdefine\BL{ L}
+\bmdefine\BM{ M}
+\bmdefine\BN{ N}
+\bmdefine\BO{ O}
+\bmdefine\BP{ P}
+\bmdefine\BQ{ Q}
+\bmdefine\BR{ R}
+\bmdefine\BS{ S}
+\bmdefine\BT{ T}
+\bmdefine\BU{ U}
+\bmdefine\BV{ V}
+\bmdefine\BW{ W}
+\bmdefine\BX{ X}
+\bmdefine\BY{ Y}
+\bmdefine\BZ{ Z}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%From CHGorman
+
+% New definition of square root:
+% it renames \sqrt as \oldsqrt
+%\let\oldsqrt\sqrt
+% it defines the new \sqrt in terms of the old one
+%\def\sqrt{\mathpalette\DHLhksqrt}
+%\def\DHLhksqrt#1#2{%
+%\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+%\advance\dimen0-0.2\ht0
+%\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+%{\box0\lower0.4pt\box2}}
+
+
+
+
+%\newtheoremstyle{mythm}% name of the style to be used
+%  {parskip}% measure of space to leave above the theorem. E.g.: 3pt
+%  %{spaceabove}% measure of space to leave above the theorem. E.g.: 3pt
+%  {parskip}% measure of space to leave below the theorem. E.g.: 3pt
+%  %{spacebelow}% measure of space to leave below the theorem. E.g.: 3pt
+%  {}% name of font to use in the body of the theorem
+%  %{bodyfont}% name of font to use in the body of the theorem
+%  {\quad}% measure of space to indent
+%  %{indent}% measure of space to indent
+%  {}% name of head font
+%  %{headfont}% name of head font
+%  {}% punctuation between head and body
+%  %{headpunctuation}% punctuation between head and body
+%  {}% space after theorem head; " " = normal interword space
+%  %{headspace}% space after theorem head; " " = normal interword space
+%  {}
+%  %{\thmname{#1}\thmnumber{ #2}:\thmnote{ #3}}
+%  %{headspec}% Manually specify head
+
+
+
+\newtheoremstyle{mythm}% name
+  {12pt}%Space above
+  %{3pt}%Space above
+  {12pt}%Space below
+  {\normalfont}%Body font
+  {0pt}%Indent amount
+  {\bf}% Theorem head font
+  %{\itshape}% Theorem head font
+  {}%Punctuation after theorem head
+  %{.}%Punctuation after theorem head
+  {\newline}%Space after theorem head 2
+  {}%Theorem head spec (can be left empty, meaning ‘normal’)
+
+%\theoremstyle{mythm}
+%\newtheorem{thm}{Theorem}[chapter] % number by chapter; can replace with section
+%\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{prop}[thm]{Proposition}
+%\newtheorem{ax}{Axiom}
+%\newtheorem{problem}[thm]{Problem}
+%
+%\theoremstyle{definition}
+%\newtheorem{defn}{Definition}[chapter] % number by chapter
+%
+%\theoremstyle{remark}
+%\newtheorem{rem}{Remark}[chapter]
+%\newtheorem*{notation}{Notation}
+%
+%\newtheorem{hw}[thm]{Homework}
+
+% Allow equations to break over pages (?); from Kyle
+\allowdisplaybreaks
+
+% Hyphenation
+
+\hyphenation{Vand-er-monde}
+

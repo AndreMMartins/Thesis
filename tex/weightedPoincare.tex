@@ -1,0 +1,599 @@
+\chapter{Weighted Korn inequality}
+
+\section{Main results and Important Definitions}
+\begin{definition}[Uniformly Lipschitz domains] \label{UniformLip} Let $L, R>0$. An open set $\Omega \subseteq \mathbb{R}^n$ is $(L, R)$-Lipschitz if there is $\Gve>0$ such that:
+\begin{enumerate}
+    \item $|x-y|<R\varepsilon$ for all $x, y \in \Omega$;
+    \item For each $x \in \partial \Omega$ there are $f_x \in \operatorname{Lip}\left(\mathbb{R}^{n-1} ; \mathbb{R}\right)$ with $\operatorname{Lip}\left(f_x\right) \leq L$ and an isometry $A_x: \mathbb{R}^n \rightarrow \mathbb{R}^n$ such that $B(x,\varepsilon) \cap \Omega=B(x,\varepsilon) \cap V_x$, where
+        $$
+            V_x:=A_x\left\{\left(y^{\prime}, y_n\right) \in \mathbb{R}^{n-1} \times \mathbb{R}: y_n<f_x\left(y^{\prime}\right)\right\}
+        $$
+\end{enumerate}
+\end{definition}
+%\begin{lemma}[Whitney cover lemma] \label{Whitney} Given, $F\subset \R^n$, there exists  $x_1,x_2,\cdots \in F^c$, $r_1,r_2,\cdots\in \R$ defining a collection of balls $B_k=B(x_k,r_k)$ such that:
+%\begin{enumerate}
+%    \item The $B_k$ are pairwise disjoint.
+ %   \item Let $B*_k= B(x_k,36r_k)$, then $\bigcup_k B*_k=F^c$.
+ %   \item Let $B**_k= B(x_k,144r_k)$, then $B**_k\cap F \neq \emptyset$, for all $k$.
+ %   \item $B*_k$ might not be disjoint, but they have the bounded intersection property.
+%\end{enumerate}
+%From properties 2 and 3 we can also conclude that for every k
+%$$ 36 r_k\leq \dist(B_k,F)\leq 144r_k $$
+%\end{lemma}
+%\begin{question}
+ %   Can we control the intersection in this case though? Doesn't look like it...
+%\end{question}
+\begin{lemma}[Whitney cover lemma] \label{Whitney}Let $\GG\in \mathbb{R}^n$ be a closed non-empty proper set. We can cover $\GG^c$ by a collection of closed cubes $Q_j$ that are essential disjoint, and whose size is comparable to their distance from $\GG$, $i.e$
+\begin{itemize}
+    \item $\cup_j Q_j=\GG^c$ and the $Q_j$ 's have disjoint interiors.
+    \item $\sqrt{n} \ell\left(Q_j\right) \leq \operatorname{dist}\left(Q_j, \GG\right) \leq 4 \sqrt{n} \ell\left(Q_j\right)$
+\item If the boundaries of two cubes $Q_j$ and $Q_k$ touch then $\frac{1}{4} \leq \frac{\ell\left(Q_j\right)}{\ell\left(Q_k\right)} \leq 4$.
+\item For a given $Q_j$ there exist at most $12^n Q_k$ 's that touch it.
+\end{itemize}
+Where $\ell(Q)$ denotes the length of a cube $Q$.
+
+Additionally, we can conclude also that the $2Q_j\subset \GG^c$ and that the cover $\{2Q_j\}_j$ have finite overlap properties.
+\end{lemma}
+\begin{remark}
+    This Lemma is often used to cover an open set $\Omega\in \R^n$ by choosing $\GG=\dOm$ and restrict only to the cubes inside $\Omega$.
+\end{remark}
+(Grafakos, Loukas (2008). Classical Fourier Analysis. Springer. ISBN 978-0-387-09431-1.)
+(Stein, Elias (1970), Singular Integrals and Differentiability Properties of Functions, Princeton University Press.)
+
+
+\begin{theorem}[Weighted Poincaré] \label{WeightedPoincare} Let $\Omega \subseteq \mathbb{R}^n$ be a connected, bounded $(L, R)$-Lipschitz set,  $\GG$ an nonempty closed subset of $\dOm$  and $\delta_\GG(x)=\dist(x, \partial\GG)$. Then for any $u \in W_{\mathrm{loc}}^{1, p}\left(\Omega ; \mathbb{R}^k\right)$, with $p \in[1, \infty)$, and every $\alpha\geq0$ there is $a \in \mathbb{R}^k$ such that:
+$$
+\|\delta_\GG(x)^\alpha (u-a)\|_{L^p(\Omega)} \leq c(n,p,\alpha,L,R)\|\Gd_\GG(x)^{1+\Ga} \nabla u\|_{L^p(\Omega)} .
+$$
+In particular, $u \in L^p\left(\Omega ; \mathbb{R}^k\right)$. 
+\end{theorem}
+\begin{com}
+$u$ can actually live in  weighted Sobolev spaces also I think but not sure this extension would be useful
+\end{com}
+
+\begin{remark}
+This result will be used several times for the particular case where $\GG=\dOm$. Additionally, if we  $\alpha=0$  we get the Weighted Poincare inequality  \bl{from Conti's paper} and since we have that $\delta_\GG\leq \operatorname{diam}(\Omega)$ the traditional inequality is also a corollary of this theorem. 
+\end{remark}
+\begin{question}
+Should I just focus on korn inequality instead?
+\end{question}
+\begin{theorem}
+[Weighted Uniform rigidity and Korn inequality] Let $\Omega \subseteq \mathbb{R}^n$ be a connected, bounded $(L, R)$-Lipschitz set,  $\GG$ an nonempty  close subset of $\dOm$ and $\delta_\GG(x)=\dist(x, \partial\GG)$. Then for any $u \in W_{\mathrm{loc}}^{1, p}\left(\Omega ; \mathbb{R}^k\right)$, with $p \in[1, \infty)$, and every $\alpha\geq0$ there is are $R \in \operatorname{SO}(n)$ and $S \in \mathbb{R}_{\mathrm{skw}}^{n \times n}$ such that
+$$
+\|\delta_\GG(x)^\alpha(\nabla u-R)\|_{L^p(\Omega)} \leq c(n,p, L,R)\|\delta_\GG(x)^\alpha\operatorname{dist}(\nabla u, \operatorname{SO}(n))\|_{L^p(\Omega)}
+$$
+and
+$$
+\|\delta_\GG(x)^\alpha(\nabla u-S)\|_{L^p(\Omega)} \leq  c(n,p, L,R)\left\|\delta_\GG(x)^\alpha e(u)\right\|_{L^p(\Omega)}.
+$$
+\end{theorem}
+
+\begin{question}
+Will $c$ depend on $\GG$ and $\Ga$? Yes, do I need to specify the relation though?
+\end{question}
+
+\begin{theorem}
+[Weighted Uniform rigidity and Korn inequality for plates] Let $\Omega_h=\Omega\times I_h \subseteq \mathbb{R}^3$ be a shell such that $\Omega$ is  a connected, bounded $(L, R)$-Lipschitz set and $I_h=[-h,h]$ for small $h>0$. Additionally, let $\delta(x)=\delta_{\dOm\times I_h}=\dist(x,\dOm\times I_h)$ and $p \in(1, \infty)$. Then for any $u \in W^{1, p}\left(\Omega_h ; \mathbb{R}^n\right)$ and any $\alpha\geq 0 $ , there are $R \in \operatorname{SO}(3)$ and $S \in \mathbb{R}_{\mathrm{skw}}^{3 \times 3}$ such that
+$$
+\|\delta(x)^\alpha(\nabla u-R)\|_{L^p(\Omega)} \leq \frac{c(n,p,L,R,\alpha)}{h}\|\delta(x)^\alpha\operatorname{dist}(\nabla u, \operatorname{SO}(n))\|_{L^p(\Omega)}
+$$
+and
+$$
+\|\delta(x)^\alpha(\nabla u-S)\|_{L^p(\Omega)} \leq  \frac{c(n,p,L,R,\alpha)}{h}\left\|\delta(x)^\alpha e(u)\right\|_{L^p(\Omega)}.
+$$
+\end{theorem}
+\begin{question}
+    can p be 1 ? Also should I keep track on the dependence on $\alpha$? I think is not that bad to keep track
+\end{question}
+\section{Auxiliary Results and Lemmas}
+\begin{lemma}
+\label{1dimPoinc}
+Let $I=(a, b) \subseteq \mathbb{R}$ be a bounded interval, $\varphi \in C^1(I), E=[a,a+\epsilon] \subseteq I$ with $0<\epsilon< b-a$, $\alpha > 0 \in \mathbb{R},\ A \in \mathbb{R},  p \in[1, \infty)$. Then
+$$
+\int_I|(b-x)^\Ga(\phi-A)|^p d x \leq 2 \left(\frac{|I|}{|E|}\right)^{\alpha p+1}\left[\int_E|(b-x)^\Ga(\beta-A)|^p d x+\left(\frac{p}{\alpha+1}\right)^p\int_I|(b-x)^{\Ga+1}\phi'|^p d x\right]. 
+$$
+The constant $c_p$ depends only on $p$.
+\end{lemma}
+
+\begin{proof}
+Let $\beta = \phi(a)$, then by the fundamental theorem of calculus  applied to $(\phi-\beta)^p$ we get the following bound
+$$|\phi-\beta|^p(x) \leq p \int_a^x|\phi(t)-\beta|^{p-1}\left|\phi^{\prime}(t)\right| d t .$$
+
+Now if we multiply last equation by $(b-x)^{\alpha p}$ and integrate over $I$ we get
+
+$$\int_I|((b-x)^\alpha(\phi-\beta)|^p(x) \leq p \int_I\int_a^x(b-x)^{\Ga p}|\phi(t)-\beta|^{p-1}\left|\phi^{\prime}(t)\right| d t dx.$$
+
+Using fubini's theorem we can conclude that
+$$\int_I|((b-x)^\alpha(\phi-\beta)|^p(x) \leq \frac{p}{\Ga+1} \int_I(b-t)^{\Ga p+1}|\phi(t)-\beta|^{p-1}\left|\phi^{\prime}(t)\right| d t.$$
+
+Since $\Ga p +1 = \Ga(p-1) + (1+\Ga)$, using Holder's inequality we  have that
+
+$$\int_I|(b-x)^\Ga(\phi-\beta)|^p(x) d x \leq \frac{p}{\alpha+1}\left\||(b-t)^\alpha(\phi-\beta)|^{p-1}\right\|_{L^{p^{\prime}(I)}}\left\|(t-a)^{1+\alpha} \phi^{\prime}\right\|_{L^p(I)}$$
+
+So $$\|(b-x)^\Ga(\phi-\beta)\|_{L^p(I)} \leq \frac{p}{\alpha+1}\left\|(b-x)^{1+\Ga} \phi^{\prime}\right\|_{L^p(I)}$$
+
+Step 2:
+
+For any $A\in \R$ we have that
+$$\int_E|(b-x)^\Ga(\beta-A)|^p(x) d x \leq \int_E|(b-x)^\Ga(\phi-A)|^p(x) d x +\int_I|(b-x)^\Ga(\phi-\beta)|^p(x) d x$$
+
+And on the other hand $\frac{\int_I|(b-x)^\Ga(\beta-A)|^p(x) d x}{\int_E|(b-x)^\Ga(\beta-A)|^p(x) d x }=\frac{|I|^{\Ga+1}}{|E|^{\Ga+1}}\geq 1 $ since 
+\begin{align*}
+\int_E|(b-x)^\Ga(\beta-A)|^p(x) d x &= |\beta-A|^p \int_E (b-x)^{\Ga p} d x \\
+&\geq  |\beta-A|^p \int_a^{a+\epsilon} (a+\epsilon-x)^{\Ga p} d x\\
+&\geq |\beta-A|^p |E|^{\alpha p+1}\\
+\int_I|(b-x)^\Ga(\beta-A)|^p(x) d x &= |\beta-A|^p |I|^{\alpha p+1}
+\end{align*} 
+
+Step 3:
+Applying triangular inequality one more time we have that.
+\begin{align*}
+    \int_I|(b-x)^\Ga(\phi-A)|^p d x &\leq \int_I|(b-x)^\Ga(\phi-\beta)|^p d x + \int_I|(b-x)^\Ga(\beta-A)|^p d x\\
+     &\leq \int_I|(b-x)^\Ga(\phi-\beta)|^p d x + \left(\frac{|I|}{|E|}\right)^{\alpha p+1}\int_E|(b-x)^\Ga(\beta-A)|^p d x\\
+     &\leq 2 \left(\frac{|I|}{|E|}\right)^{\alpha p+1}\left(\int_E|(b-x)^\Ga(\phi-A)|^p d x+\int_I|(b-x)^\Ga(\phi-\beta)|^p\right)\\
+    &\leq 2 \left(\frac{|I|}{|E|}\right)^{\alpha p+1}\left(\int_E|(b-x)^\Ga(\phi-A)|^p d x+\left(\frac{p}{\alpha+1}\right)^p\int_I|(b-x)^{\Ga+1}\phi'|^p d x\right) 
+\end{align*}
+
+as desired
+\end{proof}
+
+
+Now we can use the previous lemma to prove an essential result to work near $\GG$. 
+
+\begin{lemma}\label{PoincareBoundary}
+     Let $\Omega \subset \mathbb{R}^n$ be $(L, R)$-Lipschitz, $\varepsilon$ as in Definition \ref{UniformLip}, $x_* \in \GG\subset\dOm,\ r \in(0, \varepsilon /(4+$ $4 L)],\ p \in[1, \infty)$ and $\delta_\GG(x)=\operatorname{dist}(x, \GG)$. For any $u \in W_{\mathrm{loc}}^{1, p}(\Omega)$ there is $a \in \mathbb{R}$ such that
+$$
+\int_{\Omega \cap B_r\left(x_*\right)}|\delta_\GG(x)^\Ga (u-a)|^p d x \leq c(n,p,L,\Ga) \int_{\Omega} |\delta_\GG(x)^{(\alpha+1)}\nabla u|^p(x) d x .
+$$
+
+\end{lemma}
+\begin{proof}
+    By the definition of $(L,R)-Lipschitz$ we have that $B_{\varepsilon}\left(x_*\right) \cap \Omega=B_{\varepsilon}\left(x_*\right) \cap V$, where 
+$$
+V:=A\left\{\left(y^{\prime}, y_n\right) \in \mathbb{R}^{n-1} \times \mathbb{R}: y_n<f\left(y^{\prime}\right)\right\}
+$$ where A is an isometry and $f$ an $L$-Lipschitz  function. Since all the results are invariant under rotation and translations we can wlg assume that $A=I$, $x_*=0$ and $f(0)=0$ to simplify the notation.
+
+Let $\tau:= r L \in(0, \varepsilon / 4)$ and consider the cylinder $T:=B_r^{\prime} \times(-3 \tau,-2 \tau)$. For any $x^{\prime} \in B_r^{\prime}$ we have $f\left(x^{\prime}\right) \geq-r L=-\tau$, and therefore $4\tau\geq f\left(x^{\prime}\right)-x_n \geq \tau$ for all $\left(x^{\prime}, x_n\right) \in T$. Further, since $(3 h)^2+r^2 \leq (9L^2+1)r^2\leq \varepsilon^2$, we obtain that $T$  is still inside  $B_{\varepsilon} \cap V$, so the shape of $T$ depends only on $A$ and $L$. Additionally, since  $\operatorname{diam}(T)\leq c h$  by the usual Poincaré inequality there is $a \in \mathbb{R}$ with
+\begin{align*}
+\int_T|f(x')-x_n|^{\alpha p}|u-a|^p d x &\leq 4^{\Ga p} \tau^{\Ga p}\int_T|u-a|^p dx\\
+&\leq 4^{\alpha p} c(n,p,L) \tau^{(1+\alpha)p} \int_T|\nabla u|^p d x\\
+&\leq 4^{\alpha p} c(n,p,L) \int_T|f(x')-x_n|^{(1+\alpha) p}|\nabla u|^p d x.
+\end{align*}
+\begin{question}
+    Maybe C does not depend on $p$ 
+\end{question}
+
+
+ For the next step we will apply Lemma \ref{1dimPoinc} to $u\left(x^{\prime}, \cdot\right)$ for each $x^{\prime} \in B_r^{\prime}$, with $I=\left(-3 \tau, f\left(x^{\prime}\right)\right)$ and $E=(-3 \tau,-2 \tau)$. Since , $\tau=\mathcal{L}^1(E) \leq \mathcal{L}^1(I) \leq 4 \tau$, we get 
+ 
+$$
+\int_I|f(x')-x_n|^{\alpha p}|u(x)-a|^p d x_n \leq c \int_I\left|f\left(x^{\prime}\right)-x_n\right|^{(\alpha+1)p}|\nabla u|^p(x) d x_n+c \int_E|f(x')-x_n|^{\alpha p}|u(x)-\alpha|^p d x_n
+$$
+
+Let $U:=\left(B_r^{\prime} \times(-3 h, \infty)\right) \cap V$, so that $B_r \cap \Omega=B_r \cap U$ and $U \subseteq B_{\varepsilon} \cap V=B_{\varepsilon} \cap \Omega$. We integrate over $x^{\prime} \in B_r^{\prime}$, and use both last inequalities to conclude
+$$
+\begin{aligned}
+\int_U|f(x')-x_n|^{\alpha p}|u-\alpha|^p d x & \leq c \int_{B_r^{\prime}} \int_{\left(-3 \tau, f\left(x^{\prime}\right)\right)}\left|f\left(x^{\prime}\right)-x_n\right|^{(\alpha+1)p}|\nabla u|^p d x_n d x^{\prime}\\
+&\qquad \qquad + c \int_T\left|f\left(x^{\prime}\right)-x_n\right|^{(\alpha+1)p}|\nabla u|^p d x \\
+& \leq c(n,p,L,\Ga) \int_U\left|f\left(x^{\prime}\right)-x_n\right|^{(\alpha+1)p}|\nabla u|^p d x
+\end{aligned}
+$$
+Additionally, by construction of $U$ we have that $|f\left(x^{\prime}\right)-x_n|$ is comparable with $\delta(x)$. In [] Conti's proves that there is $c(L)>0$, such that
+$$
+\left|f\left(x^{\prime}\right)-x_n\right| \leq c(L) \dist(x,\dOm)\leq c(L)\delta_\GG(x) \quad \text { for all } x \in U .
+$$
+
+\begin{question}
+    Should I include this part of the proof also?
+\end{question}
+
+and for a lower bound we use the fact that $x^*\in \GG$ to get
+\begin{align*}
+    \Gd_\Gamma(x)\leq \dist(x,x^*)
+    \leq\sqrt{9\tau^2+r^2}
+    =\sqrt{9L+1}r
+    \leq \frac{\sqrt{9L+1}}{L} |f\left(x^{\prime}\right)-x_n|
+\end{align*}
+so in fact there exist $c(L)$ such that
+$$\frac{1}{c(L)} \dist(x,\dOm)\leq \left|f\left(x^{\prime}\right)-x_n\right| \leq c(L) \delta_\GG(x) \quad \text { for all } x \in U .$$
+which concludes the proof since $B_r \cap V \subseteq U$.
+\end{proof}
+\begin{lemma}\label{GradExt} Let $\Omega$ be a $(L, R)$-Lipschitz domain and $u\in W^{1,2}(\Omega)$ then there exists a gradient preserving extension $\tilde{u}\in W^{1,2}(\R^n)$, i.e.,
+$$\|\nabla(\tilde{u})\|_{\CL^2(\R^n)}\leq c(n,L,R)\|\nabla(u)\|_{\CL^2(\Omega)}$$ 
+\end{lemma}
+\begin{question}
+    Theorem 4.7 in Evans Gariepy's book?
+\end{question}
+\begin{lemma} \label{EnergyExt}Let $\Omega$ be a $(L, R)$-Lipschitz domain and $u\in W^{1,2}(\Omega)$ then there exists a energy preserving extension $\tilde{u}\in W^{1,2}(\R^n)$, i.e.,
+$$\|E(\tilde{u})\|_{\CL^2(\R^n)}\leq c(n,L,R)\|E(u)\|_{\CL^2(\Omega)}$$ 
+\end{lemma}
+
+
+paper: J. A. NITSCHE
+On Korn’s second inequality
+\begin{question}
+    This is not exactly the same as in the paper. Is this result too strong? Should I do an extension for each ball instead?
+
+    Should I prove this result?
+
+    Should I extend for $p\neq 2$
+\end{question}
+\section{ Proof of Weighted Poincare inequality, Theorem \ref{WeightedPoincare}}
+\begin{theorem}[Weighted Poincaré] \label{WeightedPoincare} Let $\Omega \subseteq \mathbb{R}^n$ be a connected, bounded $(L, R)$-Lipschitz set,  $\GG$ an nonempty closed subset of $\dOm$  and $\delta_\GG(x)=\dist(x, \partial\GG)$. Then for any $u \in W_{\mathrm{loc}}^{1, p}\left(\Omega ; \mathbb{R}^k\right)$, with $p \in[1, \infty)$, and every $\alpha\geq0$ there is $a \in \mathbb{R}^k$ such that:
+$$
+\|\delta_\GG(x)^\alpha (u-a)\|_{L^p(\Omega)} \leq c(n,p,\alpha,L,R)\|\Gd_\GG(x)^{1+\Ga} \nabla u\|_{L^p(\Omega)} .
+$$
+In particular, $u \in L^p\left(\Omega ; \mathbb{R}^k\right)$. 
+\end{theorem}
+\begin{proof}
+It suffices to consider the scalar case and  by density, it suffices to prove the inequality for $u$ is $C^1(\Omega)$. For brevity, let $A:=\|\operatorname{dist}(\cdot, \GG)^{1+\alpha} \nabla u\|_{L^p(\Omega)}$. Let $\varepsilon$ be as in Definition \ref{UniformLip} and fix $r_B:=\varepsilon /(12(L+1))$ (the reason will become clear below). 
+
+Step 1:
+
+Let's start by covering $\Gamma_{2r_B}= \{x\in \Omega\ :\ \dist(x,\Gamma)\leq 2r_B\} $ with 
+$$\mathcal{U}^\GG= \{ B^\GG_i := B(x^i, 4Lr_B)\cap \Omega,\ x^0,\ldots, x^K \in \GG,\ |x^i-x^{i-1}|< \frac{r_B}{L}\}.$$
+
+\textit{Claim:} For each $i=1,\cdots, K$ we have that
+$$|B^\GG_i\cap B_{i-1}^\GG\cap \GG^c_{r_B}|\geq c_L r_B^n.$$
+
+
+First of all, we can, wlg, consider $L\geq 1$ so we have that $B^\GG_i\cap B_{i-1}^\GG\subset B(x^i,\varepsilon)$. Additionally, to simplify the proof, we can consider $x^i=(\underline{x}^i,x^i_n),$ $f_{x^i}(\underline{x}^i)=0,\ f_{x^{i}}(\underline{x}^{i-1})\geq 0$ and $A_{x^i}=I$.
+
+Let $m = \min_{B(\underline{x}^i,\frac{r_B}{L})} f_{x^i}(\underline{x})$, since $f_{x^i}$ is a $L-$lipschitz function we have that
+$$m \geq - r_B\quad\text{and}\quad f_{x^{i}}(\underline{x}^{i-1})\leq r_B.$$
+ So, in fact the intersection is minimized when  $x^{i-1}=(\underline{y},y_n)= (\underline{x}^i+\frac{r_B}{L}\frac{\underline{x}^{i-1}-\underline{x}^i}{|\underline{x}^{i-1}-\underline{x}^i|},r_B)$, which impliesfollowing inclusions
+
+\begin{align*}
+    B^\GG_i\cap B^\GG_{i-1}\cap\GG^c_{r_B}&\supset
+     B^\GG_i\cap B^\GG_{i-1}\cap \{(x',x_n): x'\in B(x_i,\frac{r_B}{L})\ \wedge\  x_n\leq m-r_b\}\\&\supset
+    B^\GG_i\cap B(y, 3Lr_B)\cap \{(x',x_n): x'\in B(x_i,\frac{r_B}{L})\ \wedge\  x_n\leq m-r_b\}
+\end{align*}
+(https://www.desmos.com/calculator/z7rthjbt8k)   
+Additionally, the cylinder $$Cy = B(\underline{x}^{i},\frac{r_B}{L})\times [(-4\sqrt{1-\frac{r_B}{4L^2}}+1)r_B,m-r_B]$$ is  also included in the intersection, so
+\begin{align*}
+    |B^\GG_i\cap B_{i-1}^\GG\cap \GG^c_{r_B}|&\geq |Cy|\\
+    &\geq \alpha(n-1)\left(\frac{2r_B}{L}\right)^{n-1}((4\sqrt{1-\frac{1}{4L^2}}-1)r_B+m-r_B)\\
+        & \geq \alpha(n-1)\left(\frac{2}{L}\right)^{n-1}(4\sqrt{1-\frac{1}{4L^2}}-3)r_B^n 
+\end{align*}
+So the claim is proven, with $c_L =\alpha(n-1)\left(\frac{2}{L}\right)^{n-1}(4\sqrt{1-\frac{1}{4L^2}}-3)$.
+(Maybe adding some images)
+
+Additionally, we can conclude that
+\begin{align*}
+   \|\delta_\GG(x)^\alpha\|^p_{L^p \left(B^\GG_{i}\cap B^\GG_{i-1}\right)}&\geq r_B^{\alpha p} |B^\GG_i\cap B^\GG_{i-1}\cap \GG^c_{r_B}|\\
+   &\geq c_L r_B^{n+\alpha p} 
+\end{align*}
+
+
+Step 2: To work away from $\GG$ let's  start to consider the Whitney cover, $\{Q_j\}_{j\in \mathbb{N}}$ of the open set $\GG^c$ defined in the Lemma \ref{Whitney}. More precisely, we consider the  cubes $\hat{Q}_j := x_j + (-r_j,r_j)^n$ and the balls containing with double the radius size $Q_j := x_j + (-\frac{3}{2}r_j,\frac{3}{2}r_j)^n $ and then consider the sub cover  of the cubes that intersect $\Omega\cap\GG^c_{r_B}$, i.e,
+
+$$\mathcal{U}^{int}:= \{Q_j^{int}:=Q_j,\ \hat{Q}_j\cap\Omega/\GG_{r_B}\neq \emptyset \}.$$
+  
+For a better understanding let's review the main properties of this subcover:
+\begin{enumerate}
+    \item $\Omega\cap\GG^c_{r_B}\subset\cup Q^{int}_{j}$ and the $\hat{Q}^{int}_{j}$ 's have disjoint interiors.
+    \item $\sqrt{n} \ell\left(\hat{Q}^{int}_{j}\right) \leq \delta_\GG(\hat{Q}^{int}_{j}) \leq 4 \sqrt{n} \ell\left(\hat{Q}^{int}_{j}\right)$ 
+    \item $\frac{\sqrt{n}}{2} \ell\left(Q^{int}_{j}\right) \leq \delta_\GG(Q^{int}_{j}) \leq 2 \sqrt{n} \ell\left(Q^{int}_{j}\right)$ 
+\item If the boundaries of two cubes $\hat{Q}^{int}_{j}$ and $\hat{Q}^{int}_{i}$ touch then $\frac{1}{4} \leq \frac{\ell\left(\hat{Q}^{int}_{j}\right)}{\ell\left(\hat{Q}^{int}_{i}\right)} \leq 4$.
+\item For a given $\hat{Q}^{int}_{j}$ there exist at most $12^n \hat{Q}^{int}_i$ 's that touch it.
+\item Since, for every $j$ we have that $\ell(Q^{int}_{j})\geq\frac{r_B}{5\sqrt{n}}$, and $\Omega$ is bounded, we have that this cover is finite, i.e, after rearranging we can consider  $j=1,2,\cdots =J$ for some $J\in \mathbb{N}$.
+\end{enumerate}
+
+%However we are looking for an overlapping cover, so let $x^{K+j'}$ be the center of the square $Q_{j'}$, $r_{K+j'}= 2\ell(Q_{j'})$, and let's add to our previous collection the balls $B_{K+j'}=B(x^{K+j'},r_{K+j'})$, which satisfy $$\frac{(\sqrt{n}-1)}{2} r_{K+j'} \leq \delta_\GG(B_{K+j'}) \leq 2 \sqrt{n} r_{K+j'}$$
+
+Similar to the previous claim we want to be able to control the size of the intersection of 2 cubes in this cover. In fact, we will just need to do it when $\hat{Q}^{int}_{j}$ and $\hat{Q}^{int}_{i}$ are adjacent, and w.l.g. we can assume that $\ell(\hat{Q}^{int}_{j})\leq \ell(\hat{Q}^{int}_{i}) $
+then
+$$|{Q}^{int}_{j}\cap {Q}^{int}_{i}|\geq \frac{1}{2}|\hat{Q}^{int}_{j}| =\frac{1}{2} \ell(\hat{Q}_j)^n.$$
+
+Lastly, is important to remark that this cover actually cover more than $\Omega$ and $u$ is just defined in $\Omega$. To overcome this problem we will use the gradient preserving extension, $\tilde{u}$, defined in Lemma \ref{GradExt}.
+
+
+Step 3: Before moving to the main part of the proof we can check that we can have a Weighted Poincare in each set of our cover.  For $B^\GG_i$ we can use Theorem \ref{PoincareBoundary} to conclude that there exist $A^\GG_i\in \R$ such that
+$$
+\|\delta_\GG(x)^\alpha (u-A^\GG_i)\|_{L^p\left(B^\GG_i\cap \Omega\right)} \leq c A
+$$
+
+For the second part of the cover is a bit harder since some balls will not be included in $\Omega$,  but it can be fixed with using the right extension. By the standard  poincaré inequality there is $a^{int}_{j}$:
+\begin{align*}
+    \|\delta_\GG(x)^\alpha (\tilde{u}-a^{int}_j)\|_{L^p\left(Q^{int}_j\right)} &\leq (2\sqrt{n}\ell(Q^{int}_j))^\alpha\| (\tilde{u}-A^{int}_j)\|_{L^p\left(Q^{int}_j\right)}\\
+    &\leq c(n,L,R,\alpha)\ell(Q^{int}_j)^\alpha\| \nabla \tilde{u}\|_{L^p\left(Q^{int}_j\right)}\\
+    &\leq c(n,L,R,\alpha) \|\delta_\GG(x)^\alpha \nabla\tilde{u}\|_{L^p\left(Q^{int}_j\right)}
+\end{align*}
+If $Q^{int}_j\subset \Omega$ then $\tilde{u} = u$ and in the case that $Q^{int}_j$ intersects $\Omega^c$, then
+
+\begin{align*}
+    \|\delta_\GG(x)^\alpha (u-A_j)\|_{L^p\left(Q^{int}_j\cap \Omega \right)}&\leq \|\delta_\GG(x)^\alpha (\tilde{u}-A_j)\|_{L^p\left(Q^{int}_j\right)} \\
+    &\leq c(n,L,R,\alpha) \|\delta_\GG(x)^\alpha \nabla\tilde{u}\|_{L^p\left(Q^{int}_j\right)}\\
+    &\leq c(n,L,R,\alpha) \|\delta_\GG(x)^\alpha \nabla u\|_{L^p\left(Q^{int}_j\cap\Omega\right)}
+\end{align*}
+
+
+Step 4: For the next step it will be useful to merge and relabel our covers. Let $$\Omega^{ext}=\bigcup_{j=1}^K B^\GG_j\bigcup_{j=1}^J Q^{int}_j$$ and it's cover $$\mathcal{U}=\{B_j:=B^\GG_j,\ B_{K+j}:=Q^{int}_j\}.$$ 
+
+\bl{improve the indexes in the future}
+
+So now fix $k\in \{0,1\ldots K+J\}$, and let $j_0:=0, j_1, \ldots, j_H:=k$ be finitely many indices in $\{0, K'\}$ such that $B_{j_h} \cap B_{j_{h+1}} \cap \Omega \neq \emptyset$ for all $h$. They exist since $\Omega^{ext}=\cup B_k\cap \Omega\bigcup\cup B_{K+j'}$ is connected, which means that there is a continuous curve in $\Omega^{ext}$ which joins a point of $B_0\cap\Omega ^{ext}$ with a point of $B_k\cap\Omega ^{ext}$; as the curve is compact it is covered by finitely many of the balls. We can further assume:
+\begin{enumerate}
+    \item the indices $j_h$ to be distinct. Indeed, if $j_h=j_{h^{\prime}}$ for some $h<h^{\prime}$, we can remove $h, h+1, \ldots, h^{\prime}-1$ from the set.
+    \item if $j_h,j_{h+1}\leq K$ then we can consider $j_{h+1}=j_h\pm 1$
+    \item if $j_h,j_{h+1} > K$ then we can consider that the boundary of $\hat{Q}_{j_h-K}$ and $\hat{Q}_{j_{h+1}-K}$ touch.
+    \item if $j_h\leq K< j_{h+1}$ then $B(x_{j_{h+1}},\frac{r_B}{2})\subset B_{j_h}$
+\end{enumerate} 
+
+The first 3 properties are trivial from the construction, however the 3rd one might need a bit of justification. If a cube from the inside cover,  $Q^{int}_j=B_{K+j}$, intersect some ball from the boundary $B_k$ we can assume that it is one of the closest cubes, i.e,   $\hat{Q}^{int}_{j}\cap \GG_{r_B}\neq \emptyset$ so 
+\begin{align*}
+    \sqrt{n}\ell(\hat{Q}^{int}_{j})&\leq\delta_\GG(\hat{Q}^{int}_{j})\leq r_B \\
+    \delta_\GG(x_{j_{h+1}})&\leq \frac{\sqrt{n}}{2}\ell(\hat{Q}^{int}_{j})+ \delta_\GG(\hat{Q}^{int}_{j})\leq 2 r_B.  
+\end{align*}
+Additionally, all the nodes in the boundary are separate by at most $r_B$ units so we can assume $x_{j_h}$ to be the closest node, and let $x^*$ the closest point to $x_{j_{h+1}}$ in $\GG$, then
+$$|x_{j_{h+1}}-x_{j_{h}}|\leq  \delta_\GG(x_{j_{h+1}}) + |x^*-x_{j_{h}}| \leq 2 r_B+ \frac{r_B}{2}\implies B(x_{j_{h+1}},\frac{r_B}{2}) \subset B(x_{j_{h}},4Lr_B).$$
+
+
+Which means that in all the possible cases we always have that
+
+$$|B_{j_h}\cap B_{j_{h+1}}|\geq c_L r^n_{j_{h}},\text{   and   }  \|\delta_\GG(x)^\alpha\|_{L^p \left(B_{j_h}\cap B_{j_{h+1}}\right)}\geq c_L r_B^{n/p+\alpha } .$$
+
+so
+\begin{align*}
+    C_Lr_{j_h}^{n / p+\alpha}|a_{j_{h}}-a_{j_{h+1}}| &\leq
+    C_L  \|\delta_\GG^\alpha(x)\|_{L^p \left(B_{j_{h+1}} \cap B_{j_{h}}\right)}|a_{j_{h}}-a_{j_{h+1}}|\\
+    &\leq \|\delta(x)^\alpha(a_{j_{h}}-a_{j_{h+1}})\|_{L^p \left(B_{j_{h+1}} \cap B_{j_{h}}\right)}\\
+    &\leq  \|\delta(x)^\alpha(\tilde{u}-a_{j_{h}})\|_{L^p \left(  B_{j_{h}}\right)}+ \|\delta(x)^\alpha(\tilde{u}-a_{j_{h+1}})\|_{L^p \left(B_{j_{h+1}}\right)}\\
+    & \leq cA
+\end{align*}
+
+Step :5
+
+Finally, using that the balls $B_0, \ldots, B_{K+J}$ cover $\Omega$, and that there exists $c=c(L,R)$ such that $\frac{1}{c}\leq\frac{r_{k_1}}{r_{k_2}}\leq c$ for every $k_1,k_2$, we have that
+\begin{align*}
+\left\|\delta(x)^\alpha (u-a_0)\right\|_{L^p(\Omega)} &\leq \sum_{k=0}^{K+J}\left\|\delta(x)^\alpha (\tilde{u}-a_0)\right\|_{L^p(B_k\cap \Omega)}\\
+&\leq\sum_{k=0}^{K+J}\left[\left\|\delta(x)^\alpha (\tilde{u}-a_k)\right\|_{L^p(B_k)}+\left\|\delta(x)^\alpha (a_k-a_0)\right\|_{L^p(B_k)}\right]\\
+&\leq (K+J)c A +\sum_{k=0}^{K+J}\sum_{h=0}^{H_k} \left\|\delta(x)^\alpha (a_{j_{h+1}}-a_{j_h 
+ }) \right\|_{L^p(B_k)}\\ 
+ &\leq (K+J)c A+\sum_{k=0}^{K+J}\sum_{h=0}^{H_k}c r_k^{(n/p+\alpha)}\left|a_{j_{h+1}}-a_{j_h 
+ }\right|\\
+ &\leq (K+J)c A + \sum_{k=0}^{K+J}\sum_{h=0}^{H_k}C r_{j_h}^{n/p+\alpha}\left|a_{j_{h+1}}-a_{j_h 
+ }\right| \\
+ & \leq c A 
+\end{align*}
+As desired. 
+
+\bl{need to improve the apresentation of the constants but I think everything should work }
+\end{proof}
+
+Remark:
+
+Unfortunately, even if $u=0$ in the boundary we can't assume that $A=0$ is in the previous theorem. This happens because even to control the function near the boundary we always use a bit of information from the interior as we can see in the lemma. To confirm this we can look at the following 1d counter-example, for $\Omega =[0,1]$:
+
+$$u_n=\begin{cases} n\ if\  \delta(x)\geq \frac{1}{n}\\
+\delta(x)n^{2}\  if \  \delta(x)\leq \frac{1}{n} \end{cases}\qquad |u'_n| = \begin{cases} 0\ if\  \delta(x)\geq \frac{1}{n}\\
+n^{2}\  if \  \delta(x)\leq \frac{1}{n} \end{cases}
+$$
+
+So for $n$ big enough $1/n<1/4$ we have that 
+
+$$\int_0^1 \delta(x)^{\alpha p} u_n(x) ^p \geq \int_{\delta(x)\geq 1/4} \delta(x)^{\alpha p}n^p \geq \frac{1}{4^{\alpha p}}\frac{1}{2}n^p\to \infty$$
+
+However $$\int_0^1 \delta(x)^{(\alpha+1) p} |u'_n(x)| ^p = 2\int_0^{\frac{1}{n}} x^{(\alpha+1)p} n^{2p} =\frac{2}{(\alpha+1)p+1}n^{2p-(\alpha+1)p-1} =c n^{p(1-\alpha )-1} $$
+
+
+so we conclude that for any $p>0, \alpha>0$ 
+
+$$\frac{\|\delta(x)^\alpha |u_n(x)|\|^p}{\|\delta(x)^{\alpha+1} |u'_n(x)|\|^p}\geq C \frac{n^p}{n^{p(1-\alpha)-1)}}=n^{1+p\alpha}  \to \infty$$
+
+So there is no guarantee that $a$ is 0 even if it vanishes on the boundary. (would it work with compact support though a.s or if we consider $\alpha< 0$
+
+\begin{theorem}\label{KornGamma}
+(Uniform rigidity) Let $\Omega \subseteq \mathbb{R}^n$ be a connected, bounded $(L, R)$-Lipschitz set, $p \in(1, \infty)$ and $\GG\subset \partial\Omega$ a non empty close set. Then for any $u \in W^{1, p}\left(\Omega ; \mathbb{R}^n\right)$ there are $R \in \operatorname{SO}(n)$ and $A \in \mathbb{R}_{\mathrm{skw}}^{n \times n}$ such that
+$$
+\|\delta_\GG(x)^\alpha(\nabla u-R)\|_{L^p(\Omega)} \leq c_{\mathrm{Rig}}\|\delta_\GG(x)^\alpha\operatorname{dist}(\nabla u, \operatorname{SO}(n))\|_{L^p(\Omega)}
+$$
+and
+$$
+\|\delta_\GG(x)^\alpha(\nabla u-A)\|_{L^p(\Omega)} \leq c_{\operatorname{Rig}}\left\|\delta_\GG(x)^\alpha(\nabla u+\nabla u^T)\right\|_{L^p(\Omega)}
+$$
+The constant $c_{\text {Rig }}$ depends only on $n, p, L$ and $R$.
+\end{theorem}
+\begin{proof}
+    For this theorem we do not need a different cover near $\GG$, so let's just  consider a Whitney cover of $\GG^c$ similar to before.
+    
+    $$\mathcal{U}:= \{Q_j,\ \hat{Q}_j\cap\Omega\neq \emptyset \}.$$
+    
+    and define $\Omega^{ext}= \cup \hat{Q}_j$.
+
+    In the next step, we will construct a partition of unit subordinated to this cover,  I.e. , fix $\varphi^* \in C_c^{\infty}\left((-1,1)^n ;[0,1]\right)$ with $\varphi^*=1$ on $\left(-\frac{1}{2}, \frac{1}{2}\right)^n$, let $\hat{\varphi}_j(x):=\varphi^*\left(\left(x-x_j\right) / 2r_j\right)$ and $\varphi_j:=\hat{\varphi}_j / \sum_k \hat{\varphi}_k$ which is well define in $\Omega^{ext}$ since there is at least one $\hat{\varphi}_k>0$.
+    
+    So we have that $\varphi_j \in C_c^{\infty}\left(Q_j\cap \Omega^{ext}\right), \sum_j \varphi_j=1$ in $\Omega^{ext}$, and $\left|\nabla \varphi_j\right| \leq c / r_j$. 
+    
+    Additionally, we can apply the korn inequality in each cube to energy preserving extension $\tilde{u}$ to get that for each $j$ there is $R_j \in \mathrm{SO}(n)$ such that
+
+\bl{the next constants are not completely correct but should be good enough}
+
+\begin{align*}    
+\left\|\delta(x)^\alpha\nabla (\tilde{u}-R_j)\right\|_{L^p(Q_j)} & \leq (4\sqrt(n) r_j)^\alpha \left\|\nabla (\tilde{u}-R_j)\right\|_{L^p(Q_j)}\\ &\leq  (4\sqrt(n) r_j)^\alpha c_{n, p}\left\|\operatorname{dist}\left(\nabla \tilde{u}, \mathrm{SO}(n)\right)\right\|_{L^p(Q_j)}\\
+&\leq c_{n,p}  \left\|\delta(x)^\alpha \operatorname{dist}\left(\nabla \tilde{u}, \mathrm{SO}(n)\right)\right\|_{L^p(Q_j)}
+\end{align*}
+
+We define $\beta: \Omega^{ext} \rightarrow \mathbb{R}^{n \times n}$ as a smooth interpolation between the $R_j, \beta:=\sum_j \varphi_j R_j$. Using $\sum_j \varphi_j=1$ in $\Omega, \varphi_j \leq 1$ and the finite overlap,
+
+\begin{align*}
+\|\delta(x)^\alpha(\nabla u-\beta)\|_{L^p(\Omega)}^p&=\left\|\delta(x)^\alpha\sum_j \varphi_j\left(\nabla u-R_j\right)\right\|_{L^p(\Omega)}^p \\ &\leq c \sum_j\left\|\delta(x)^\alpha(\nabla u-R_j)\right\|_{L^p\left(Q_j\cap \Omega\right)}^p \\
+ &\leq c \sum_j\left\|\delta(x)^\alpha(\nabla \tilde{u}-R_j)\right\|_{L^p\left(Q_j\right)}^p \\
+& \leq  c \int_{\Omega} \delta(x)^\alpha \operatorname{dist}^p(\nabla u, \mathrm{SO}(n)) d x .
+\end{align*}
+
+At the same time, the distance between $\nabla u$ and the $R_j$ controls the derivative of $\beta$. Indeed, from $\sum_j \varphi_j=1$ we obtain $\sum_j \nabla \varphi_j=0$ on $\Omega$, so that
+$$
+\nabla \beta=\sum_j \nabla \varphi_j R_j=\sum_j \nabla \varphi_j\left(R_j-\nabla u\right) \text {. }
+$$
+At this point we recall that $\left|\nabla \varphi_j\right| \leq c / r_j$, and that $\operatorname{dist}\left(Q_j, \GG\right) \leq c r_j$, which implies that
+$$
+\operatorname{dist}(x, \GG)\left|\nabla \varphi_j\right|(x) \leq c \chi_{Q_j}(x) \quad \text { for all } x \in \Omega .
+$$
+Therefore
+$$
+\begin{aligned}
+\int_{\Omega} \delta(x)^{(1+\alpha)p}|\nabla \beta|^p d x & \leq c \sum_j \int_{Q_j} \delta(x)^{(1+\alpha)p}\left|\nabla \varphi_j\right|^p\left|\nabla u-R_j\right|^p d x \\
+& \leq c \sum_j \int_{Q_j}\left|\delta(x)^{\alpha p}(\nabla u-R_j)\right|^p d x .
+\end{aligned}
+$$
+We then apply the weighted Poincaré inequality to $\beta$ to obtain that there is $R_* \in \mathbb{R}^{n \times n}$ with
+$$
+\left\|\delta(x)^{\alpha p}(\beta-R_*)\right\|_{L^p(\Omega)}^p \leq c \int_{\Omega} \delta(x)^{(1+\alpha) p}|\nabla \beta|^p d x \leq c \int_{\Omega} \delta(x)^{\alpha p}\operatorname{dist}^p(\nabla u, \mathrm{SO}(n)) d x .
+$$
+Finally, we let $R$ be the matrix in $\operatorname{SO}(n)$ closest to $R_*$. Then, using that $\left|R-R_*\right|=$ $\operatorname{dist}\left(R_*, \mathrm{SO}(n)\right) \leq\left|R_*-\nabla u\right|(x)+\operatorname{dist}(\nabla u(x), \mathrm{SO}(n))$ pointwise we obtain
+
+\begin{align*}
+\|\delta(x)^\alpha(\nabla u-R)\|&\leq \|\delta(x)^\alpha(\nabla u-R^*)\|+\|\delta(x)^\alpha|R^*-R|\|\\
+&\leq 2\|\delta(x)^\alpha(\nabla u-R^*)\| +\|\delta(x)^\alpha \operatorname{dist}(\nabla u(x), \mathrm{SO}(n))\|\\ 
+&\leq C \|\delta(x)^\alpha \operatorname{dist}(\nabla u(x), \mathrm{SO}(n))\|
+\end{align*}
+
+\end{proof}
+
+\section{Weighted Uniform Rigidity for Plates}\
+
+Main Result:
+\begin{theorem} Let $\Omega_h=\Omega\times I_h \subseteq \mathbb{R}^3$ be a shell such that $\Omega$ is  a connected, bounded $(L, R)$-Lipschitz set and $I_h=[-h,h]$ for small $h>0$. Then for any $u \in W^{1, p}\left(\Omega_h ; \mathbb{R}^n\right)$ with $p \in(1, \infty)$, there are $R \in \operatorname{SO}(3)$ and $S \in \mathbb{R}_{\mathrm{skw}}^{3 \times 3}$ such that
+$$
+\|\delta(x)^\alpha(\nabla u-R)\|_{L^p(\Omega)} \leq \frac{c}{h}\|\delta(x)^\alpha\operatorname{dist}(\nabla u, \operatorname{SO}(n))\|_{L^p(\Omega)}
+$$
+and
+$$
+\|\delta(x)^\alpha(\nabla u-S)\|_{L^p(\Omega)} \leq  \frac{c}{h}\left\|\delta(x)^\alpha(\nabla u+\nabla u^T)\right\|_{L^p(\Omega)}
+$$
+where $\delta(x)\operatorname{dist}(x,\partial \Omega\times I_h)$ and the constant $c$ depends only on $n, p, L$ and $R$.
+\end{theorem}
+
+\begin{proof}
+Similar to the proof of the weighted poincare  inequality, Theorem \ref{PoincareBoundary}, we need to have  different approaches near the thin Boundary and in the interior. 
+
+We will used a similar cover of $\Omega$, with $\dOm$ instead of $\GG$ and $h$ instead of $r_B$ and then we will be able to cover $\Omega_h$ using cylinders with the previous balls as base.
+ 
+ Near the boundary, we can cover the set $\Omega^{ext}= \{x\in\Omega: \operatorname{dist}(x,\partial\Omega)<h$, with $\mathcal{U}^{ext}:=\{B_i^{ext}=B(x_i,2h),\  x_0,x_1,\ldots,x_K \in \partial\Omega\}$ with the following properties:
+\begin{enumerate}
+    \item  $K=\mathcal{O}(1/h)$
+    \item  $|x_i-x_{i-1}|\leq h$
+    \item  $\sum \chi_{B(x_i,2h)\cap \Omega}\leq C=\mathcal{O}(1)$
+    \item  $\sum \chi_{B(x_i,h)\cap \Omega}\geq 1$ (important for the partition of unity, but maybe not necessary here)
+    \item  for $h$ small enough we also have that for $x\in B(x_i,2h)\cap \Omega$, $$\delta_{\partial\Omega}(x)\leq\delta_{B(x_i,2h)\cap \partial\Omega}(x)\leq c(L)\delta_{\partial\Omega}(x)$$
+\end{enumerate}
+
+Additionally, for each $B^{ext}_i\in\mathcal{U}^{ext}$ we can apply Theorem \ref{UniformLip}, to $B^{ext}_i\times I_h\cap\Omega_h$ and $\GG = B^{ext}_i\times I_h \cap \dOm\times I_h$ to conclude that there exists $S_i^{ext}$ such that
+
+\begin{align*}
+\|\delta^\Ga(\nabla u -S^{ext}_i)\|_{L^p(B^{ext}_i\cap\Omega\times I_h)}&\leq\|\delta_\GG^\Ga(\nabla u -S^{ext}_i)\|_{L^p(B^{ext}_i\cap\Omega\times I_h)}\\
+&\leq c
+\|\delta_\GG^\Ga e(u)\|_{L^p(B^{ext}_i\cap\Omega\times I_h)}
+\\
+&\leq c(L,\alpha) \|\delta^\Ga e(u)\|_{L^p(B^{ext}_i\cap\Omega\times I_h)}
+\end{align*}
+
+Now for the interior component, we do again a Whitney cover of $\dOm^c$, and keep only the cubes that intersect $\Omega\cap(\Omega^{ext})^c$ More precisely, 
+$$\mathcal{U}^{int}:= \{Q_j^{int}:=Q_j,\ \hat{Q}_j\cap\Omega\cap(\Omega^{ext})^c\neq \emptyset \}$$
+
+
+Since $\frac{h}{2}\leq\ell(Q_i^{int})\leq \operatorname{diam}(\Omega)$, for all $Q_i^{int}\in \mathcal{U}^{int}$ we can apply the normal Korn inequality for plates to $Q_i^{int}\times I_h$, to get that exists $S^{int}_i$ \bl{ the constant could be $c\frac{\ell(Q_i^{int})}{h}$ but not sure it would be helpful}
+\begin{align*}
+    \|\delta^\Ga(\nabla u -S^{int}_i)\|_{L^p(Q_i^{int}\times I_h)}&\leq  c(L,\alpha)\ell(Q_i^{int})^\alpha\|(\nabla u -S^{int}_i)\|_{L^p(Q_i^{int}\times I_h)}\\
+    &\leq\frac{c}{h}\ell(Q_i^{int})^{\alpha}\| e(u)\|_{L^p(Q_i^{int})\times I_h}\\
+    &\leq \frac{c}{h}\|\delta^\Ga e(u)\|_{L^p(Q_i^{int})\times I_h}
+\end{align*}
+
+Step 3: ( partition of unity) Now consider both covers together $\mathcal{U}=\mathcal{U}^{ext}\bigcup\mathcal{U}^{int}$ and let consider a partition of unity subjugated to this cover. For the interior cubes, fix $\varphi^* \in C_c^{\infty}\left((-1,1)^2 ;[0,1]\right)$ with $\varphi^*=1$ on $\left(-\frac{1}{2}, \frac{1}{2}\right)^2$, let $\hat{\varphi}_j(x):=\varphi^*\left(\left(x-x_j\right) / r_j\right)$. For the exterior balls, we can do something very similar but with a radial function. In the end we can define the final functions as $\varphi_j:=\hat{\varphi}_j / \sum_k \hat{\varphi}_k$ which is well define in $\Omega$ since there is at least one $\hat{\varphi}_k>0$ even in $\partial\Omega$. Additionally, $\varphi_j \in C_c^{\infty}\left(Q^{int}_j\right)$ with $\left|\nabla \varphi_j\right| \leq c / r_j$, or $\varphi_j \in C_c^{\infty}\left(B^{ext}_j\cap \Omega\right)$ with $\left|\nabla \varphi_j\right| \leq c / r_j = c/h$.  and  finally $ \sum_j \varphi_j=1$ in $\Omega$.
+
+We define $\beta: \Omega \rightarrow \mathbb{R}^{2 \times 2}$ as a smooth interpolation between the $R_j, \beta:=\sum_j \varphi_j R_j$. Using $\sum_j \varphi_j=1$ in $\Omega, \varphi_j \leq 1$ and the finite overlap,
+
+\begin{align*}
+\|\delta(x)^\alpha(\nabla u-\beta)\|_{L^p(\Omega_h)}^p&=\left\|\delta(x)^\alpha\sum_j \varphi_j\left(\nabla u-S_j\right)\right\|_{L^p(\Omega_h)}^p \\ 
+%&\leq |\mathcal{U}^{ext}| \sum_j\left\|\delta(x)^\alpha(\nabla u-S_j)\right\|_{L^p\left(Q_j\cap \Omega\times I_h\right)}^p+|\mathcal{U}^{int}| \sum_j\left\|\delta(x)^\alpha(\nabla u-S_j)\right\|_{L^p\left(Q_j\cap \Omega\times I_h\right)}^p \\
+& \leq  \frac{c}{h^p} \|\delta(x)^\alpha e(u)\|_{L^p(\Omega_h)}
+\end{align*}
+%\bl{ok this will not work again -.-, $|\mathcal{U}^{int}|$ will still be of order 1/h ...}
+
+At the same time, the distance between $\nabla u$ and the $R_j$ controls the derivative of $\beta$. Indeed, from $\sum_j \varphi_j=1$ we obtain $\sum_j \nabla \varphi_j=0$ on $\Omega$, so that
+$$
+\nabla \beta=\sum_j \nabla \varphi_j R_j=\sum_j \nabla \varphi_j\left(R_j-\nabla u\right) \text {. }
+$$
+At this point we recall that for interior boundary balls we have that$\left|\nabla \varphi_j\right| \leq c / r_j$, and that $\operatorname{dist}\left(Q_j, \dOm\right) \leq c r_j$, which implies that
+$$
+\operatorname{dist}(x, \dOm)\left|\nabla \varphi_j\right|(x) \leq c \chi_{Q_j}(x) \quad \text { for all } x \in \Omega .
+$$
+Therefore
+$$
+\begin{aligned}
+\int_{\Omega_h} \delta(x)^{(1+\alpha)p}|\nabla \beta|^p d x & \leq c \sum_j \int_{Q_j\cap \Omega \times I_h} \delta(x)^{(1+\alpha)p}\left|\nabla \varphi_j\right|^p\left|\nabla u-R_j\right|^p d x \\
+& \leq c \sum_j \int_{Q_j\cap \Omega \times I_h}\left|\delta(x)^{\alpha p}(\nabla u-R_j)\right|^p d x .
+\end{aligned}
+$$
+We then apply the weighted Poincaré  inequality to $\beta$ with $\GG=\dOm\times I_h$to obtain that there is $R_* \in \mathbb{R}^{2 \times 2}$ with
+$$
+\left\|\delta(x)^{\alpha p}(\beta-S_*)\right\|_{L^p(\Omega_h)}^p \leq c \int_{\Omega_h} \delta(x)^{(1+\alpha) p}|\nabla \beta|^p d x \leq c \int_{\Omega_h} \delta(x)^{\alpha p}\operatorname{dist}^p(\nabla u, \mathrm{SO}(n)) d x .
+$$
+However, $S_*$ might not be skew symmetric. To fix this we can let $S$ be the skew-symmetric matrix closest to $S_*$. Then, using that $\left|S-S_*\right|= \operatorname{dist}\left(S_*, \mathbb{R}_{\mathrm{skw}}^{3 \times 3}\right) \leq\left|S_*-\nabla u\right|(x)+\operatorname{dist}(\nabla u(x), \mathbb{R}_{\mathrm{skw}}^{3 \times 3})=\left|S_*-\nabla u\right|(x)+e(u(x))$ pointwise, so  we obtain
+
+\begin{align*}
+\|\delta(x)^\alpha(\nabla u-S)\|&\leq \|\delta(x)^\alpha(\nabla u-S^*)\|+\|\delta(x)^\alpha|S^*-S|\|\\
+&\leq 2\|\delta(x)^\alpha(\nabla u-S^*)\| +\|\delta(x)^\alpha e(u)\|\\ 
+&\leq C \|\delta(x)^\alpha e(u)\|
+\end{align*}
+\end{proof}
+\begin{comment}
+\begin{com}
+Step 1: 
+
+We first show that for every $x \in \bar{\Omega}_{2r_B}=\{x \in \bar{\Omega} :  \delta(x)< 2r_B\}$ there is $a(x) \in \mathbb{R}$ such that
+$$
+\|\delta(x)^\alpha (u-a(x))\|_{L^p\left(B_{r_B}(x) \cap \Omega\right)} \leq c A
+$$
+with $c$ depending only on $n, p, L, R$ and $\Ga$. To see this, fix $x_* \in \partial \Omega$ with $\left|x_*-x\right|<2 r_B$ and use the previous lemma to $B_{3 r_B}\left(x_*\right)\supset B_{r_b}(x)$ (this is the point where the size of $r_B$ is fixed). 
+Additionally, by Vitali's covering theorem, there is a finite set $x_0, \ldots, x_K \in \bar{\Omega}_{2r_b}$ such that $\bar{\Omega}_{2r_b} \subset \cup_{k=0}^K B_k$, $B_k:=B_{r_B / 2}\left(x_k\right)$, with the smaller balls $B_{r_B / 10}\left(x_k\right)$ pairwise disjoint. In particular, since they are all centered in $\bar{\Omega}$ and the diameter of $\Omega$ is bounded by $R \varepsilon$, we obtain $K \leq(1+$ $\left.10 R \varepsilon / r_B\right)^n \leq c R^n L^n$. (We can decrease the bound on the number of balls necessary if needed)
+
+Step 2: To work away from the boundary let's consider a Whitney cover, $\{Q_j\}_j$ of $\Omega$ defined before. And consider the subcover $Q'=\{ Q_j, \ell(Q_j)>r_b\}$ such that $\bar{\Omega}-\bar{\Omega_{r_b}}\subset \bigcup Q'_j$
+
+Additionally, we have that since $\Omega$ as finite measure we need that $\# Q'< C(R,L,n)$. Let $x_{K+1},x_{K+2},\ldots x_K'$ be the center of the cubes in $Q'$, and consider $B_k = B_{2\ell(Q_k)}$. Additionally, for this balls we also have that there is $a(x_k)$ such that $$
+\|\delta(x)^\alpha (u-a(x))\|_{L^p\left(B_{2\ell(Q_k)}(x_k) \cap \Omega\right)} \leq c A
+$$.
+
+Step 3:
+Let $a_k:=a\left(x_k\right)$. We claim that for every $k=1, \ldots, K$ one has
+$$
+\left|\alpha_0-\Ga_k\right| \leq r_B^{p / n} c K' A .
+$$
+To see this, fix $k$, and let $j_0:=0, j_1, \ldots, j_H:=k$ be finitely many indices in $\{0, K'\}$ such that $B_{j_h} \cap B_{j_{h+1}} \cap \Omega \neq \emptyset$ for all $h$. They exist since $\Omega$ is connected, which means that there is a continuous curve in $\Omega$ which joins a point of $B_0 \cap \Omega$ with a point of $B_k \cap \Omega$; as the curve is compact it is covered by finitely many of the balls. We can further assume the indices $j_h$ to be distinct. Indeed, if $j_h=j_{h^{\prime}}$ for some $h<h^{\prime}$, we can remove $h, h+1, \ldots, h^{\prime}-1$ from the set. 
+
+For $j_h,j_{h+1}<K$, $B_{j_h} \cap B_{j_{h+1}} \cap \Omega \neq \emptyset$ implies that the larger balls have significant overlap.  Indeed, for each $x \in \bar{\Omega}$ one has $\mathcal{L}^n\left(\Omega \cap B_{r_B / 2}(x)\right) \geq c_L r_B^n$, and recalling that the radius of the balls $B_k$ is $r_B / 2$ we obtain
+$$
+c_L r_B^n \leq \mathcal{L}^n\left(B_{r_B}\left(x_{j_h}\right) \cap B_{r_B}\left(x_{j_{h+1}}\right) \cap \Omega\right) .
+$$
+Using (5.31) on these two balls and then a triangular inequality,
+$$
+r_B^{n / p}\left|a_{j_h}-a_{j_{h+1}}\right| \leq c A,
+$$
+
+On the other hand, if $j_h,j_{h+1}>k$ then (assuming wlg that the two cubes $Q_{j_h},Q{j_{h+1}}$ touch) then $\frac{1}{4} \leq \frac{\ell\left(Q_{j_h}\right)}{\ell\left(Q_{j_{h+1}}\right)} \leq 4$ then 
+
+$$
+c_L \max \{\ell\left(Q_{j_h}\right),\ell\left(Q_{j_{h+1}}\right)\}^n \leq \mathcal{L}^n\left(B_{r_B}\left(x_{j_h}\right) \cap B_{r_B}\left(x_{j_{h+1}}\right) \cap \Omega\right) .
+$$
+
+so we also have that
+
+$$
+\left|a_{j_h}-a_{j_{h+1}}\right| \leq c \ell (Q_{j_h})^{p / n} A,
+$$
+
+Now if $j_h <=K$ and $j_{h+1}>K$ hard to prove and very technical but I really think we can prove that
+
+$$
+\left|a_{j_h}-a_{j_{h+1}}\right| \leq c r_B^{p / n} A,
+$$
+
+Finally, using that the balls $B_0, \ldots, B_K$ cover $\Omega$,
+$$
+\left\|u-\alpha_0\right\|_{L^p(\Omega)} \leq \sum_{k=0}^K\left[\left\|u-\alpha_k\right\|_{L^p\left(B_k \cap \Omega\right)}+\left(\mathcal{L}^n\left(B_k\right)\right)^{1 / p}\left|\alpha_k-\alpha_0\right|\right] \leq c K^2 A
+$$
+\end{com}
+\end{comment}
+
+

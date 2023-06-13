@@ -1,0 +1,221 @@
+\section{Korn inequality for BD functions in  Bulk Domains}
+\section{Korn inequality for BD function in plates}
+
+\begin{theorem}\label{KornGeneralDomain}
+    Let $n \in \mathbb{N}$ with $n \geq 2, p \in(1, \infty)$, and let $\Omega \subset \mathbb{R}^n$ be a bounded  connected and open Lipschitz set. There exists $c=c(n, p, \Omega)>0$ such that, for any $u \in$ $\CL^p(\Omega)$, there is a skew-symmetric matrix A such that
+    $$
+    \int_{\Omega}|\nabla u-A|^p d x \leq c(n, p, \Omega) \int_{\Omega}|e(u)|^p d x
+    $$
+    The constant $c$ is invariant under uniform scalings of the domain.
+    \end{theorem}
+    
+    \begin{theorem} Let $D=[0,1]^2$ and $\Omega_h = D\times[-h,h]$ for some small $h$. Then for any $u\in \CL^p(\Omega_h)$ there is  a skew-symmetric matrix $A$ such that
+    $$\int_{\Omega} |\nabla u - A|^p\leq \frac{c}{h^{2+p}}\int_{\Omega}|e(u)|^p$$
+    \end{theorem}
+    Let $N=\frac{1}{h}$. We can start by splitting our plate $\Omega_h$ in $CN^2$ overlapping cubes of size $(2h)^3$:
+    $$D_{i,j}=[\frac{i-1}{N},\frac{i+1}{N}]\times[\frac{j-1}{N},\frac{j+1}{N}]\times[-h,h],\qquad i,j=1,\ldots,N-1.$$
+    For each cube, we can apply the theorem (\ref{KornGeneralDomain}), with the same constant $c_0$ working for every cube and independent of $h$ i.e. for each $(i,j)$ there is a skew-symmetric matrix $A_{i,j}$ such that 
+    \begin{equation}%\label{kornkj}
+    \int_{D_{i,j} }|\nabla u- A_{i,j}|^p d x \leq c_0(p) \int_{D_{i,j}}|e(u)|^p d x
+    \end{equation}
+    
+    For $j=1$, we can fix $i$ and bound
+    
+    \begin{equation}
+    \int_{\Omega }|\nabla u- A_{i,1}|^p d x \leq \sum_{k=1}^{N-1}\sum_{j=1}^{N-1}\int_{D_{k,j}}|\nabla u- A_{i,1}|^p d x
+    \end{equation}
+    
+    Wlg, conisder $k\geq i$, and focus for now on  $\int_{D_{k,j}}|\nabla u- A_{i,1}|^p d x$. For that consider the path between $D_{i,1}$ and $D_{k,j}$ of the form
+    $$D_{i,1}\to D_{i,2}\to\cdots\to D_{i,j}\to D_{i+1,j}\to\cdots\to D_{k,j}$$
+    So we have that
+    
+    \begin{align*}
+        \int_{D_{k,j}}|\nabla u- A_{i,1}|^p d x  &= \int_{D_{k,j}}|\nabla u+ \sum_{j'=2}^j (A_{i,j'}-A_{i, j'-1})+\sum_{k'=i+1}^k (A_{k',j}-A_{k'-1, j}) -A_{k,j}|^p d x\\
+        &\leq (2N)^{p-1}\int_{D_{k,j}} \left(|\nabla u-A_{k,j}|^p + \sum_{j'=2}^j |A_{i,j'}-A_{i, j'-1}|^p+\sum_{k'=i+1}^k |A_{k',j}-A_{k'-1, j}|^p\right)\\
+        &\leq (2N)^{p-1}(c_0(p)\int_{D_{k,j}}|e(u)|^p + 2 \sum_{j'=2}^j \int_{D_{i,j'}\cap D_{i,j'-1}}|A_{i,j'}-A_{i, j'-1}|^p\\
+    &\qquad\qquad\qquad+2\sum_{k'=i+1}^k\int_{D_{k',j}\cap D_{k'-1,j}} |A_{k',j}-A_{k'-1, j}|^p))\\
+    &\leq (2N)^{p-1}c_0(p)(\int_{D_{k,j}}|e(u)|^p + 2^p \sum_{j'=2}^j (\int_{D_{i,j'}}|e(u)|^p+\int_{D_{i,j'-1}}|e(u)|^p)\\
+    &\qquad\qquad\qquad+2^p\sum_{k'=i+1}^k(\int_{D_{k',j}}|e(u)|^p+\int_{D_{k'-1,j}}|e(u)|^p))\\
+    &\leq (2N)^{p-1}c_0(p)(\int_{D_{k,j}}|e(u)|^p + 2^{p+1} \sum_{j'=1}^j \int_{D_{i,j'}}|e(u)|^p+2^{p+1}\sum_{k'=i}^k\int_{D_{k',j}}|e(u)|^p)\\
+    &\leq N^{p-1}c_0(p) 2^{2p+1}  \left(\int_{D_{i,-}}|e(u)|^p+\int_{D_{-,j}}|e(u)|^p\right)
+    \end{align*}
+    
+    where $D_{i,-}=\cup_{j=1}^{N-1} D_{i,j}$ is the row $i$ and $D_{-,j}=\cup_{i=1}^{N-1} D_{i,j}$ is the column $j$. Additionally, we can easily see that for  $k<i$ we also have that:
+    
+    $$\int_{D_{k,j}}|\nabla u- A_{i,1}|^p d x\leq N^{p-1}c_0(p) 2^{2p+1}  \left(\int_{D_{i,-}}|e(u)|^p+\int_{D_{-,j}}|e(u)|^p\right)$$
+    Summing over $k,j$ we conclude that
+    
+    \begin{align*}
+        \sum_{k=1}^{N-1}\sum_{j=1}^{N-1}\int_{D_{k,j}}|\nabla u- A_{i,1}|^p d x & \leq N^{p-1}c_0(p) 2^{2p+1}\sum_{k=1}^{N-1}\sum_{j=1}^{N-1}  \left(\int_{D_{i,-}}|e(u)|^p+\int_{D_{-,j}}|e(u)|^p\right)\\
+        &\leq c_0(p) 2^{2p+1}N^2N^{p-1} \int_{D_{i,-}}|e(u)|^p + c_0(p) 2^{2p+2}N^{p-1}\sum_{k=1}^{N-1} \int_{\Omega_h}|e(u)|^p \\
+        &\leq c_0(p) 2^{2p+1} N^{p+1} \int_{D_{i,-}}|e(u)|^p + c_0(p) 2^{2p+2}N^p \int_{\Omega}|e(u)|^p 
+    \end{align*}
+    
+    Finally summing over all $i$ we conclude that 
+    \begin{align*}
+        \sum_{i=1}^{N-1} \int_\Omega |\nabla u - A_{i,0}|^p&\leq c_0(p) 2^{2p+1}N^{p+1}\sum_{i=1}^{N-1}  \int_{D_{i,-}}|e(u)|^p + c_0(p) 2^{2p+2}N\sum_{i=1}^{N-1}\int_{\Omega}|e(u)|^p\\
+        &\leq c_0(p) 2^{2p+3}N^{p+1}\int_\Omega |e(u)|^p
+    \end{align*}
+    
+    Now notice that, since we are sum N-2 elements, there must exist $i'$ such that
+    
+    $$ \int_\Omega |\nabla u - A_{i',0}|^p\leq  cN^{p}\int_\Omega |e(u)|^p=c\frac{1}{h^p}\int_\Omega |e(u)|^p$$
+    
+    As desired!
+    
+    \section{Bounded Deformation functions}
+    Idea of proof:
+    Option 1-
+    
+    Step 1- For any square plate consisting of good cubes we can prove using the same techniques as before.
+    
+    Step 2- Use cover of the type in Kohn's thesis to find a matrix in the island $I_0$.
+    $I_0$ is definitely bi-lipschtiz. And with a better construction, we can even get something simpler since we do not need to go to cubes smaller than $h^3$ for perfect fitting
+    
+    step 3- use the matrix in $I_0$ to prove final result.
+    
+    Option 2( constructive)
+    
+    Using the same technique we can construct paths directly in $I_0$ where they start going horizontal and around any island inside $I_0$ and then vertical.
+    
+    Instead of taking all the cubes starting in $Q_{i,0}$ we can simple take the ones that the horizontal path do not intersect. Since the islands inside $I_0$ are small enough this path will not be very far of each other and we will still have a sum of order $N$ so the same technique will work.
+    
+    
+    \subsection{Option 2- No more Islands!}
+    
+    \begin{theorem}\label{KornBDGeneralDomain}
+    Let $n \in \mathbb{N}$ with $n \geq 2, p \in(1, \infty)$, and let $\Omega \subset \mathbb{R}^n$ be a bounded  connected and open Lipschitz set. There exists $c=c(n, p, \Omega)>0$ such that, for any $u \in$ $G S B D^p(\Omega)$, there is a set of finite perimeter $\omega \subset \Omega$ with $\mathcal{H}^{n-1}\left(\partial^* \omega\right) \leq c \mathcal{H}^{n-1}\left(J_u\right)$ and a skew-symmetric matrix A such that
+    $$
+    \|\nabla u-A\|_{\CL^p(\Omega \backslash \omega)} \leq c(n, p, \Omega) \|e(u)\|_{\CL^p(\Omega)}
+    $$
+    The constant $c$ is invariant under uniform scalings of the domain.
+    \end{theorem}
+    
+    \begin{theorem} Let $S=[-1,1]^2$ and $\Omega = S\times[-\frac{h}{2},\frac{h}{2}]$ for some small $h$. Then for $\delta>0$ small enough, there exists $c = c(p)>0$, such that for any $u\in GSBD^2(\Omega)$ with $\CH^2(J_u)<\delta h$ there is a set $\omega\in\Omega$ with $\CL^2(\omega)\leq c \CH^2(J_u)$  and a skew-symmetric matrix $A$ such that
+    $$\|\nabla u-A\|_{\CL^p(\Omega \backslash \omega)} \leq \frac{c(p)}{h^{2/p}} \|e(u)\|_{\CL^p(\Omega)}$$
+    \end{theorem}
+    \begin{proof}
+    Let $N=\frac{1}{h}$. We can start by splitting our plate $\Omega_h$ in $CN^2$ overlapping cubes of size $(2h)^3$:
+    $$D_{i,j}=[\frac{i-1}{N},\frac{i+1}{N}]\times[\frac{j-1}{N},\frac{j+1}{N}]\times[-h,h],\qquad i,j=1,\ldots,N-1.$$
+    For each cube, we can apply the theorem (\ref{KornBDGeneralDomain}), with the same constant $c_0$ working for every cube and independent of $h$ i.e. for each $(i,j)$ there is a set if finite perimeter $\omega_{i,j}\subset D_{i,j}$ with $\CH^2(\partial^*\omega_{i,j})\leq c \CH^2(J_u\cap D_{i,j})$ and a skew-symmetric matrix $A_{i,j}$ such that 
+    \begin{equation}\label{kornkj}
+    \int_{D_{i,j}-\omega_{i,j} }|\nabla u- A_{i,j}|^p d x \leq c_0(p) \int_{D_{i,j}}|e(u)|^p d x
+    \end{equation}
+     Additionally, we can also bound the  volume of $\omega_{i,j}$ applying the isoperimetric inequality, i.e:
+    $$\CL(\omega_{i,j})=(\CL(\omega_{i,j}))^{2/3}(\CL(\omega_{i,j}))^{1/3}\leq 2c_ph \CH^2(\partial^*\omega_{i,j})\leq 2c_pch\CH^2(J_u\cap D_{i,j})$$
+    
+    
+    \textit{Step 2:}
+    In this step, we will label the cubes accordingly to the portion of the jump that lands on them. For that, we will say that $D_{k,j}$ is a good cube if 
+    $$\CH^2(J_u\cap D_{k,j})\leq \frac{1}{4c_pc_0} h^2, \ \CL(\omega_{k,j})\leq \frac{h^3}{4}(MAybe\ need \ smaller)$$
+    and a bad cube otherwise. 
+    %To help with the rest of the proof we can define $G_{idx}=\{(k,j): D_{k,j}\text{ is a good cube}\}$, $B_{idx}=\{(k,j): D_{k,j}\text{ is a bad cube}\}$ and 
+    %$$G=\cup_{(k,j)\in G_{idx}} D_{k,j}$$
+    %$$B=\cup_{(k,j)\in B_{idx}} D_{k,j}$$
+    
+    Notice that, every point in $\Omega_h$ is in at most $4$ cubes, so
+    \begin{align*}
+        \CH^2(J_u)&= \CH^2(\cup_{i,j}J_u\cap D_{i,j})\\
+        &\geq \frac{1}{4}\sum_{k,j}\CH^2(J_u\cap D_{i,j})\\
+        &\geq\frac{1}{4}\CH^0(B_{idx})\frac{h^2}{4c_pc}
+    \end{align*}
+    so we can bound the number of bad cubes by
+    $$\CH^0(B_{idx})\leq\frac{16 c_p c \CH(J_u)}{h^2}\leq 16 c_p c \delta N $$
+    \textit{Step 3:} In this step we will understand why do we define the good cubes this way and 
+     see how can we transition between them. Consider 2 intersecting good cubes, $D_{k,j},D_{k',j'}$ and the target cube where we will integrate over, $D_{t_i,t_j}$, and consider the sets and matrices given by equation \ref{kornkj}, $A_{k,j},A_{k',j'},\omega_{k,j},\omega_{k',j'},\omega_{t_i,t_j}$. First of all 
+     can control the size of the following intersection:
+     $$\CL(D_{k,j}\cap D_{k',j'}-\omega_{k,j},-\omega_{k',j'})\geq (4h^3-\frac{h^3}{4}-\frac{h^3}{4})\geq 2h^3$$
+     so  we have that 
+    \begin{align*}
+    \int_{D_{t_i,t_j}-\omega_{t_i,t_j}}|A_{k,j}-A_{k',j'}|^p & \leq 8h^3 |A_{k,j}-A_{k',j'}|^p\\
+    &\leq 4|A_{k,j}-A_{k',j'}|^p \CL(D_{k,j}\cap D_{k',j'}-\omega_{k,j},-\omega_{k',j'})\\
+    &\leq 2^{p+2}\int_{D_{k,j}\cap D_{k',j'}-\omega_{k,j},-\omega_{k',j'}}|\nabla u-\nabla A_{k,j}|^p+|\nabla u-\nabla A_{k',j'}|^p dx\\
+    & \leq 2^{p+2}\left(\int_{D_{k,j} \backslash \omega_{k,j}}|\nabla u-\nabla A_{k,j}|^p d x + \int_{D_{k',j'} \backslash \omega_{k',j'}}|\nabla u-\nabla A_{k',j'}|^p d x\right)\\
+    &\leq 2^{p+2}c_0\left(\int_{D_{k,j}}|e(u)|^p dx+\int_{D_{k',j'}}|e(u)|^p dx \right)
+    \end{align*}
+     \textit{Step 4:}
+     define $\omega$ and prove it small enough.(Notice that this is not the optimal $\Omega$ however it is small enough and will simplify the prove greatly)
+    
+    Let $D_{i,-}, D_{-,j}$ be the row $i$ and column $j$ respectively. We say that $D_{i,-}$ is a good row if $B_{i,j}$ is a good cube for all j and a bad cube otherwise, and similarly for $D_{-,j}$. To simplify the notation let us define
+    $$B^r_{idx}=\{i: D_{i,-}\text{ is a bad row}\}, \qquad \CH^0(B^r_{idx})\leq \CH^0(B_{idx}) $$
+    $$B^c_{idx}=\{j: D_{-,j}\text{ is a bad column}\},\qquad \CH^0(B^c_{idx})\leq \CH^0(B_{idx})  $$
+    
+    To simplify the rest of the prove we can ignore all the cubes that are in a 
+     bath row and in a bad collum, since it would make it harder to access them by a constructive path. For this we define: $$\omega = \bigcup_{i\in B^r_{idx},j\in B^c_{idx}}D_{i,j} \bigcup_{(i,j)\notin B_{idx}} \omega_{i,j}$$
+    
+    So 
+    \begin{align*}
+        \CL(\omega)&\leq (2h)^3\CH^0(B^r_{idx})\CH^0(B^c_{idx})+ \sum_{(i,j)\notin B_{idx}} \CL(\omega_{i,j})\\
+        &\leq \frac{2^316^2 c_p^2 c^2\CH^2(J_u)^2}{h} + 8c_pch\CH^2(J_u)\\
+        &\leq \delta 2^{12} c_p^2 c^2\CH^2(J_u)
+    \end{align*}
+    \begin{question}
+        Should I bound the perimeter also? not sure it is possible... but maybe since we have the delta. but maybe the delta is not even useful anymore. let see.
+    \end{question}
+    
+    By construction of our $\omega$ we can easily extend the idea of the previous proof. 
+    
+    To simplify the proof let's organize the good columns in ascending order and  store the indexes in the sequence $g_l$, and the bad columns in $b_l$ i.e:
+    $$g_l = l\text{-th smallest index not in }  B^c_{idx}\qquad l=1,\cdots G=(N-1)-\CH^0(B^c_{idx}).$$
+    $$b_l = l\text{-th smallest index in }  B^c_{idx}\qquad l=1,\cdots B=(N-1)-\CH^0(B^c_{idx}).$$
+    
+    Notice that for $\delta$ small enough we will have that $G>N/2>B$.
+    
+    Son now, fix $i\notin B^r_{idx}$, so
+    
+    \begin{equation*}
+    \int_{\Omega-\omega }|\nabla u- A_{i,1}|^p d x \leq \sum_{l=1}^G\sum_{k=0}^{N-1}\int_{D_{k,j_{g_l}}}|\nabla u- A_{i,1}|^p d x+\sum_{l=1}^B\sum_{k\notin B^r_{idx}}\int_{D_{k,j_{b_l}}}|\nabla u- A_{i,j_1}|^p d x
+    \end{equation*}
+    
+    Wlg, consider $k\geq i$, and let's focus on 2 different cases:
+    
+    1- For $\int_{D_{k,g_l}-w_{k,g_l}}|\nabla u- A_{i,1}|^p d x$ for $1\leq k\leq N-1$ In this case we can consider the path between $D_{i,1}$ and $D_{k,g_l}$ of the form
+    $$D_{i,1}\to D_{i,2}\to\cdots\to D_{i,g_l}\to D_{i+1,g_l}\to\cdots\to D_{k,g_l}$$
+    So as in the case of $\CL^p$ functions, since all of them are good cubes we have that 
+    \begin{align*}
+        \int_{D_{k,g_l}-\omega_{k,g_l}}|\nabla u- A_{i,1}|^p d x &\leq (2N)^{p-1}\int_{D_{k,j}-\omega_{k,g_l}} \left(|\nabla u-A_{k,g_l}|^p + \sum_{j'=2}^{g_l} |A_{i,j'}-A_{i, j'-1}|^p+\sum_{k'=i+1}^k |A_{k',g_l}-A_{k'-1, g_l}|^p\right)\\
+    &\leq N^{p-1}2^{2p+2}c_0(p)(\int_{D_{k,g_l}}|e(u)|^p +  \sum_{j'=1}^{g_l} \int_{D_{i,j'}}|e(u)|^p+\sum_{k'=i}^k\int_{D_{k',g_l}}|e(u)|^p)\\
+    &\leq N^{p-1}c_0(p) 2^{2p+3}  \left(\int_{D_{i,-}}|e(u)|^p+\int_{D_{-,g_l}}|e(u)|^p\right)
+    \end{align*}
+    
+    where $D_{i,-}=\cup_{j=1}^{N-1} D_{i,j}$ is the row $i$ and $D_{-,j}=\cup_{i=1}^{N-1} D_{i,j}$ is the column $j$. Additionally, we can easily see that for  $k<i$ we also have that:
+    
+    $$\int_{D_{k,j}-\omega_{k,g_l}}|\nabla u- A_{i,1}|^p d x\leq N^{p-1}c_0(p) 2^{2p+3}  \left(\int_{D_{i,-}}|e(u)|^p+\int_{D_{-,g_l}}|e(u)|^p\right)$$
+    
+    2- Now in the case that the target cube is not in a good column, i.e, $\int_{D_{k,b_l}-w_{k,b_l}}|\nabla u- A_{i,1}|^p d x$, for $k\notin 
+    B^r_{idx}$. In this case, the same path does not work so we need a new path that won't pass through the same cubes too many times. So since there are fewer bad columns than good ones we can do this path:
+    
+    $$D_{i,1}\to\cdots\to D_{i,g_l}\to\cdots\to D_{k,g_l}\to\cdots\to D_{k,b_l}$$
+    
+    And repeating the process same steps as before we get:
+    
+    $$\int_{D_{k,b_l}-\omega_{k,b_l}}|\nabla u- A_{i,1}|^p d x\leq N^{p-1}c_0(p) 3^{2p+3}  \left(\int_{D_{i,-}}|e(u)|^p+\int_{D_{k,-}}|e(u)|^p+\int_{D_{-,g_l}}|e(u)|^p\right)$$
+    
+    
+    Summing over all admissible rows and columns, we conclude that
+    
+    \begin{align*}
+    \sum_{l=1}^G\sum_{k=0}^{N-1}\int_{D_{k,g_l}-\omega_{k,g_l}}|\nabla u- A_{i,1}|^p d x  & \leq N^{p-1}c_0(p) 2^{2p+3}\sum_{l=1}^G\sum_{k=0}^{N-1}  \left(\int_{D_{i,-}}|e(u)|^p+\int_{D_{-,g_l}}|e(u)|^p\right)\\
+        &\leq c_0(p) 2^{2p+3}N^2N^{p-1} \int_{D_{i,-}}|e(u)|^p + c_0(p) 2^{2p+4}N^{p-1}\sum_{k=1}^{N-1} \int_{\Omega_h}|e(u)|^p \\
+        &\leq c_0(p) 2^{2p+3} N^{p+1} \int_{D_{i,-}}|e(u)|^p + c_0(p) 2^{2p+4}N^p \int_{\Omega}|e(u)|^p 
+    \end{align*}
+    \begin{align*}
+    \sum_{l=1}^B\sum_{k\notin b^r_{idx}}\int_{D_{k,{b_l}}-\omega_{k,{b_l}}}|\nabla u- A_{i,1}|^p d x  & \leq N^{p-1}c_0(p) 2^{2p+3}\sum_{l=1}^B\sum_{k\notin b^r_{idx}}\left(\int_{D_{i,-}}|e(u)|^p+\int_{D_{k,-}}|e(u)|^p+\int_{D_{-,g_l}}|e(u)|^p\right)\\
+        &\leq c_0(p) 2^{2p+3}N^2N^{p-1} \int_{D_{i,-}}|e(u)|^p + c_0(p) 2^{2p+4}N^{p-1}\sum_{l}^B \int_{\Omega_h}|e(u)|^p +\sum_{k\notin b^r_{idx}} \int_{\Omega_h}|e(u)|^p \\
+        &\leq c_0(p) 2^{2p+3} N^{p+1} \int_{D_{i,-}}|e(u)|^p + c_0(p) 2^{2p+5}N^p \int_{\Omega}|e(u)|^p 
+    \end{align*}
+    
+    Finally summing over all $i\notin B^r_{idx}$ we conclude that 
+    \begin{align*}
+        \sum_{i\notin B^r_{idx}} \int_{\Omega_h-\omega} |\nabla u - A_{i,0}|^p&\leq c_0(p) 2^{2p+1}N^{p+1}\sum_{i\notin B^r_{idx}}  \int_{D_{i,-}}|e(u)|^p + c_0(p) 2^{2p+2}N\sum_{i\notin B^r_{idx}}\int_{\Omega}|e(u)|^p\\
+        &\leq c_0(p) 2^{2p+3}N^{p+1}\int_{\Omega_h} |e(u)|^p
+    \end{align*}
+    
+    Now notice that since we are summing over at least N/2 elements, there must exist $i'$ such that
+    
+    $$ \int_{\Omega_h-\omega} |\nabla u - A_{i',0}|^p\leq  cN^{p}\int_{\Omega_h} |e(u)|^p=c\frac{1}{h^p}\int_{\Omega_h} |e(u)|^p$$
+    
+    As desired!
+    
+    \end{proof}
+    

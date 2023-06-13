@@ -1,0 +1,372 @@
+% Load packages
+\usepackage{amssymb,bm}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{tkz-fct} 
+%\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{mathptmx} % Uses Times-Roman fonsts (changes appearence!)
+\usepackage[active]{srcltx} % Includes line number info into dvi file
+\usepackage{hyperref}
+\hypersetup{pdfborder=0 0 0}
+
+% SET MARGINS
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{-0.0625in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{8.8in}
+
+% Equation numbering
+\renewcommand{\theequation}{{\thesection}.{\arabic{equation}}}
+
+%Theorems and Proofs
+\newtheorem{theorem}{{\sc Theorem}}[section]
+\newtheorem{proposition}[theorem]{{\sc Proposition}}
+\newtheorem{claim}[theorem]{{\sc Claim}}
+\newtheorem{lemma}[theorem]{{\sc Lemma}}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{reflist}[theorem]{List}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{postulate}[theorem]{{\sc Postulate}}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+% Blackboard-bold font
+\newcommand{\bb}[1]{\mathbb{ #1}}
+
+%Useful miscellani
+\newcommand{\thus}{\Rightarrow}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\Ann}{\mathrm{Ann}}
+\newcommand{\dev}[1]{\mathrm{dev}(#1)}
+\newcommand{\Ind}{\mathrm{Ind}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\conv}{\mathrm{conv}}
+\newcommand{\Skew}{\mathrm{Skew}}
+\newcommand{\Span}{\mathrm{Span}}
+\newcommand{\defeq}{{\buildrel\rm def\over=}}
+\newcommand{\wk}[1]{{\buildrel #1\over\rightharpoonup}\:}
+\newcommand{\weak}{\rightharpoonup\:}
+\newcommand{\dOm}{\partial\Omega}
+\newcommand{\eqv}{\Longleftrightarrow}
+\newcommand{\bra}[1]{\overline{#1}}
+\newcommand{\rab}[1]{\underline{#1}}
+\newcommand{\cint}{\displaystyle \oint_{\Gamma}}
+\newcommand{\Trc}{\mathrm{Tr}\,}
+\newcommand{\adj}{\mathrm{adj}\,}
+\newcommand{\cof}{\mathrm{cof}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\tns}[1]{#1\otimes #1}
+\newcommand{\hf}{\displaystyle\frac{1}{2}}
+\newcommand{\nth}[1]{\displaystyle\frac{1}{#1}}
+\newcommand{\str}[1]{\hf(\nabla #1+(\nabla #1)^{t})}
+\newcommand{\dvg}{\mathrm{div}\,}
+\newcommand{\curl}{\mathrm{curl}\,}
+\newcommand{\dif}[2]{\displaystyle\frac{\partial #1}{\partial #2}}
+\newcommand{\Grad}{\nabla}
+\newcommand{\Div}{\nabla \cdot}
+\newcommand{\Curl}{\nabla \times}
+\newcommand{\lang}{\langle}
+\newcommand{\rang}{\rangle}
+\newcommand{\Md}{\partial}
+\renewcommand{\Hat}[1]{\widehat{#1}}
+\newcommand{\Tld}[1]{\widetilde{#1}}
+\newcommand{\hess}[2]{\displaystyle\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\mix}[3]{\displaystyle\frac{\partial^2 #1}{\partial #2\partial #3}}
+\newcommand{\av}[1]{\langle #1 \rangle}
+\newcommand{\Av}[1]{\skew{33}-{\int_{#1}}}
+% better than Av:
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+\newcommand{\im}{\mathfrak{Im}}
+\newcommand{\re}{\Re\mathfrak{e}}
+\newcommand{\jump}[1]{\lbrack\!\lbrack #1 \rbrack\!\rbrack}
+\newcommand{\lump}[1]{\lbrace\skew{-14.7}\lbrace\!\!#1\!\!\skew{14.7}\rbrace\rbrace}
+\newcommand{\dbar}{d\skew{-3.5}\bar{}}
+\newcommand{\mat}[4]{\left[\begin{array}{cc}
+\displaystyle{#1}&\displaystyle{#2}\\[1ex]
+\displaystyle{#3}&\displaystyle{#4}\end{array}\right]}
+\newcommand{\vect}[2]{\left[\begin{array}{c}
+\displaystyle{#1}\\[1ex]\displaystyle{#2}\end{array}\right]}
+\newcommand{\lims}{\mathop{\overline\lim}}
+\newcommand{\limi}{\mathop{\underline\lim}}
+\newcommand{\goes}{\;\rightarrow\;}
+\newcommand{\limn}{\mbox{$\displaystyle\lim_{n\goes \infty}$}}
+\newcommand{\maxk}{\mbox{${\displaystyle\max_{1\le k\le n}}$}}
+\newcommand{\maxt}{\mbox{${\displaystyle\max_{0\le t\le 1}}$}}
+\newcommand{\pweak}{\mbox{${\buildrel\C{D}\over\goes}$}}
+\newcommand{\pprob}{\mbox{${\buildrel\C{P}\over\goes}$}}
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+\newcommand{\deqv}{\mbox{${\buildrel\C{D}\over\sim}$}}
+\newcommand{\numcir}[1]{\; {\scriptstyle
+    #1}\skew{-26}\bigcirc\!\!\!\!\! }
+\newcommand{\numrel}[2]{{\buildrel{\ \ \ {\scriptscriptstyle
+    #1}\skew{-26}\bigcirc\ }\over #2}}
+\newcommand{\genrel}[2]{\,{\buildrel #1\over #2}\,}
+
+%Hot words
+\newcommand{\bc}{boundary condition}
+\newcommand{\bvp}{boundary value problem}
+\newcommand{\rhs}{right-hand side}
+\newcommand{\lhs}{left-hand side}
+\newcommand{\mc}{microstructure}
+\newcommand{\mg}{microgeometr}
+\newcommand{\oc}{optimality conditions}
+\newcommand{\vf}{volume fraction}
+\newcommand{\WLOG}{without loss of generality}
+\newcommand{\nbh}{neighborhood}
+\newcommand{\IFF}{if and only if }
+\newcommand{\eM}{electromagnetic}
+\newcommand{\EM}{Electromagnetic}
+\newcommand{\CoV}{Calculus of Variations}
+%          ABCs
+
+% Abbreviate definitions of greek symbols
+\newcommand{\Ga}{\alpha}
+\newcommand{\Gb}{\beta}
+\newcommand{\Gd}{\delta}
+\newcommand{\Ge}{\epsilon}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Gve}{\varepsilon}
+\newcommand{\Gf}{\phi}
+\newcommand{\Gvf}{\varphi}
+\newcommand{\Gg}{\gamma}
+\newcommand{\Gc}{\chi}
+\newcommand{\Gi}{\iota}
+\newcommand{\Gk}{\kappa}
+\newcommand{\Gvk}{\varkappa}
+\newcommand{\Gl}{\lambda}
+\newcommand{\Gn}{\eta}
+\newcommand{\Gm}{\mu}
+\newcommand{\Gv}{\nu}
+\newcommand{\Gp}{\pi}
+\newcommand{\Gvp}{\varpi}
+\newcommand{\Gth}{\theta}
+\newcommand{\Gvt}{\vartheta}
+\newcommand{\Gr}{\rho}
+\newcommand{\Gvr}{\varrho}
+\newcommand{\Gs}{\sigma}
+\newcommand{\Gvs}{\varsigma}
+\newcommand{\Gj}{\tau}
+\newcommand{\Gu}{\upsilon}
+\newcommand{\Go}{\omega}
+\newcommand{\Gx}{\xi}
+\newcommand{\Gy}{\psi}
+\newcommand{\Gz}{\zeta}
+\newcommand{\GD}{\Delta}
+\newcommand{\GF}{\Phi}
+\newcommand{\GG}{\Gamma}
+\newcommand{\TG}{\tilde{\Gamma}}
+\newcommand{\TL}{\tilde{L}}
+\newcommand{\GL}{\Lambda}
+\newcommand{\GP}{\Pi}
+\newcommand{\GT}{\Theta}
+\newcommand{\GS}{\Sigma}
+\newcommand{\GU}{\Upsilon}
+\newcommand{\GO}{\Omega}
+\newcommand{\GX}{\Xi}
+\newcommand{\GY}{\Psi}
+
+% Abbreviate definitions of bold greek symbols
+\bmdefine\BGa{\alpha}
+\bmdefine\BGb{\beta}
+\bmdefine\BGd{\delta}
+\bmdefine\BGe{\epsilon}
+\bmdefine\BGve{\varepsilon}
+\bmdefine\BGf{\phi}
+\bmdefine\BGvf{\varphi}
+\bmdefine\BGg{\gamma}
+\bmdefine\BGc{\chi}
+\bmdefine\BGi{\iota}
+\bmdefine\BGk{\kappa}
+\bmdefine\BGl{\lambda}
+\bmdefine\BGn{\eta}
+\bmdefine\BGm{\mu}
+\bmdefine\BGv{\nu}
+\bmdefine\BGp{\pi}
+\bmdefine\BGth{\theta}
+\bmdefine\BGvth{\vartheta}
+\bmdefine\BGr{\rho}
+\bmdefine\BGvr{\varrho}
+\bmdefine\BGs{\sigma}
+\bmdefine\BGvs{\varsigma}
+\bmdefine\BGt{\tau}
+\bmdefine\BGj{\tau}
+\bmdefine\BGu{\upsilon}
+\bmdefine\BGo{\omega}
+\bmdefine\BGx{\xi}
+\bmdefine\BGy{\psi}
+\bmdefine\BGz{\zeta}
+\bmdefine\BGD{\Delta}
+\bmdefine\BGF{\Phi}
+\bmdefine\BGG{\Gamma}
+\bmdefine\BGL{\Lambda}
+\bmdefine\BGP{\Pi}
+\bmdefine\BGT{\Theta}
+\bmdefine\BGS{\Sigma}
+\bmdefine\BGU{\Upsilon}
+\bmdefine\BGO{\Omega}
+\bmdefine\BGX{\Xi}
+\bmdefine\BGY{\Psi}
+
+% Abbreviate symbols for caligraphic letters
+\newcommand{\CA}{{\mathcal A}}
+\newcommand{\CB}{{\mathcal B}}
+\newcommand{\CC}{{\mathcal C}}
+%\newcommand{\CD}{{\mathcal D}}  % conflicts with commutative diagram package
+\newcommand{\ClD}{{\mathcal D}}
+\newcommand{\CE}{{\mathcal E}}
+\newcommand{\CF}{{\mathcal F}}
+\newcommand{\CG}{{\mathcal G}}
+\newcommand{\CH}{{\mathcal H}}
+\newcommand{\CI}{{\mathcal I}}
+\newcommand{\CJ}{{\mathcal J}}
+\newcommand{\CK}{{\mathcal K}}
+\newcommand{\CL}{{\mathcal L}}
+\newcommand{\CM}{{\mathcal M}}
+\newcommand{\CN}{{\mathcal N}}
+\newcommand{\CO}{{\mathcal O}}
+\newcommand{\CP}{{\mathcal P}}
+\newcommand{\CQ}{{\mathcal Q}}
+\newcommand{\CR}{{\mathcal R}}
+\newcommand{\CS}{{\mathcal S}}
+\newcommand{\CT}{{\mathcal T}}
+\newcommand{\CU}{{\mathcal U}}
+\newcommand{\CV}{{\mathcal V}}
+\newcommand{\CW}{{\mathcal W}}
+\newcommand{\CX}{{\mathcal X}}
+\newcommand{\CY}{{\mathcal Y}}
+\newcommand{\CZ}{{\mathcal Z}}
+
+% Abbreviate symbols for bold caligraphic letters
+\bmdefine\BCA{{\mathcal A}}
+\bmdefine\BCB{{\mathcal B}}
+\bmdefine\BCC{{\mathcal C}}
+\bmdefine\BCD{{\mathcal D}}
+\bmdefine\BCE{{\mathcal E}}
+\bmdefine\BCF{{\mathcal F}}
+\bmdefine\BCG{{\mathcal G}}
+\bmdefine\BCH{{\mathcal H}}
+\bmdefine\BCI{{\mathcal I}}
+\bmdefine\BCJ{{\mathcal J}}
+\bmdefine\BCK{{\mathcal K}}
+\bmdefine\BCL{{\mathcal L}}
+\bmdefine\BCM{{\mathcal M}}
+\bmdefine\BCN{{\mathcal N}}
+\bmdefine\BCO{{\mathcal O}}
+\bmdefine\BCP{{\mathcal P}}
+\bmdefine\BCQ{{\mathcal Q}}
+\bmdefine\BCR{{\mathcal R}}
+\bmdefine\BCS{{\mathcal S}}
+\bmdefine\BCT{{\mathcal T}}
+\bmdefine\BCU{{\mathcal U}}
+\bmdefine\BCV{{\mathcal V}}
+\bmdefine\BCW{{\mathcal W}}
+\bmdefine\BCX{{\mathcal X}}
+\bmdefine\BCY{{\mathcal Y}}
+\bmdefine\BCZ{{\mathcal Z}}
+
+% Abbreviate symbols for bold-face letters
+\bmdefine\Bzr{ 0}
+\bmdefine\Ba{ a}
+\bmdefine\Bb{ b}
+\bmdefine\Bc{ c}
+\bmdefine\Bd{ d}
+\bmdefine\Be{ e}
+\bmdefine\Bf{ f}
+\bmdefine\Bg{ g}
+\bmdefine\Bh{ h}
+\bmdefine\Bi{ i}
+\bmdefine\Bj{ j}
+\bmdefine\Bk{ k}
+\bmdefine\Bl{ l}
+\bmdefine\Bm{ m}
+\bmdefine\Bn{ n}
+\bmdefine\Bo{ o}
+\bmdefine\Bp{ p}
+\bmdefine\Bq{ q}
+\bmdefine\Br{ r}
+\bmdefine\Bs{ s}
+\bmdefine\Bt{ t}
+\bmdefine\Bu{ u}
+\bmdefine\Bv{ v}
+\bmdefine\Bw{ w}
+\bmdefine\Bx{ x}
+\bmdefine\By{ y}
+\bmdefine\Bz{ z}
+\bmdefine\BA{ A}
+\bmdefine\BB{ B}
+\bmdefine\BC{ C}
+\bmdefine\BD{ D}
+\bmdefine\BE{ E}
+\bmdefine\BF{ F}
+\bmdefine\BG{ G}
+\bmdefine\BH{ H}
+\bmdefine\BI{ I}
+\bmdefine\BJ{ J}
+\bmdefine\BK{ K}
+\bmdefine\BL{ L}
+\bmdefine\BM{ M}
+\bmdefine\BN{ N}
+\bmdefine\BO{ O}
+\bmdefine\BP{ P}
+\bmdefine\BQ{ Q}
+\bmdefine\BR{ R}
+\bmdefine\BS{ S}
+\bmdefine\BT{ T}
+\bmdefine\BU{ U}
+\bmdefine\BV{ V}
+\bmdefine\BW{ W}
+\bmdefine\BX{ X}
+\bmdefine\BY{ Y}
+\bmdefine\BZ{ Z}
+
+% Sans Serif capital letters
+\newcommand{\SFA}{\mathsf{A}}
+\newcommand{\SFB}{\mathsf{B}}
+\newcommand{\SFC}{\mathsf{C}}
+\newcommand{\SFD}{\mathsf{D}}
+\newcommand{\SFE}{\mathsf{E}}
+\newcommand{\SFF}{\mathsf{F}}
+\newcommand{\SFG}{\mathsf{G}}
+\newcommand{\SFH}{\mathsf{H}}
+\newcommand{\SFI}{\mathsf{I}}
+\newcommand{\SFJ}{\mathsf{J}}
+\newcommand{\SFK}{\mathsf{K}}
+\newcommand{\SFL}{\mathsf{L}}
+\newcommand{\SFM}{\mathsf{M}}
+\newcommand{\SFN}{\mathsf{N}}
+\newcommand{\SFO}{\mathsf{O}}
+\newcommand{\SFP}{\mathsf{P}}
+\newcommand{\SFQ}{\mathsf{Q}}
+\newcommand{\SFR}{\mathsf{R}}
+\newcommand{\SFS}{\mathsf{S}}
+\newcommand{\SFT}{\mathsf{T}}
+\newcommand{\SFU}{\mathsf{U}}
+\newcommand{\SFV}{\mathsf{V}}
+\newcommand{\SFW}{\mathsf{W}}
+\newcommand{\SFX}{\mathsf{X}}
+\newcommand{\SFY}{\mathsf{Y}}
+\newcommand{\SFZ}{\mathsf{Z}}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
