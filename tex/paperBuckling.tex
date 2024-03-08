@@ -1,61 +1,108 @@
+\chapter{The Problem of Shells Under Axial Compression}
+
+\section{Introduction}
+\label{sec:1}
+Thin-walled shells are, in general, highly efficient structures. To produce reliable designs and avoid unexpected catastrophic failures, one needs to understand buckling. Buckling occurs in a thin structure under loading, when the structure undergoes an overall change in configuration instead of acting in the primary fashion intended by its designers, leading to the failure of the structures. 
+
+Physically speaking, buckling in a thin shell occurs, when the shell can absorb a great deal of membrane strain energy without deforming too much but it must deform much more in order to absorb an equivalent amount of bending strain energy. When this stored energy is converted into bending energy, buckling occurs, creating a visible change in the geometry of the shell (typically in the form of several dimples) to accommodate all the energy, e.g., Figure \ref{fig:paperCylinders}. 
+
+Mathematically speaking, buckling can be interpreted as the instability of the equilibrium state that for a certain load will have two possible trajectories to follow, i.e., when in the stress-strain (or stress-deformation) diagram a bifurcation occurs. This phenomenon is mathematically described as the loss of positivity of the second variation of the total energy of the system. 
+
+In engineering, it is essential to have a good estimate of the critical stress that will trigger buckling. In this chapter, we revisit the problem of buckling of cylindrical shells under axial compression. In that problem, one starts applying a homogeneous load of magnitude $\lambda$ to the top of a cylindrical shell that is resting on a substrate, where $\lambda$ is increased continuously from zero. 
+
+\begin{figure}[!b]
+  \includegraphics[scale=0.40]{figures/Buckling_1.jpg}\quad
+  \includegraphics[scale=0.41]{figures/Buckling_2.jpg}\quad
+  \includegraphics[scale=0.40]{figures/Buckling_3.jpg}\quad
+  \caption{Buckled paper cylindrical shells under vertical load, however the second and the third cylinders are apparently deeper into the post-buckling regime.}
+  \label{fig:paperCylinders}
+\end{figure}
+
+It is observed that at very small load magnitudes $\lambda,$ the cylindrical shell will undergo a homogeneous deformation with no visible geometric changes. Then at some critical value $\lambda=\lambda(h),$ the shell will buckle, producing a variety of deformation patterns, typically in the form of several (or single) dimples 
+(\cite{bib:Yoshimura},\cite{bib:Bud.Hut.},\cite{bib:Bushnell},\cite{bib:Lan.Cal.Pal.},\cite{bib:Dog.Kli.Zim.Ode.Ara.},\cite{bib:Hor.Lor.Pel.},\cite{bib:Zhu.Man.Cal.}) 
+shown in Figure \ref{fig:paperCylinders}. The dimple (dimples) typically appear with a "click" and drop in the load magnitude (which corresponds to the bifurcation point), and disappear when unloading the shell. Some less common buckling patterns, such as the formation of waves in the longitudinal direction or periodic-like wrinkling are also possible, see \cite{bib:Xu.Mic.} and Figure 14  of \cite{bib:Xu.Mic.} for more details.
+
+
+
+
+Despite being a very old problem with a lot of data available in the literature, (studies and experiments have been made since the mid-18th century), it still contains several unsolved puzzles even for the simplest geometry of perfectly circular cylindrical shells. For the case of circular cylindrical shells, it has been observed that the buckling load measured by experiments has a large discrepancy with the theoretical predictions made by the classical asymptotic formula \cite{bib:Koiter,bib:Lorenz,bib:Timoshenko,bib:Tim.Woi.}
+\begin{equation}
+\label{1.1}
+\lambda(h)=\frac{E h}{\sqrt{3\left(1-\nu^{2}\right)}},
+\end{equation}
+which predicts a linear relation between the thickness of the cylinder and the critical buckling load $\Gl(h).$ 
+
+Here $E$ and $\nu$ are the Young modulus and the Poisson ratio of the material, respectively, and $h=t/R$ is the shell dimensionless thickness, i.e., the ratio of the cylinder wall thickness $t$ to the cylinder radius $R$.  Note that in fact formula (\ref{1.1}) was first derived by Lorenz \cite{bib:Lorenz} in 1911 and independently by Timoshenko \cite{bib:Timoshenko} in 1914, but sometimes in the literature it also carries the name of Koiter, as Koiter derived the so-called Koiter circle associated to (\ref{1.1}) in his Ph.D. thesis \cite{bib:Koiter} in 1945, see also \cite{bib:Gra.Har.3} for Koiter's circle.
+
+On the experimental side, plenty of experiments since the 1930s show that the experimental critical stress is actually much lower than the theoretical formula (\ref{1.1}), scaling like $h^{3/2}$ with $h$, e.g., \cite{bib:Lan.Cal.Pal.,bib:Zhu.Man.Cal.}. It has been believed in the engineering and applied mathematics communities, that such a paradoxical behavior is in general due to the fact that the buckling load may be highly sensitive to shape or load imperfections (\cite{bib:Almroth},\cite{bib:Tennyson},\cite{bib:Wei.Mor.Sei.},\cite{bib:Gor.Eva.},\cite{bib:Yamaki},\cite{bib:Hun.Lor.Pel.},\cite{bib:Hun.Net.1},\cite{bib:Hun.Net.2},\cite{bib:Lor.Cha.Hun.}). 
+
+Note that \textit{general geometric symmetry breaking or (even a very small) preexisting deformation have been believed to be important factors in the asymptotics of the critical buckling load.} These questions have been addressed in the works (\cite{bib:Calladine},\cite{bib:Hor.Lor.Pel.},\cite{bib:Lan.Cal.Pal.},\cite{bib:Zhu.Man.Cal.}) in an attempt to resolve the paradox using mainly numerical approach and/or reduced shell theory equations. One possible gap in these approaches may be whether the utilized reduced shell theory equations are indeed applicable to the problem under consideration and capture the sought parameters within the acceptable error. This concern is based in particular on the works (\cite{bib:Fri.Jam.Mor.Mue.},\cite{bib:Hor.Lew.Pak.},\cite{bib:Lew.Mor.Pak.}), that reveal whether a specific reduced shell theory holds in a specific applied load and elastic energy regime. In the meantime the answer to those specific and important questions is unknown. Another weakness was the presence of some heuristic arguments.
+
+On the rigorous side, Grabovsky and Harutyunyan proved in \cite{bib:Gra.Har.3} that indeed Koiter's asymptotic formula (\ref{1.1}) must hold in the case of perfect cylindrical shells and perfect axial homogeneous loading. This was achieved by the improvement and application of the "Thin structure buckling theory" by Grabovsky and Truskinovsky \cite{bib:Gra.Tru.}. Another crucial component of the analysis in \cite{bib:Gra.Har.3} was the derivation of the optimal asymptotic constants (not only the asymptotics but also the leading term in it) in Korn and generalized Korn inequalities for circular cylindrical shells. Then Grabovsky and Harutyunyan went on to prove in \cite{bib:Gra.Har.2} that in fact if even a very small twist (in the angular direction) is present in the shell loading, then the asymptotics of the buckling load has to drop to $h^{5/4},$ see Table \ref{tab:bucklindLooad} below.
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|}
+\hline
+\multicolumn{1}{|c|}{Cross-section (C.-S.) and load} & Circular C.-S., vertical load & Circular C.-S., twist in the load \rule{0pt}{4ex}\\ 
+ & $\bm\alpha(\theta)=(\cos(\theta),\sin(\theta))$,  $\Bt=-\lambda\bm e_z$ & $\bm\alpha(\theta)=(\cos(\theta),\sin(\theta))$,  $\Bt=-\lambda(\bm e_z+\epsilon \bm e_\theta)$ \rule{0pt}{2ex}\rule[-2ex]{0pt}{0pt}\\
+ \hline
+Buckling load asymptotics & $\lambda(h)=\frac{E h}{\sqrt{3\left(1-\nu^{2}\right)}}$ & $\lambda(h)=Ch^{5/4}$ \rule{0pt}{4ex}\rule[-3ex]{0pt}{0pt}\\
+\hline
+\end{tabular}
+}\\
+\caption{The dependence of the critical buckling load of circular cylindrical shells on the type of loading. Vertical load versus vertical load with a small twist.}
+\label{tab:bucklindLooad}
+\end{table}
+This analysis, to some extent, gave an explanation of the fact of sensitivity of the buckling load to load imperfections. Also, a somewhat less rigorous argument in \cite{bib:Gra.Har.2} demonstrated why one should expect the buckling load to drop to $h^{3/2}$ in the presence of some small dimples in the shell. 
+
+Our task in this chapter is to analyze the "sensitivity to imperfections" for some other kind of shape imperfections, that are diversions from the perfect cylindrical shell. Namely, we will consider cylindrical shells, generated by cylindrical surfaces, that are non-circular but have convex cross sections: Two main families will be analyzed. 
+\begin{itemize}
+\item[(i)] The first family contains cylindrical surfaces with convex cross sections that have uniformly positive curvature (when regarded from the exterior of the curve). An illustrative example of such a curve is given in the left half of Figure 2. 
+\item[(ii)] The second family contains cylindrical surfaces with convex cross sections that have uniformly positive curvature (when regarded from the exterior of the curve) except on finitely many points on the curve, where the curvature vanishes. An illustrative example of such a curve is given in the right half of Figure 2. 
+\end{itemize}
+\input{figures/VerticalLoadTikz.tex}
+
+
+
+
+Note that in both cases the cylinder cross-section does not have to have any geometric symmetry property, but rather only has to be convex with some imposed curvature condition. We will prove that in case (i) the critical buckling load $\Gl(h)$ has the asymptotics $Ch$, and in case (ii) we will prove the bounds
+ $C_1h^{8/5}\leq \Gl(h)\leq C_2h^{3/2}$ in the vanishing thickness regime $h\to 0.$ The result in part (i) in particular disproves the longstanding belief that geometric symmetry breaking would lead to the drop in the asymptotics of $\Gl(h),$ i.e., there is an $\epsilon>0,$ such that $\Gl(h)\leq Ch^{1+\epsilon}$. Also, the result in part (ii) provides new evidence on how a geometric shape imperfection, which is a diversion from the perfect cylindrical shell may lead to the drop in the asymptotics of $\Gl(h)$ to at least $h^{3/2}.$ 
+
+As already pointed out, we will be working in the framework of the (improved) "thin structure buckling theory" of Grabovsky and Truskinovsky \cite{bib:Gra.Tru.} rigorously derived from three-dimensional nonlinear hyper-elasticity. Some of the main components in the analysis will be asymptotically sharp Korn 
+inequalities for the displacement gradient components, proven for the shells under consideration. 
+
+The rest of this chapter will be organized as follows: In Section~3.2 we present a brief introduction to the general theory of slender structure buckling \cite{bib:Gra.Har.2,bib:Gra.Tru.}. 
+In Section~3.3 we will be formulating the main results of the chapter. In order to apply the theory in Section~3.2, on one hand, one needs to determine 
+(with some amount of proximity) the so-called "trivial branch", and the asymptotic stress tensor, which will be done in Section~3.2.1. Additionally, one needs to prove asymptotically sharp Korn and Korn-type inequalities for the displacement gradient components, which will be formulated and proved in in Sections~3.2.2-3.2.3. Finally, in Section~3.4 we will prove the main results on the buckling load, and we will finish with a particular application for Neo-Hookean materials in Section~3.5.
 
 \section{Buckling of slender Structures}
-\setcounter{equation}{0}
 \label{sec:2}
+\setcounter{equation}{0}
 
-For the convenience of the reader, this section is devoted to the presentation of the general theory "Buckling of slender structures" by Grabovsky and Truskinovsky [cite{bib:Gra.Tru.}], that was later extended by Grabovsky and the first author in [cite{bib:Gra.Har.2}]. In the presentation there will be some little amount of focus on the buckling of cylindrical shells, which is the subject of the paper. While we will try to keep the paper as self contained as possible, we will avoid going into the technical details and proofs referring the reader to the papers [cite{bib:Gra.Tru.},cite{bib:Gra.Har.2}] for details. 
 
-\subsection{Loading, deformation, energy}
-\label{sec:2.1}
-
-In what follows we will be working in the framework of hyper-elasticity. Let $\Omega\subset\mathbb{R}^3$ be a bounded, simply-connected, and open set with a Lipschitz boundary, representing a hyper-elastic body in space, let $\bm t(\bm x)$ be dead traction applied to the boundary (or just some of it) of $\Omega.$ A resulting deformation $\bm y=\bm y (\bm x),\ (\bm x\in \Omega$) is said to be stable, if it is a weak local minimizer of the total energy of the system, that is given by the formula
-\begin{equation}
-\label{2.1}
-E(\boldsymbol{y})=\int_{\Omega} W(\nabla \boldsymbol{y(\Bx)}) d \Bx -\int_{\partial \Omega} \boldsymbol{y} \cdot \boldsymbol{t}(\boldsymbol{x}) d S(\boldsymbol{x}),
-\end{equation}
-where $W(\BF)\colon\mathbb R^{3\times 3}\to\mathbb R$ is the elastic energy density function of the body. We will assume that $W$ is of class $C^3$ in some neighborhood of the identity matrix $\BI.$ Also, in hyper-elasticity, $W$ satisfies the following fundamental properties:
-
-\begin{enumerate}[label={(P\arabic*)}]
-    \item Positivity: $W(\BF)\geq 0$ for all $\BF\in\mathbb R^{3\times 3},$ and $W(\BI)=0.$
-        \item Absence of prestress: $W_{\BF}(\boldsymbol{I})=\mathbf{0}.$ \\
-      
-        Note that this condition follows from (P1) and the fact that $W$ is $C^3$-regular at $\BI.$ However, this condition is traditionally mentioned as it has the mechanical meaning of the absence of prestress. 
-    \item Frame indifference: $W( \boldsymbol{R}\boldsymbol{F})=W(\boldsymbol{F})$ for every $\boldsymbol{R} \in S O(3).$
-    \item Local stability of the trivial deformation $\boldsymbol{y}(\boldsymbol{x})=\boldsymbol{x}:\left(\BL_{0} \boldsymbol{\xi}, \boldsymbol{\xi}\right) \geq 0$ for any 
-    $\boldsymbol{\xi} \in \mathbb{R}^{3 \times 3},$ where $\BL_{0}=W_{\BF\BF}(\BI)$ is the linearly elastic tensor of material properties.
-    \item Non-degeneracy: $\left(\BL_{0} \boldsymbol{\xi}, \boldsymbol{\xi}\right)=0$ if and only if $\boldsymbol{\xi}^{T}=-\boldsymbol{\xi}$.
-\end{enumerate}
-In addition to the above standard properties (P1)-(P5), we will assume that the material is isotropic, i.e., the energy density $W$ satisfies the additional property (P6) below.
-\begin{itemize}
-    \item[(P6)] Isotropy: $W(\boldsymbol{F}\BR)=W(\boldsymbol{F})$ for every $\boldsymbol{R} \in S O(3).$    
-    \end{itemize}
-Here, for a function $W(\BF)\colon\mathbb R^3\to\mathbb R,$ the symbols $W_{\BF}$ and $W_{\BF\BF}$ denote the gradient and the Hessian of $W$ respectively, i.e.,
-$$
-W_{\BF}(\BF)=\left(\frac{\partial W}{\partial f_{ij}}(\BF)\right)_{1\leq i,j\leq 3} \quad\text{and} \quad
-W_{\BF\BF}(\BF)=\left(\frac{\partial^2 W}{\partial f_{ij}\partial f_{kl}}(\BF)\right)_{1\leq i,j,k,l\leq 3},
-$$
-where $\BF=(f_{ij})_{1\leq i,j\leq 3.}$ As it is known in mechanics, in the presence of isotropy homogeneous deformations are possible. We will also see later in Section~\ref{sec:4.1} how the assumption of isotropy substantially simplifies the job of proving the existence of a trivial branch. Here and in what follows, $(\boldsymbol{A}, \boldsymbol{B})$ is the Frobenius inner product of matrices $\BA=(a_{ij})_{i,j=1}^3,\BB=(b_{ij})_{i,j=1}^3\in\mathbb R^{3\times 3}:$ $(\boldsymbol{A}, \boldsymbol{B})=\sum_{i,j=1}^3 a_{ij}b_{ij}.$ In the theory of hyper-elasticity, one typically chooses for the admissible set $\cal A$ of the deformations $\By(\Bx)$ to be the subspace of functions that belong to some Sobolev space $W^{1,p}(\Omega)$ ($1<p$), which in addition satisfy some Dirichlet or/and natural Neumann boundary conditions on some complementary portions of $\partial\Omega$ yielded from the loading. Then the resulting deformation $\By(\Bx)$ must be a local minimizer of the energy $E(\By)$ in the admissible set $\cal A.$ A more detailed discussion on the deformations of slender structures is presented in the section to follow.
-
+For the convenience of the reader, this section is devoted to the presentation of the general theory "Buckling of slender structures" by Grabovsky and Truskinovsky \cite{bib:Gra.Tru.}, that was later extended by Grabovsky and the Harutyunyan in \cite{bib:Gra.Har.2}. In this presentation, there will be a small amount of focus on the buckling of cylindrical shells, which is the subject of the chapter. While we will try to keep it as self-contained as possible, we will avoid going into the technical details and proofs referring the reader to the papers \cite{bib:Gra.Tru.,bib:Gra.Har.2} for details. 
 
 \subsection{Trivial branch}
 \label{sec:2.2}
 
-In the general theory of buckling of slender structures originated in [cite{bib:Gra.Tru.}], one considers a sequence of \textit{slender} domains $\Omega_h$ parametrized by a small parameter $h$. The notion of slenderness used in this paper will be given a precise definition later in Section~2.3. In the case when $\Omega_h$ is a shell, the parameter $h$ typically represents the thickness of the shell, or the dimensionless thickness, i.e., the thickness divided by one of the in-plane parameters. In our case, $h$ will represent the thickness of the non-circular cylinders $\Omega_h$ under consideration, with constant height $L$. Consider a loading program 
+The general theory of buckling of slender structures originated in \cite{bib:Gra.Tru.}, one considers a sequence of \textit{slender} domains $\Omega_h$ parametrized by a small parameter $h$. The notion of slenderness used in this work will be given a precise definition later in Section~3.2.3. In the case when $\Omega_h$ is a shell, the parameter $h$ typically represents the thickness of the shell, or the dimensionless thickness, i.e., the thickness divided by one of the in-plane parameters. In our case, $h$ will represent the thickness of the non-circular cylinders $\Omega_h$ under consideration, with constant height $L$. Consider a loading program 
 \begin{equation}
 \label{2.2}
-\Bt(\Bx,h,\lambda)=\lambda \Bt^h(\Bx)+O(\lambda^2),\qquad \Bx\in \Gamma_1^h,
+\Bt(\Bx,h,\lambda)=\lambda \Bt_h(\Bx)+O(\lambda^2),\qquad \Bx\in \Gamma^1_h,
 \end{equation}
-applied to the part $\Gamma_1^h$ of the boundary of $\Omega_h,$ where $\lambda$ is the load magnitude and $\Bt^h$ is the load direction. 
-For the problem of cylindrical shell axial compression, the part $\Gamma_1^h$ would be the top and the bottom parts of the boundary only. 
+applied to the part $\Gamma^1_h$ of the boundary of $\Omega_h,$ where $\lambda$ is the load magnitude and $\Bt_h$ is the load direction. 
+For the problem of cylindrical shell axial compression, the part $\Gamma^1_h$ would be the top and the bottom parts of the boundary only. 
 Assume for some $\lambda_0>0$ the loading (\ref{2.2}) results in a family of Lipschitz deformations $\By (\bm x;h,\lambda)\in W^{1,\infty}(\Omega_h,\mathbb R^3)$ for all $\lambda\in[0,\lambda_0],$ where as mentioned above, the field $\bm y (\bm x;h,\lambda)$ is a stable deformation for given boundary conditions, i.e., it is a weak local minimizer of the elastic energy 
 $$E_{el.}(\boldsymbol{y})=\int_{\Omega} W(\nabla \boldsymbol{y(\Bx)}) d \Bx$$
 in the admissible set 
 \begin{equation}
 \label{2.3}
 \mathcal{A}_\lambda=\{ \By(\Bx,h,\lambda)\in W^{1,\infty}(\Omega_h,\mathbb R^3) \ : 
-\ \By(\Bx,\lambda,h)=\Bg(\Bx,\lambda,h)  \ \text{on}\  \ \Gamma_1^h  \ \text{in the trace sence}\},
+\ \By(\Bx,\lambda,h)=\Bg(\Bx,\lambda,h)  \ \text{on}\  \ \Gamma^1_h  \ \text{in the trace sence}\},
 \end{equation}
-for all $\lambda\in [0,\lambda_0],$ where the vector field $\Bg(\Bx,\lambda,h)\in W^{1,\infty}\left(\Omega_{h} ; \mathbb{R}^{3}\right)$ represents the boundary conditions on the part $\Gamma_1^h$ where the load is applied, and it is typically defined specifically for each problem and results from the loading program (\ref{2.2}). The family of deformations $\bm y (\bm x;h,\lambda)$ is then called a \textit{trivial branch}. Next, one defines the so-called \textit{linearly elastic trivial branch.}
+for all $\lambda\in [0,\lambda_0],$ where the vector field $\Bg(\Bx,\lambda,h)\in W^{1,\infty}\left(\Omega_{h}; \mathbb{R}^{3}\right)$ represents the boundary conditions on the part $\Gamma^1_h$ where the load is applied, and it is typically defined specifically for each problem and results from the loading program (\ref{2.2}). The family of deformations $\bm y (\bm x;h,\lambda)$ is then called a \textit{trivial branch}. Next, one defines the so-called \textit{linearly elastic trivial branch.}
 
 \begin{definition}
 \label{def:2.1}
@@ -75,27 +122,31 @@ A family of stable (within the admissible set $\mathcal{A}_\lambda$) Lipschitz d
 Here the constant $C>0$ is independent of $h$ and $\lambda$.
 \end{enumerate}
 \end{definition}
-We remark that neither uniqueness nor general stability of the trivial branch are assumed. It is important to note that, here, the term general stability is stability without the boundary conditions in (\ref{2.3}). It is worth mentioning that as understood in [cite{bib:Gra.Tru.}], usually the family $\By(\Bx,h,\Gl)$ is not stable in general due to the possibility of infinitesimal flips. This is always the case for cylindrical shell compression problems due to possible infinitesimal rotations in the cross-section plane. Additionally the leading order term $\Gl\bm u^h(\bm x)$ of the nonlinear trivial branch is nothing else but the linear elastic displacement, that can be calculated solving the equations of linear elasticity (the Lam\'e system) $\nabla \cdot\left(\BL_{0} e\left(\boldsymbol{u}^{h}\right)\right)=\mathbf{0}$ with the imposed boundary conditions, where $e\left(\Gl\boldsymbol{u}^{h}\right)=\frac{\Gl}{2}(\nabla \boldsymbol{u}^{h}+\left(\nabla \boldsymbol{u}^{h})^{T}\right)$ is the linear strain. 
+We remark that neither uniqueness nor general stability of the trivial branch is assumed. It is important to note that, here, the term general stability is stability without the boundary conditions in (\ref{2.3}). It is worth mentioning that as understood in \cite{bib:Gra.Tru.}, usually the family $\By(\Bx,h,\Gl)$ is not stable in general due to the possibility of infinitesimal flips. This is always the case for cylindrical shell compression problems due to possible infinitesimal rotations in the cross-section plane. Additionally the leading order term $\Gl\bm u_h(\bm x)$ of the nonlinear trivial branch is nothing else but the linear elastic displacement, that can be calculated solving the equations of linear elasticity  $\nabla \cdot\left(\BL_{0} e\left(\boldsymbol{u}^{h}\right)\right)=\mathbf{0}$ (the Lam\'e system) with the imposed boundary conditions, where $$e\left(\Gl\boldsymbol{u}^{h}\right)=\frac{\Gl}{2}(\nabla \boldsymbol{u}^{h}+\left(\nabla \boldsymbol{u}^{h})^{T}\right)$$ is the linear strain. 
 
 
 
 \subsection{The buckling load and buckling modes}
 
-
-Buckling of the thin structure $\Omega^h$ occurs when the trivial branch $\By(\Bx ; h, \lambda)$ becomes unstable for some value $\lambda=\lambda_{crit}(h)$ for the first time. This happens because it becomes energetically more favorable to bend the structure rather than store more compressive energy. This bifurcation is detected by the change in the sign of the second variation of the energy:
+Buckling of the thin structure $\Omega_h$ occurs when the trivial branch $\By(\Bx; h, \lambda)$ becomes unstable for some value $\lambda=\lambda_{crit}(h)$ for the first time. This happens because it becomes energetically more favorable to bend the structure rather than store more compressive energy. This bifurcation is detected by the change in the sign of the second variation of the energy:
 \begin{equation}
 \label{2.6}
 \delta^{2}E(\BGf ; h, \lambda)=\int_{\Omega_{h}}\left(W_{F F}(\nabla \By(x ; h, \lambda)) \nabla \BGf, \nabla \BGf \right) d x, \qquad \BGf \in V_h,
 \end{equation}
-where $V_h\subset W^{1,\infty}(\Omega^h)$ is the vector space of admissible variations resulting from the loading program (\ref{2.2}), i.e., from the admissible set 
-$\mathcal{A}_\lambda$ in (\ref{2.3}). Namely, this means that there exists $\lambda_{crit}(h)>0$ such that the second variation is non negative when $0<\lambda<\lambda_{crit}(h)$ for all test functions $\BGf  \in V_h,$ but for 
+where $V_h\subset W^{1,\infty}(\Omega_h)$ is the vector space of admissible variations resulting from the loading program (\ref{2.2}), i.e., from the admissible set 
+$\mathcal{A}_\lambda$ in (\ref{2.3}). Namely, this means that there exists $\lambda_{crit}(h)>0$ such that the second variation is nonnegative when $0<\lambda<\lambda_{crit}(h)$ for all test functions $\BGf  \in V_h,$ but for 
 $\lambda>\lambda_{crit}(h)$ it can become negative for some choice of $\BGf.$ This observation leads to the following mathematical definition of the critical buckling load:
 \begin{equation}
 \label{2.7}
 \lambda_{\text {crit }}(h)=\inf \left\{\lambda>0: \delta^{2} E(\BGf ; h, \lambda)<0 \text { for some } \BGf \in V_h\right\}.
 \end{equation}
-The body $\Omega_h$ is said to undergo a \textit{near-flip buckling}, if $\lim_{h\to 0} \lambda_{\text {crit }}(h)=0.$ A buckling mode is generally understood as a different from zero variation $\BGf^*_h\in V_h$, such that $\delta^{2} E\left(\BGf_{h}^{*}; h, \lambda_{crit}(h)\right)=0$. In practice one is only interested in the leading term asymptotics (or sometimes even in the scaling) of the buckling load in $h$ as $h\to 0.$ Note that if one perturbs $\Gl_{\text {crit }}(h)$ by a small factor $\epsilon,$ i.e., one replaces it by $(1+\epsilon)\Gl_{\text {crit }}(h),$ then the second variation changes approximately by $\epsilon\Gl_{\text {crit }}(h) \frac{\partial\left(\delta^{2} E\right)}{\partial \lambda}\left(\BGf_{h}^* ; h, \lambda_{\text {crit }}(h)\right)$. This means that second variations at two different variations $\BGf_1$ and $\BGf_2$ differing by an infinitesimal value compared to  
+The body $\Omega_h$ is said to undergo a \textit{near-flip buckling}, if $\lim_{h\to 0} \lambda_{\text {crit }}(h)=0.$ A buckling mode is generally understood as a variation $\BGf^*_h\in V_h$  different from zero, such that $$\delta^{2} E\left(\BGf_{h}^{*}; h, \lambda_{crit}(h)\right)=0.$$ 
+
+In practice one is only interested in the leading term asymptotics (or sometimes even in the scaling) of the buckling load in $h$ as $h\to 0.$ Note that if one perturbs $\Gl_{\text {crit }}(h)$ by a small factor $\epsilon,$ i.e., one replaces it by $(1+\epsilon)\Gl_{\text {crit }}(h),$ then the second variation changes approximately by $\epsilon\Gl_{\text {crit }}(h) \frac{\partial\left(\delta^{2} E\right)}{\partial \lambda}\left(\BGf_{h}^*; h, \lambda_{\text {crit }}(h)\right)$.
+
+This means that second variations at two different variations $\BGf_1$ and $\BGf_2$ differing by an infinitesimal value compared to  
 $\Gl_{\text {crit }}(h) \frac{\partial\left(\delta^{2} E\right)}{\partial \lambda}\left(\BGf_{h}^* ; h, \lambda_{\text {crit }}(h)\right)$ should not be distinguished. This observation leads to the following new definition of buckling loads and buckling modes in the broader sense. 
+
 \begin{definition}
 \label{def:2.2} 
 We say that a function $\lambda(h) \rightarrow 0$, as $h \rightarrow 0$ is a buckling load if
@@ -107,13 +158,15 @@ $$
 \lim _{h \rightarrow 0} \frac{\delta^{2} E\left(\BGf_{h} ; h, \Gl_{\text {crit }}(h)\right)}{\Gl_{\text {crit }}(h)\frac{\partial\left(\delta^{2} E\right)}{\partial \Gl}\left(\BGf_{h} ; h, \Gl_{\text {crit }}(h)\right)}=0
 $$
 \end{definition}
-It turns out that under the conditions in Definition~\ref{def:2.1} [cite{bib:Gra.Tru.}], the buckling load and buckling modes can be captured by the so called \textit{constitutively linearized second variation:}
+
+
+It turns out that under the conditions in Definition~\ref{def:2.1}, the buckling load and buckling modes can be captured by the so called \textit{constitutively linearized second variation} \cite{bib:Gra.Tru.}:
 \begin{equation}
 \label{2.8}
 \delta^{2} E_{\mathrm{cl}}(\BGf ; h, \Gl)=\int_{\Omega_h}\left(\left \langle\BL_{0} e(\BGf), e(\BGf)\right\rangle+\lambda\left\langle\BGs_{h}, \nabla \BGf^{T} \nabla \BGf\right\rangle\right) d\Bx, \qquad \BGf \in V_h,
 \end{equation}
 where $\BGs_{h}(\boldsymbol{x})=\BL_{0} e\left(\boldsymbol{u}^{h}(\boldsymbol{x})\right)$ is the linear elastic stress.
-From the condition (P4) on $\BL_0,$ the first term in (\ref{2.8}) is always nonnegative, thus the potentially destabilizing variations will be in the set: 
+From the condition (P4, chapter 2) on $\BL_0,$ the first term in (\ref{2.8}) is always nonnegative, thus the potentially destabilizing variations will be in the set: 
 \begin{equation}
 \label{2.9}
 V_h^d=\left\{\phi \in V_h :\left\langle\BGs_h, \nabla \BGf^{T} \nabla \BGf\right\rangle\leq 0\right\}.
@@ -146,8 +199,7 @@ K\left(\Omega_h \right)=\inf _{\phi \in V_h} \frac{\|e(\BGf)\|_{L^{2}\left(\Omeg
 $$
 \end{definition}
 
-The following theorem proven in [cite{bib:Gra.Har.2}] provides a formula for the buckling load and buckling modes. 
-
+The following theorem, proven in \cite{bib:Gra.Har.2}, provides a formula for the buckling load and buckling modes. 
 \begin{theorem}
 \label{th:2.5}
 Suppose that the body is slender in the sense of Definition~\ref{def:2.4}. Assume that the constitutively linearized critical load $\lambda_{\mathrm{cl}}(h),$ defined in (\ref{2.11}) satisfies $\lambda_{\mathrm{cl}}(h)>0$ for all sufficiently small $h$ and
@@ -157,8 +209,8 @@ $$
 Then $\lambda_{\mathrm{cl}}(h)$ is the buckling load and any constitutively linearized buckling mode $\BGf_{h}$ is a buckling mode in the sense of Definition \ref{def:2.2}.
 \end{theorem}
 
-Now, in order to study the problem of buckling of cylindrical shells under axial compression, we see from Theorem~\ref{th:2.5} and from the above formalism, that we need to gain appropriate information about the trivial branch associated to the axial compression, the associated stress tensor, the Korn constant, and the load 
-$\lambda_{\mathrm{cl}}(h).$ This is done in the next sections. 
+Now, in order to study the problem of buckling of cylindrical shells under axial compression, we see from Theorem~\ref{th:2.5} and from the above formalism, that we need to gain appropriate information about the trivial branch associated with axial compression, the associated stress tensor, the Korn constant, and the load 
+$\lambda_{\mathrm{cl}}(h)$ for our especific problem.  This is done in the following sections. 
 
 
 
@@ -172,7 +224,7 @@ $\lambda_{\mathrm{cl}}(h).$ This is done in the next sections.
 
 
 
-In this section we formulate the problems under consideration and the main results. Let $\bm\alpha(\theta)$ be a closed convex curve in the $XY$-plane that is parameterized by the arc length and has period/length $p$. Then the cylindrical surface $S$ having horizontal cross section as the curve $\BGa$ and height $L>0$ will be given by the formula 
+In this section, we formulate the problems under consideration and the main results. Let $\bm\alpha(\theta)$ be a closed convex curve in the $XY$-plane that is parameterized by the arc length and has period/length $p$. Then the cylindrical surface $S$ having horizontal cross section as the curve $\BGa$ and height $L>0$ will be given by the formula 
 $$S: \ \ \bm{r}(\theta,z)=\bm\alpha(\theta)+z\bm{e}_z,\quad  \theta\in[0,p],\  z\in[0,L].$$
 Denote $\Be_\Gth=\BGa'(\Gth)$ and by $\Be_t$ the tangent and normal vectors to $\BGa$ respectively. This will give rise to the local orthonormal basis 
 $(\Be_t,\Be_\Gth,\Be_z).$ We will be dealing with cylindrical shells $\Omega_h$ with mid-surface $S$ and thickness $h,$ i.e., 
@@ -191,24 +243,35 @@ $\BGf=(\phi_t,\phi_\Gth,\phi_z)\in H^1(\Omega_h,\mathbb R^3)$ will be given in t
 \phi_{z,t} & \frac{\phi_{z,\theta}}{k_{\theta }\,t+1} & \phi_{z,z} 
 \end{bmatrix},
 \end{equation}
+
+
+%TODO: ADD to notation
 where $f_{,\eta}$ inside the gradient matrix denotes the partial derivative $\partial_\eta f.$ Assume that the shell $\Omega_h$ is resting on a substrate and is undergoing uniform and homogeneous vertical/axial loading\footnote{The terminology "axial load" will be used even if $\BGa$ does not have point-symmetry, and thus $\Omega_h$ will have no axis.} 
 \begin{equation}
 \label{3.3}
 \Bt(\Bx,h,\lambda)=-\lambda \Be_z
 \end{equation}
-applied at the top of the shell. The main problem that we are concerned with is the determination of the asymptotics of critical buckling load $\Gl(h)$ in the thickness $h$ as $h\to 0.$ As already mentioned in Section~ ref{sec:1}, one has $\Gl(h)\sim h$ as $h\to 0$ in the case when the cross section $\BGa$ is a circle. We will be considering the cases when $\BGa$ has positive curvature everywhere ($k(\Gth)>0$ for all $\Gth\in [0,p]$), and the case when $\BGa$ has positive curvature 
+applied at the top of the shell. The main problem that we are concerned with is the determination of the asymptotics of critical buckling load $\Gl(h)$ in the thickness $h$ as $h\to 0.$ 
+
+As already mentioned in Section~ \ref{sec:1}, one has $\Gl(h)\sim h$ as $h\to 0$ in the case when the cross-section $\BGa$ is a circle. We will be considering the cases when $\BGa$ has positive curvature everywhere ($k(\Gth)>0$ for all $\Gth\in [0,p]$), and the case when $\BGa$ has positive curvature 
 everywhere except for finitely many points on the curve, at which the curvature has to vanish as $\BGa$ is convex and thus $k(\Gth)\geq 0$ for all $\Gth\in [0,p].$ 
-Let us mention that in what follows the norm $\|f\|$ will be the $L^2$ norm $\|f\|_{L^2(\Omega_h)}.$ For the problem under consideration, the natural choice for the vector space $V_h$ will be the subspace of all displacements $\BGf\in H^1(\Omega_h)$ that vanish at the top and the bottom of the shell, i.e,  
+
+  %TODO: maybe add to notion Section
+
+
+Let us mention that in what follows the norm $\|f\|$ will be the $L^2$ norm $\|f\|_{L^2(\Omega_h)}.$ For the problem under consideration, the natural choice for the vector space $V_h$ will be the subspace of all displacements $\BGf\in H^1(\Omega_h)$ that vanish at the top and the bottom of the shell, \textit{i.e.},  
 \begin{equation}
 \label{3.4}
 V_h=\{\BGf\in H^1(\Omega_h) \ : \ \BGf(t,\Gth,0)=\BGf(t,\Gth,L)=0, \ \ (t,\Gth)\in [-h/2,h/2]\times [0,p] \}.
 \end{equation}
-This means that one shall study the stability of the trivial branch within the set of all Lipschitz deformations satisfying the same Dirichlet boundary conditions on the top and bottom of the cylinder. However, we will prove a stronger stability result, i.e., stability within a wider class of deformations. Note that if one only prescribes the values of the vertical component $y_z$ of the trivial branch $\By$ at the top and the bottom of the shell, then the cylinder may undergo flip instability through infinitesimal rotations in the cross section plane [cite{bib:Gra.Har.2},cite{bib:Gra.Tru.}]. Therefore one needs to impose some condition on $y_t$ or $y_\theta$ to rule this possibility out. Following [cite{bib:Gra.Har.3}], we choose to impose zero integral condition on the tangential component $\phi_\Gth$ in the $z$ direction, which gives the alternative subspace
+This means that one shall study the stability of the trivial branch within the set of all Lipschitz deformations satisfying the same Dirichlet boundary conditions on the top and bottom of the cylinder. However, we will prove a stronger stability result, i.e., stability within a wider class of deformations. Note that if one only prescribes the values of the vertical component $y_z$ of the trivial branch $\By$ at the top and the bottom of the shell, then the cylinder may undergo flip instability through infinitesimal rotations in the cross-section plane (\cite{bib:Gra.Har.2},\cite{bib:Gra.Tru.}). Therefore one needs to impose some condition on $y_t$ or $y_\theta$ to rule this possibility out. Following \cite{bib:Gra.Har.3}, we choose to impose zero integral condition on the tangential component $\phi_\Gth$ in the $z$ direction, which gives the alternative subspace
 \begin{equation}
 \label{3.4.1}
-V_h^\Gth=\{\BGf\in H^1(\Omega_h) \ : \  \phi_z|_{z=0}=\phi_z|_{z=L}=\int_0^L\phi_\Gth(t,\Gth,z)dz=0, \ \ \forall (t,\Gth)\in [-h/2,h/2]\times [0,p] \}.
+V_h^\Gth=\{\BGf\in H^1(\Omega_h) \ : \  \phi_z|_{z=0}=\phi_z|_{z=L}=\int_0^L\phi_\Gth(t,\Gth,z)dz=0, \ \ \forall (t,\Gth)\}.
 \end{equation}
-Let us explain this choice. Observe that we can extend the cylinder to the lower half-space by mirror reflection about the plane $z=0,$ and consequently the components $\phi_t$ and $\phi_\Gth$ as even functions and $\phi_z$ as an odd function, preserving the structure of the symmetric gradient $e(\BGf).$ This would allow us to expand the components $\phi_t$ and $\phi_\Gth$ in Fourier space in cosine series and the $\phi_z$ component in sine series in the $z$ variable; see (\ref{4.19}) and the paragraph between (\ref{4.18}) and (\ref{4.19}). Then the zero integral condition simply means that the independent of $z$ term in the expansion of $\phi_\Gth$ is nonexistent. This would clearly prevent the cylinder from undergoing infinitesimal rotations in the cross section plane, which affects only the independent of $z$ variable terms in $\BGf.$ Note also, that unlike perfect circular cylindrical shells, where homogeneous deformations result in no change in the tangential component, (thus in [cite{bib:Gra.Har.2}], the authors have prescribed the tangential component $\phi_\Gth$ at the top and the bottom of the cylinder too), homogeneous deformations in general cylindrical shells with any cross sections result in nonzero displacements in the tangential component too, thus a more relaxed subspace, such as (\ref{3.4.1}) has to be considered. We will prove the following theorems, where the vector space $V$ is either $V_h$ or $V_h^\Gth.$
+Let us explain this choice. Observe that we can extend the cylinder to the lower half-space by mirror reflection about the plane $z=0,$ and consequently the components $\phi_t$ and $\phi_\Gth$ as even functions and $\phi_z$ as an odd function, preserving the structure of the symmetric gradient $e(\BGf).$ This would allow us to expand the components $\phi_t$ and $\phi_\Gth$ in Fourier space in cosine series and the $\phi_z$ component in sine series in the $z$ variable; see (\ref{4.19}) and the paragraph between (\ref{4.18}) and (\ref{4.19}). Then the zero integral condition simply means that the independent of $z$ term in the expansion of $\phi_\Gth$ is nonexistent. This would clearly prevent the cylinder from undergoing infinitesimal rotations in the cross-section plane, which affects only the independent of $z$ variable terms in $\BGf.$
+
+Note also, that unlike perfect circular cylindrical shells, where homogeneous deformations result in no change in the tangential component, (thus in \cite{bib:Gra.Har.2}, the authors have prescribed the tangential component $\phi_\Gth$ at the top and the bottom of the cylinder too), homogeneous deformations in general cylindrical shells with any cross sections result in nonzero displacements in the tangential component too, thus a more relaxed subspace, such as (\ref{3.4.1}) has to be considered. We will prove the following theorems, where the vector space $V$ is either $V_h$ or $V_h^\Gth.$
 
 
 
@@ -237,7 +300,7 @@ A remark is in order.
 
 \begin{remark}
 \label{rem:3.2}
-Part (i) of Thereom~\ref{th:3.1} implies that no matter what the geometry of the cross section $\BGa$ is, the critical buckling load $\Gl(h)$ will scale like $h$ as $h\to 0$
+Part (i) of Thereom~\ref{th:3.1} implies that no matter what the geometry of the cross-section $\BGa$ is, the critical buckling load $\Gl(h)$ will scale like $h$ as $h\to 0$
 as long as $\BGa$ has strictly positive curvature everywhere. This in particular means that the buckling load asymptotics in the vanishing thickness is independent of the fact whether $\BGa$ has any kind of symmetry or not. Hence, \textbf{the critical buckling load asymptotics is not sensitive
 to the initial symmetry of the undeformed configuration.} Part (ii) provides some evidence for the phenomenon that the buckling load may drop to $h^{3/2}$ if the cylinder has some zero longitudinal curvature sections. 
 \end{remark}
@@ -266,14 +329,14 @@ $L,\max k_\Gth,$ and $c,$ such that the Korn and Korn-like inequalities hold:
 C_1h^{12/7}\leq \inf_{\BGf\in V}\frac{\|e(\BGf)\|^2}{\|\nabla \BGf\|^2}\leq C_2h^{5/3},\quad 
 \quad  C_3h^{8/5}\leq \inf_{\BGf\in V}\frac{\|e(\BGf)\|^2}{\|\mathrm{col}_3(\nabla\BGf)\|^2}\leq C_4h^{3/2},
 \end{equation}
-for all $h\in (0,\tilde h).$ These results are presented in the schematic table 2 below.
+for all $h\in (0,\tilde h).$ These results are presented in the schematic table \ref{tab:kornConstants} below.
 \end{itemize}
 
 \end{theorem}
 
 \begin{remark}
 \label{rem:3.4}
-It is proven in [cite{bib:Gra.Har.4}, Theorem~3.2] that under the assumptions in part (i) of Theorem~\ref{th:3.3}, Korn's first inequality holds:
+It is proven in ~\cite[Theorem~3.2]{bib:Gra.Har.4}, that under the assumptions in part (i) of Theorem~\ref{th:3.3}, Korn's first inequality holds:
 \begin{equation}
 \label{3.8}
 \|\nabla\BGf\|^2\leq\frac{C}{h^{3/2}}\|e(\BGf)\|^2,
@@ -305,7 +368,8 @@ for all vector fields $\BGf\in V_h$ and all $h\in (0,\tilde h).$ This will be a 
 }\\
 %\vspace{0.3cm}
 %\hspace{-14cm}
-\caption{The dependence of the critical buckling load of convex cylindrical shells on the cross-section curvature. Cross-sections with uniformly positive curvature versus cross-sections with nonnegative curvature, that vanishes only at finitely many points on the curve.}
+\caption{The dependence of the critical buckling load of convex cylindrical shells on the cross-section curvature. Cross-sections with uniformly positive curvature versus cross-sections with nonnegative curvature, that vanish only at finitely many points on the curve.}
+\label{tab:kornConstants}
 \end{table}
 
 
@@ -358,13 +422,26 @@ for all vector fields $\BGf\in V_h$ and all $h\in (0,\tilde h).$ This will be a 
 \label{sec:4.1}
 
 
-In this section we will demonstrate how one can apply the theory presented in Section~\ref{sec:2} to the problem of axial compression of cylindrical shells with any convex cross-section. First we will calculate the trivial branch $\By(\Bx,\lambda,h)$ resulting from the compression $\Bt(\Bx,\lambda,h)=-\lambda \Be_z$
-at the top of the shell. The vector field $\Bu^h$ then will be obtained, which will yield a formula for the linear elastic stress tensor $\BGs_h$, thus the minimization problem (\ref{2.11}) will be identified, which will be studied in the next section. The compression problem is equivalent to the boundary-value problem, where one prescribes the displacement at the top and the bottom of the shell and at the same time solving the system of Euler-Lagrange equations (equations of equilibrium). The boundary conditions on the vertical component of $\By$ yielding from the axial compression will be $y_z(t,\Gth,0,\Gl,h)=0$ at the bottom and $y_z(t,\Gth,L,\Gl,h)=(1-\lambda)L$ at the top. It is natural to seek the trivial branch among homogeneous deformations, yielding homogeneous thickening of the shell in the cross-section plane. Those are clearly given by 
+In this section, we will demonstrate how one can apply the theory presented in Section~\ref{sec:2} to the problem of axial compression of cylindrical shells with any convex cross-section.
+
+First we will calculate the trivial branch $\By(\Bx,\lambda,h)$ resulting from the compression $\Bt(\Bx,\lambda,h)=-\lambda \Be_z$
+at the top of the shell. The vector field $\Bu_h$ then will be obtained, which will yield a formula for the linear elastic stress tensor $\BGs_h$, thus the minimization problem (\ref{2.11}) will be identified, which will be studied in the next section. 
+
+The compression problem is equivalent to the boundary-value problem, where one prescribes the displacement at the top and the bottom of the shell and at the same time solves the system of Euler-Lagrange equations (equations of equilibrium). The boundary conditions on the vertical component of $\By$ yielding from the axial compression will be 
+\begin{align*}
+  y_z(t,\Gth,0,\Gl,h)&=0\text{ at the bottom,}
+  y_z(t,\Gth,L,\Gl,h&)=(1-\lambda)L\text{ at the top.}
+\end{align*}
+ It is natural to seek the trivial branch among homogeneous deformations, yielding homogeneous thickening of the shell in the cross-section plane which is clearly given by 
 \begin{equation}
 \label{4.1}
 y_t=(1+a(\lambda))(t+\bm\alpha(\theta)\cdot \bm e_t(\theta)), \qquad y_\theta=(1+a(\lambda))\bm\alpha(\theta)\cdot \bm e_\theta(\theta), \qquad y_z=(1-\lambda)z, 
 \end{equation}
-where $\bm y(t,\theta,z)=y_t \bm e_t+y_\theta \bm e_\theta+y_z\bm e_z,$ and $a(\lambda)$ is a smooth enough function satisfying $a(0)=0,$ and will be determined by the equations of equilibrium and the natural boundary conditions yielding from the energy minimization problem. For the sake of notation simplicity, we may abbreviate $\bm y(t,\theta,z;h,\lambda)=\bm y(t,\theta,z)=\bm y(\bm x)$ while keeping in mind that the trivial branch can depend on $h$ and $\lambda$. The plan is to prove the existence of a trivial branch given as in (\ref{4.1}). It is easy to see that when minimizing the elastic energy $\int_{\Omega_h} W(\nabla \bar \By)d\Bx$ subject to boundary conditions $\bar \By(\Bx)$=$\By(\Bx)$ at $z=0,L$ for $\By$ as in (\ref{4.1}), then any local minimizer $\bar \By\in H^1(\Omega_h)$ must satisfy the equations of equilibrium 
+where $\bm y(t,\theta,z)=y_t \bm e_t+y_\theta \bm e_\theta+y_z\bm e_z,$ and $a(\lambda)$ is a smooth enough function satisfying $a(0)=0,$ and will be determined later by the equations of equilibrium and the natural boundary conditions yielding from the energy minimization problem.
+
+%TODO: Add to Notation
+
+For the sake of notation simplicity, let $\bm y(t,\theta,z;h,\lambda)=\bm y(t,\theta,z)=\bm y(\bm x)$ while keeping in mind that the trivial branch can depend on $h$ and $\lambda$. The plan is to prove the existence of a trivial branch given as in (\ref{4.1}). It is easy to see that when minimizing the elastic energy $\int_{\Omega_h} W(\nabla \bar \By)d\Bx$ subject to boundary conditions $\bar \By(\Bx)$=$\By(\Bx)$ at $z=0,L$ for $\By$ as in (\ref{4.1}), then any local minimizer $\bar \By\in H^1(\Omega_h)$ must satisfy the equations of equilibrium 
 \begin{equation}
 \label{4.2}
 \nabla\cdot \bm P(\nabla \bar\By(\Bx))=0, \qquad \Bx\in \Omega_h,
@@ -384,19 +461,19 @@ respectively. The existence of the trivial branch is proved in the following Lem
 
 \begin{lemma}
 \label{lem:4.1}
-Assume that $W(\bm F)$ is three times continuously differentiable in a neighborhood of the identity matrix $\bm F=\BI$ and satisfies the properties (P1)-(P6). Then there exists a constant $\Gl_0>0$ and a unique function $a(\lambda)\in C^2([0,\Gl_0],\mathbb R)$, such that $a(0)=0$ and the family $\By(\Bx)=(y_t,y_\Gth,y_z)$ 
+Assume that $W(\bm F)$ is three times continuously differentiable in a neighborhood of the identity matrix $\bm F=\BI$ and satisfies the properties (P1)-(P6) from section \ref{sec:hyper}. Then there exists a constant $\Gl_0>0$ and a unique function $a(\lambda)\in C^2([0,\Gl_0],\mathbb R)$, such that $a(0)=0$ and the family $\By(\Bx)=(y_t,y_\Gth,y_z)$ 
 given by (\ref{4.1}) satisfies the equations of equilibrium (\ref{4.2}) and all of the boundary conditions (\ref{4.3})-(\ref{4.4}). Moreover, the trivial branch $\By(\Bx)$ also fulfills all the conditions in Definition~\ref{def:2.1} as is required for the general theory to apply. 
 
 \end{lemma}
 
 
 \begin{proof}
-For the proof we adopt the strategy in [cite{bib:Gra.Har.2}]. First of all note that as homogeneous deformations always satisfy the equations of equilibrium, we only have to verify the boundary conditions in (\ref{4.3}) and (\ref{4.4}). Letting $\bm F=\nabla\bm y$ and $\bm C= \bm F^T\bm F$, we have by the isotropy (P6) that $W(\bm F)=\tilde W\left(\bm C\right)$ for some function $\tilde W$ that is three times continuously differentiable in a neighborhood of the identity matrix $\boldsymbol{I}$. We have by simple algebra for the Piola-Kirchhoff stress tensor the formula
+For the proof we adopt the strategy in \cite{bib:Gra.Har.2}. First of all, note that as homogeneous deformations always satisfy the equations of equilibrium, we only have to verify the boundary conditions in (\ref{4.3}) and (\ref{4.4}). Letting $\bm F=\nabla\bm y$ and $\bm C= \bm F^T\bm F$, we have by the isotropy (P6) that $W(\bm F)=\tilde W\left(\bm C\right)$ for some function $\tilde W$ that is three times continuously differentiable in a neighborhood of the identity matrix $\boldsymbol{I}$. We have by simple algebra for the Piola-Kirchhoff stress tensor the formula
 \begin{equation}
 \label{4.5}
 \boldsymbol{P}(\boldsymbol{F})=W_{\boldsymbol{F}}(\boldsymbol{F})=2 \boldsymbol{F} \tilde{W}_{\BC}\left(\boldsymbol{C}\right).
 \end{equation}
-Taking into account the form given in (\ref{4.1}) and Frenet?Serret formulas $\bm\alpha''=-k_\theta \Be_t,$ $\bm e'_t=k_\theta\BGa',$ we have 
+Taking into account the form given in (\ref{4.1}) and Frenet-Serret formulas $\bm\alpha''=-k_\theta \Be_t,$ $\bm e'_t=k_\theta\BGa',$ we have 
 \begin{align*}
     y_{t,t}&=1+a(\lambda),\quad y_{t,\theta}=k_\theta(1+a(\lambda))\bm\alpha\cdot \bm \alpha', \quad y_{t,z}=0,\\
     y_{\Gth,t}&=0,\quad y_{\theta,\theta}=(1+a(\lambda))(1+\bm\alpha\cdot \bm\alpha''),\quad y_{\Gth,z}=0,\\
@@ -424,28 +501,28 @@ and thus we can calculate
 \end{bmatrix}.
 \end{equation}
 This clearly shows that the matrices $\BF$ and $\BC=\BF^T \BF$ are diagonal. Additionally, the frame indifference condition (P3) implies that $\tilde{W}\left(\bm R \bm C \bm R^T\right)=\tilde W(\bm C)$ for all $\bm R \in S O(3)$. Differentiating this relation in $\bm R$ at $\boldsymbol{R}=\boldsymbol{I}$ one concludes that 
-$\tilde{W}_{\boldsymbol{C}}(\boldsymbol{C})$ commutes with $\boldsymbol{C}$ for any $\BF\in\mathbb R^{3\times 3}$ and $\BC=\BF^T \BF;$ see [cite{bib:Gur.Fri.Ana.}, page 290] for details. Consequently if $\BC$ is diagonal with distinct diagonal entries, then $\tilde{W}_{\boldsymbol{C}}(\boldsymbol{C})$ must be diagonal as well, while if $\BC$ is diagonal with possibly equal diagonal entries, then small diagonal perturbations will reduce the situation to the first case, and thus  
-$\tilde{W_\BC}(\BC)$ will be diagonal too as long as $\BC$ is so. Hence, as in our case the matrix $\BC$ is diagonal, also $\tilde{W_\BC}(\BC)$ and the Piola-Kirchhoff stress tensor $\bm P(\bm F)$ given in (\ref{4.5}) have to be diagonal as well. 
+$\tilde{W}_{\boldsymbol{C}}(\boldsymbol{C})$ commutes with $\boldsymbol{C}$ for any $\BF\in\mathbb R^{3\times 3}$ and $\BC=\BF^T \BF;$ see ~\cite[page 290]{bib:Gur.Fri.Ana.} for details. Consequently, if $\BC$ is diagonal with distinct diagonal entries, then $\tilde{W}_{\boldsymbol{C}}(\boldsymbol{C})$ must be diagonal as well, while if $\BC$ is diagonal with possibly equal diagonal entries, then small diagonal perturbations will reduce the situation to the first case, and thus  
+$\tilde{W_\BC}(\BC)$ will be diagonal too as long as $\BC$ is so. Hence, as in our case, the matrix $\BC$ is diagonal, also $\tilde{W_\BC}(\BC)$ and the Piola-Kirchhoff stress tensor $\bm P(\bm F)$ given in (\ref{4.5}) have to be diagonal as well. 
 Therefore the boundary conditions in (\ref{4.4}) are automatically satisfied, and the one in (\ref{4.3}) reduces to the single equation
 \begin{equation}
 \label{4.8}
 \hat{W}_{\BC}\left((1+a(\lambda))^{2}\left(\Be_{t} \otimes \Be_{t}+\Be_{\theta} \otimes \Be_{\theta}\right)+(1-\lambda)^{2} \Be_{z} \otimes \Be_{z}\right)
  \Be_{t} \cdot \Be_{t}=0, 
 \end{equation}
-the solvability of which is basically guaranteed by the implicit function theorem. Indeed, the absence of prestress condition (P2) and (\ref{4.5}) for $\BF=\BI$ imply that equality (\ref{4.8}) is fulfilled at the point $(0,a(0))=(0,0).$ For the nonzero condition in the implicit function theorem at $\lambda=0$ we get 
-$$\BL_0\bm e_t\cdot \bm e_t\neq 0,$$
-which is fulfilled due to (P5). Consequently, the implicit function theorem guarantees the existence of a $C^2$ smooth $a(\lambda)$ function in some neighborhood of 
-$\lambda=0,$ which completes the proof of the existence part of Lemma~\ref{lem:4.1}. Finally we calculate
-$$\Bu^h(\Bx)=\frac{\partial \By(\Bx;h,\lambda)}{\partial \lambda}\bigg\vert_{\lambda=0}=
+which solvability is guaranteed by the implicit function theorem. Indeed, the absence of prestress condition (P2) and (\ref{4.5}) for $\BF=\BI$ imply that equality (\ref{4.8}) is fulfilled at the point $(0,a(0))=(0,0)$ and for $\lambda=0$, from (P5) we get 
+$$\BL_0\bm e_t\cdot \bm e_t\neq 0.$$
+Consequently, the implicit function theorem guarantees the existence of a $C^2$ smooth $a(\lambda)$ function in some neighborhood of 
+$\lambda=0,$ which completes existence part of Lemma~\ref{lem:4.1}. Finally, since
+$$\Bu_h(\Bx)=\frac{\partial \By(\Bx;h,\lambda)}{\partial \lambda}\bigg\vert_{\lambda=0}=
 a'(0)(t+\BGa\cdot\Be_t)\bm e_t+(a'(0)\BGa\cdot\Be_\Gth) \bm e_\Gth-z\bm e_z,$$
-which does not depend on $h$ and thus by the $C^2$ smoothness of the function $a(\lambda)$ we conclude that the conditions (\ref{2.4}) and (\ref{2.5})
+does not depend on $h$ and  $a(\lambda) \in C^2$ we can conclude that conditions (\ref{2.4}) and (\ref{2.5})
 are fulfilled as well. 
 
 \end{proof}
 
-Now in order to identify the minimization problem (\ref{2.11}), we need to calculate the linear elastic stress tensor. We have differentiating (\ref{4.6}) in $\lambda$ at $\lambda=0,$ that 
+Now in order to identify the minimization problem (\ref{2.11}) and the Korn constant, we need to calculate the linear elastic stress tensor $\nabla \Bu_h(x)$. We have differentiating (\ref{4.6}) in $\lambda$ at $\lambda=0,$ that 
 $$
-\nabla \Bu^h(x)=
+\nabla \Bu_h(x)=
 \begin{bmatrix} 
 a'(0) & 0 & 0\\[10pt]
 0 & a'(0) & 0\\[10pt] 
@@ -453,7 +530,7 @@ a'(0) & 0 & 0\\[10pt]
 \end{bmatrix},
 $$
 thus we get 
-$$e(\Bu^h(x))=
+$$e(\Bu_h(x))=
 \begin{bmatrix} 
 a'(0) &  0 & 0\\[10pt]
  0 & a'(0)& 0\\[10pt] 
@@ -461,7 +538,7 @@ a'(0) &  0 & 0\\[10pt]
  \end{bmatrix},
  $$
  where $a'(0)=\nu$ is the Poisson's ratio. As the material is isotropic we have for the 
- linear elastic stress tensor $\BGs_h$ the formula $\Gs_h^{ij}=\frac{2\mu\nu}{1-2\nu}\delta_{ij} \mathrm{Tr}(e(\Bu^h))+2\mu e_{ij}(\Bu^h),$ where $\mu$ is the Lam\'e parameter. This leads to the form 
+ linear elastic stress tensor $\BGs_h$ the formula $\Gs_h^{ij}=\frac{2\mu\nu}{1-2\nu}\delta_{ij} \mathrm{Tr}(e(\Bu_h))+2\mu e_{ij}(\Bu_h),$ where $\mu$ is the Lam\'e parameter. This leads to the form 
 \begin{equation}
 \label{4.9} 
 \BGs_h=
@@ -472,7 +549,7 @@ a'(0) &  0 & 0\\[10pt]
  \end{bmatrix},
  \end{equation}
 where $E$ is the Young's modulus. Now we can identify the set $V_h^d$ of destabilizing variations given in (\ref{2.9}), which will be the set all variations $\BGf\in V_h$ such that 
-$$-\int_{\Omega^h}(\BGs_h,\nabla\BGf^T\nabla\BGf)d\Bx=E(\left\|\phi_{t,z}\right\|^{2}+\left\|\phi_{\theta,z}\right\|^{2}+\left\|\phi_{z,z}\right\|^{2})\geq 0,$$
+$$-\int_{\Omega_h}(\BGs_h,\nabla\BGf^T\nabla\BGf)d\Bx=E(\left\|\phi_{t,z}\right\|^{2}+\left\|\phi_{\theta,z}\right\|^{2}+\left\|\phi_{z,z}\right\|^{2})\geq 0,$$
 i.e., it coincides exactly with $V_h.$ Finally, the minimization problem in (\ref{2.11}) to be studied reduces to 
 
 \begin{equation}
@@ -503,14 +580,14 @@ which will be addressed in Section~\ref{sec:4.4}.
 \subsection{Korn's Inequalities: Ansatz free lower bounds}
 
 \begin{proof}[Proof of Theorem~{\ref{th:3.3}}]
-\textbf{Part (i).} In what follows all the constants $C>0$ and $C_i>0$ will depend only on $L,\max k_\Gth,k,$ and $c.$ While we will do the proof for both spaces $V_h$ and $V_h^\Gth$ in parallel, we will provide additional details to address the more specific case $V=V_h^\Gth$ when needed. The tools and strategies developed in [cite{bib:Gra.Har.1},cite{bib:Gra.Har.4},cite{bib:Harutyunyan.1}] will be adopted. Namely, we introduce the so-called simplified gradient $\BG,$ which is obtained by inserting $t=0$ in the denominators of the second column of (\ref{3.2}):
+\textbf{Part (i).} In what follows all the constants $C>0$ and $C_i>0$ will depend only on $L,\max k_\Gth,k,$ and $c.$ While we will do the proof for both spaces $V_h$ and $V_h^\Gth$ in parallel, we will provide additional details to address the more specific case $V=V_h^\Gth$ when needed. The tools and strategies developed in \cite{bib:Gra.Har.1,bib:Gra.Har.4,bib:Harutyunyan.1} will be adopted. Namely, we introduce the so-called simplified gradient $\BG,$ which is obtained by inserting $t=0$ in the denominators of the second column of (\ref{3.2}):
 \begin{equation}
 \label{4.11}
 \BG=\begin{bmatrix} \phi_{t,t} & \phi_{t,\theta}-k_{\theta }\phi_\theta & \phi_{t,z}       \\[10pt]
 \phi_{\theta,t} & \phi_{\theta,\theta}+k_{\theta }\phi_t& \phi_{\theta,z}      \\[10pt] 
 \phi_{z,t} & \phi_{z,\theta}  & \phi_{z,z} \end{bmatrix}.
 \end{equation}
-For the sake of simplicity we will be proving all the estimates in Theorem~\ref{th:3.3} with the gradient $\nabla\BGf$ replaced by the simplified gradient $\BG$ first, and then we will make the reverse step by virtue of the obvious bounds 
+For the sake of simplicity, we will be proving all the estimates in Theorem~\ref{th:3.3} with the gradient $\nabla\BGf$ replaced by the simplified gradient $\BG$ first, and then we will make the reverse step by virtue of the obvious bounds 
  \begin{equation}
 \label{4.12}
 \|\BG^{sym}-e(\BGf)\|\leq \|\BG-\nabla\BGf\|\leq h\|\nabla \BGf\|\quad \text{for all}\quad \BGf\in H^1(\Omega_h),
@@ -518,17 +595,16 @@ For the sake of simplicity we will be proving all the estimates in Theorem~\ref{
 where $\BG^{sym}=\frac{1}{2}(\BG+\BG^T)$ is the symmetric part of $\BG.$ We aim to prove the following bounds 
 \begin{equation}
 \label{4.13}
-\left\|\phi_{t, z}\right\|^{2} \leq \frac{C}{h}\|e(\BGf)\|^{2},\qquad
-\left\|\phi_{\theta, z}\right\|^{2} \leq \frac{C}{\sqrt{h}}\|e(\BGf)\|^{2},\qquad
-\left\|\phi_{z, z}\right\|^{2} \leq C\|e(\BGf)\|^{2},\quad\text{for all}\quad \BGf\in V.
+\left\|\phi_{t, z}\right\|^{2} \leq \frac{C}{h}\|e(\BGf)\|^{2},\quad
+\left\|\phi_{\theta, z}\right\|^{2} \leq \frac{C}{\sqrt{h}}\|e(\BGf)\|^{2},\quad
+\left\|\phi_{z, z}\right\|^{2} \leq C\|e(\BGf)\|^{2},\quad\text{for all}\ \BGf\in V.
 \end{equation}
-First of all note that by density we can without loss of generality assume that the field $\BGf$ is of class $C^2.$ For the $zz$ component we have the obvious estimate 
+First of all, note that by density we can without loss of generality assume that the field $\BGf$ is of class $C^2.$ For the $zz$ component we have the obvious estimate 
 \begin{equation}
 \label{4.14}
 \|\phi_{z,z}\|\leq \|e(\BGf)\|.
-\end{equation}
-For the sake of simplicity, denote for any functions $f,g\in H^1(\Omega_h)$ the inner product $(f,g)=\int_{\Omega_h}fg.$ In order to estimate the 
-second component of the third column, we can integrate by parts using the boundary conditions on the component $\phi_z$ in $z,$ and periodicity in $\Gth:$
+\end{equation}%TODO: add to Notion
+For the sake of simplicity, denote for any functions $f,g\in H^1(\Omega_h)$ the inner product $(f,g)=\int_{\Omega_h}fg.$ In order to estimate the second component of the third column, we can integrate by parts using the boundary conditions on the component $\phi_z$ in $z,$ and periodicity in $\Gth:$
 \begin{align*}
 \|\phi_{\Gth,z}\|^2&=(\phi_{\Gth,z},2\BG^{sym}_{\Gth z}-\phi_{z,\Gth})\\ 
 &=2(\phi_{\Gth,z},\BG^{sym}_{\Gth z})-(\phi_{\Gth,z},\phi_{z,\Gth})\\
@@ -540,13 +616,14 @@ thus we obtain by the Cauchy-Schwartz inequality the estimate
 \label{4.15}
 \|\phi_{\Gth,z}\|^2\leq 6\|\BG^{sym}\|(\|\BG^{sym}\|+\|k_\Gth\phi_t\|)\leq C\|\BG^{sym}\|(\|\BG^{sym}\|+\|\phi_t\|).
 \end{equation}
-Next we recall the following Korn and Korn interpolation inequalities proven in [cite{bib:Gra.Har.4}, Thorems 3.1 and 3.2]:
+Next, we recall the following Korn and Korn interpolation inequalities proven in Theorems  3.2 and 3.1 of \cite{bib:Gra.Har.4} respectively:
 \begin{equation}
 \label{4.16}
 \|\nabla \BGf\|^{2} \leq \frac{C}{h^{3/2}}\|e(\BGf)\|^2,\quad \|\nabla \BGf\|^{2} \leq C\|e(\BGf)\|\left(\frac{\left\|\phi_{t}\right\|}{h}+\|e(\BGf)\|\right),
 \quad\text{for all}\quad \BGf\in V_h.
 \end{equation}
-Note that the inequalities in (\ref{4.16}) were derived in [cite{bib:Gra.Har.4}] under the boundary conditions in $V_h,$ thus we will need to prove similar to (\ref{4.16}) estimates for the vector space $V_h^\Gth$ too. To that end, we invoke the following universal Korn interpolation inequality proven in [cite{bib:Harutyunyan.1}, Theorem~3.1]. The estimate holds for any shells $\Omega_h$ with bounded principal curvatures and for any vector fields $\BGf\in H^1(\Omega_h)$ (even without any boundary conditions):
+
+Note that the inequalities in (\ref{4.16}) were derived in \cite{bib:Gra.Har.4} under the boundary conditions in $V_h,$ thus we will need to prove similar to (\ref{4.16}) estimates for the vector space $V_h^\Gth$ too. To that end, we invoke the following universal Korn interpolation inequality proven in ~\cite[Theorem~3.1]{bib:Harutyunyan.1}. The estimate holds for any shells $\Omega_h$ with bounded principal curvatures and for any vector fields $\BGf\in H^1(\Omega_h)$ (even without any boundary conditions):
 \begin{equation}
 \label{4.17}
 \|\nabla\BGf\|^2\leq C\left(\frac{1}{h}\|e(\BGf)\|\cdot\|\phi_t\|+\|\BGf\|^2+\|e(\BGf)\|^2\right),\qquad\text{for all}\qquad \BGf\in H^1(\Omega_h).
@@ -568,8 +645,8 @@ thus we get from (\ref{4.18}) an analogous estimate
 \|\nabla\BGf\|^2\leq C\left(\frac{1}{h}\|\BG^{sym}\|\cdot\|\phi_t\|
 +\frac{\|\phi_t\|^2}{h^{1/2}}+\|\BG^{sym}\|^2\right), \qquad\text{for all}\quad \BGf\in V.
 \end{equation}
-In order now to get a sharp estimate on the $z$ derivative of $\phi_t,$ we extend the cylinder $\Omega_h$ to the lower half-space by mirror reflection and accordingly the $t$ and $\Gth$ components of vector field $\BGf$ as even functions, and the $z$ component as an odd function, which is possible due to the imposed zero boundary conditions. The extended version are denoted by $\bar\Omega_h$ and $\bar \BGf,$ where we clearly have $\bar\BGf\in H^1(\bar\Omega_h).$ 
-The point is that this extensions simply double all the norms under consideration, thus we can prove all the inequalities under consideration for the extended fields. 
+In order now to get a sharp estimate on the $z$ derivative of $\phi_t,$ we extend the cylinder $\Omega_h$ to the lower half-space by mirror reflection, and accordingly the $t$ and $\Gth$ components of the vector field $\BGf$ as even functions, and the $z$ component as an odd function, which is possible due to the imposed zero boundary conditions. The extended version are denoted by $\bar\Omega_h$ and $\bar \BGf,$ where we clearly have $\bar\BGf\in H^1(\bar\Omega_h).$ 
+The point is that this extension simply doubles all the norms under consideration, thus we can prove all the inequalities under consideration for the extended fields. 
 The functions $\bar\phi_t,$ $\bar\phi_\Gth$ and $\bar\phi_z$ can then be written in Fourier space in the $z$ variable in $H^{1}:$ 
 \begin{equation}
 \label{4.21}
@@ -627,13 +704,15 @@ On one hand, it remains to note that (\ref{4.28}) combined with (\ref{4.12}), (\
 \label{4.29}
 \|\mathrm{col}_3(\nabla\BGf)\|^2\leq\frac{C}{h}\|e(\BGf)\|^2,\qquad\text{for all}\qquad \BGf\in V,
 \end{equation}
-which confirms one direction in (\ref{3.5}). The proof of the other direction is by an Ansatz construction and is postponed until Section~\ref{sec:4.4}. We now turn to the second part, where the curvature $k(\Gth)$ vanishes at finitely many points.\\
+which confirms one direction in (\ref{3.5}). The proof of the other direction is by an Ansatz construction and is postponed until Section~\ref{sec:4.4}.
+
+We now turn to the second part, where the curvature $k(\Gth)$ vanishes at finitely many points.\\
 \textbf{Part (ii). } We will prove the Ansatz-free lower bounds
 \begin{equation}
 \label{4.30}
 \|\mathrm{col}_3(\nabla\BGf)\|^2\leq\frac{C}{h^{8/5}}\|e(\BGf)\|^2,\qquad\|\nabla\BGf\|^2\leq\frac{C}{h^{12/7}}\|e(\BGf)\|^2,\qquad\text{for all}\qquad \BGf\in V.
 \end{equation}
-In the sequel we will be working with the extended vector field $\bar\BGf,$ but will drop the "bar" to keep the notation simpler. Assume first that the wavenumber $m$ is nonzero, i.e., $m\in\mathbb N.$ Observe that if $\norm{\phi_t}\leq \norm{e(\BGf)}$ then (\ref{4.18}) would imply (\ref{4.30}). We assume in the sequel that 
+In the sequel, we will be working with the extended vector field $\bar\BGf,$ but will drop the "bar" to keep the notation simpler. Assume first that the wavenumber $m$. Observe that if $\norm{\phi_t}\leq \norm{e(\BGf)}$ then (\ref{4.18}) would imply (\ref{4.30}) so we assume  that 
  \begin{equation}
  \label{4.31}
  \norm{e(\BGf)}\leq\norm{\phi_t}.
@@ -676,7 +755,7 @@ $$
 |\varphi'(\theta)|\leq\frac{2}{\delta}, & \theta\in [1,-1].	      
 \end{cases}
 $$
-We have by the Poincare inequality that  
+By Poincare inequality, we have that  
 \begin{align}
 \label{4.36}
 \norm{\phi^0_t}^2 &\leq \norm{\phi_t \varphi}^2\\  \nonumber
@@ -743,7 +822,7 @@ In the case $m=0$ there is no $z-$variable dependence, thus obviously have $\mat
 
 \subsection{The Ans\"atze}
 
-\noindent \textbf{Part (i).} An Ansatz realizing the asymptotics in (\ref{3.5}) can be constructed in numerous ways. For instance, one Kirchhoff-like Ansatz which can be as such was constructed in [cite{bib:Harutyunyan.2}], see also [cite{bib:Harutyunyan.3}]. We present it here for the convenience of the reader. One chooses 
+\noindent \textbf{Part (i).} An Ansatz realizing the asymptotics in (\ref{3.5}) can be constructed in numerous ways. For instance, one Kirchhoff-like Ansatz which can be as such was constructed in \cite{bib:Harutyunyan.2}, see also \cite{bib:Harutyunyan.3}. We present it here for the convenience of the reader. One chooses 
 \begin{equation}
 \label{4.45}
 \begin{cases}
@@ -755,7 +834,7 @@ In the case $m=0$ there is no $z-$variable dependence, thus obviously have $\mat
 where $W$ is a smooth function compactly supported in $(0,p)\times (0,L).$ Also, $W$ is chosen so that $W$ and all its first and second order derivatives be of order one. It is then easy to see that one gets for this choice $\|e(\BGf)\|\sim h$ and $\|\mathrm{col}_3(\nabla\BGf)\|=\sqrt{h}$ as $h\to 0.$ This gives the asymptotics 
 $$\frac{\|e(\BGf)\|^2}{\|\mathrm{col}_3(\nabla\BGf)\|^2}\sim h,$$
 as $h\to 0,$ i.e., (\ref{3.5}).\\
-\noindent \textbf{Part (ii): Second estimate in (\ref{3.7}).} The idea and the novelty in this case is to localize the Ans\"atze at the zero curvature points, and make use of the fact that the curvature vanishes. Namely, assume again the domain of the variable $\Gth$ is $[-1,1]$ and the point $\Gth=0$ is a zero curvature point, i.e., 
+\noindent \textbf{Part (ii) a): Second estimate in (\ref{3.7}).} The idea and the novelty, in this case, is to localize the Ans\"atze at the zero curvature points and make use of the fact that the curvature vanishes. Namely, assume again the domain of the variable $\Gth$ is $[-1,1]$ and the point $\Gth=0$ is a zero curvature point, i.e., 
 $\Gth(0)=0$ and $c\Gth^2\leq k(\Gth)\leq \frac{1}{c}\Gth^2$ for all $\Gth\in [-1,1].$ Let $\delta=h^\alpha$ be a small parameter ($\alpha>0$) yet to be chosen. We adjust (\ref{4.45}) as 
 \begin{equation}
 \label{4.46}
@@ -797,7 +876,7 @@ as $h\to 0.$
 
 
 
-\noindent \textbf{Part (iii): First estimate in (\ref{3.7}).} We construct the Ansatz utilizing the idea of linearization in $t$ suggested in [cite{bib:Gra.Har.1}]. Namely we seek the Ansatz in the following form 
+\noindent \textbf{Part (ii) B): First estimate in (\ref{3.7}).} We construct the Ansatz utilizing the idea of linearization in $t$ suggested in \cite{bib:Gra.Har.1}. Namely, we seek the Ansatz in the following form 
 \begin{equation}
 \label{4.47}
 \begin{cases}
@@ -806,7 +885,7 @@ as $h\to 0.$
 \phi_z=tw_1+w_2,
 \end{cases}
 \end{equation}
-where the functions $u,v_1,v_2,w_1$ and $w_2$ depend only on $\Gth$ and $z.$ The implified gradient will then be given by 
+where the functions $u,v_1,v_2,w_1$ and $w_2$ depend only on $\Gth$ and $z.$ The simplified gradient will then be given by 
 \begin{equation*}
 \BG=
 \begin{bmatrix} 
@@ -835,9 +914,9 @@ and the symmetric part will be
 \label{4.50}
 \BG^{sym}=
 \begin{bmatrix} 
-0       &      -\frac{1}{2}k(\theta)\left(tv_1+v_2\right)    &    0 \\[10pt]
--\frac{1}{2}k(\theta)\left(tv_1+v_2\right)    &     tv_{1,\theta}    &      \frac{1}{2}( t(v_{1,z}+w_{1,\theta})+v_{2,z}+w_{2,\theta})\\[10pt]
-0      &    \frac{1}{2}( t(v_{1,z}+w_{1,\theta})+v_{2,z}+w_{2,\theta})    &      tw_{1,z}+w_{2,z}
+0       &      -\frac{1}{2}k(\theta)\left(tv_1{+}v_2\right)    &    0 \\[10pt]
+-\frac{1}{2}k(\theta)\left(tv_1{+}v_2\right)    &     tv_{1,\theta}    &      \frac{1}{2}( t(v_{1,z}{+}w_{1,\theta}){+}v_{2,z}{+}w_{2,\theta})\\[10pt]
+0      &    \frac{1}{2}( t(v_{1,z}{+}w_{1,\theta}){+}v_{2,z}{{+}}w_{2,\theta})    &      tw_{1,z}{+}w_{2,z}
 \end{bmatrix} 
 \end{equation}
 Thus to make the $\Gth z$ component small, we need a new relationship:
@@ -868,7 +947,7 @@ w_1=-u_{,z},
 \end{cases}
 \end{equation}
 where $\delta=h^\beta$ ($\beta>0$) is a small parameter yet to be chosen. From the fact that $\BGa$ is of class $C^5$ and $k(0)=k'(0)=0,$ $k''(0)>0,$ we have for small enough $h$ the obvious bounds $|k'''(\theta)|+|k''(\theta)|\leq C,$ $|k'(\theta)|\leq C|\Gth|,$ $c\Gth^2\leq |k(\theta)|\leq \frac{1}{c}\Gth^2,$ for $\Gth\in (-\delta,\delta).$
-Consequently we can easily verify that
+Consequently, we can easily verify that
 $$
 \frac{\norm{\BG^{sym}}^2}{\norm{\BG}^2}\sim \max\{h^{6\beta}(h^{2-2\beta}+h^{6\beta}),h^{2-2\beta},h^2+h^{10\beta}\}
 $$
@@ -901,19 +980,19 @@ $$\frac{\norm{e(\BGf)}^2}{\norm{\nabla\BGf}^2}\sim h^{\frac{5}{3}}.$$
 
 
 \begin{proof}[Proof of Theorem~\ref{th:3.1}] 
-In this section we will study the stability of the homogeneous trivial branch given by (in (\ref{4.1}))
+In this section, we will study the stability of the homogeneous trivial branch given by (in (\ref{4.1}))
 \begin{equation}
 \label{4.54}
 y_t=(1+a(\lambda))(t+\bm\alpha(\theta)\cdot \bm e_t(\theta)), \qquad y_\theta=(1+a(\lambda))\bm\alpha(\theta)\cdot \bm e_\theta(\theta), \qquad y_z=(1-\lambda)z, 
 \end{equation}
 within the theory of buckling of slender structures presented in Section~\ref{sec:2}. Let us start by verifying that the conditions for the applicability of the theory are fulfilled. These consist of the conditions in Definition~\ref{def:2.1} and Theorem~\ref{th:2.5}. The conditions in Definition~\ref{def:2.1} have already been verified by 
-Lemma~\ref{4.1}, while the conditions in Theorem~\ref{th:2.5} immediately follow from Theorem~\ref{th:3.3} and Remark~\ref{rem:3.4}. This implies that in fact we can 
+Lemma~\ref{4.1}, while the conditions in Theorem~\ref{th:2.5} immediately follow from Theorem~\ref{th:3.3} and Remark~\ref{rem:3.4}. This implies that in fact, we can 
 calculate the buckling load as in (\ref{2.11}), which we have proven reduces to the minimization problem in (\ref{4.10}), i.e., 
 \begin{equation}
 \label{4.55}
 \Gl(h)=\inf_{\BGf\in V} \frac{\int_{\Omega_h} \left\langle \BL_{0} e(\BGf), e(\BGf)\right\rangle d\Bx}{E\cdot \|\mathrm{col}_3(\nabla\BGf)\|^{2}}.
 \end{equation}
-By properties (P4) and (P5) the tensor $\BL_0$ is positive definite on symmetric matrices, i.e., there exist a positive constant $C>0$ such that 
+By properties (P4) and (P5) the tensor $\BL_0$ is positive definite on symmetric matrices, i.e., there exists a positive constant $C>0$ such that 
 $$\frac{1}{C}\|e(\BGf)\|^2\leq \int_{\Omega_h} \left\langle \BL_{0} e(\BGf), e(\BGf)\right\rangle d\Bx \leq C\|e(\BGf)\|^2,$$
 for all $\BGf\in H^1(\Omega_h).$ Hence (\ref{4.52}) yields the asymptotics 
 \begin{equation}
@@ -931,11 +1010,10 @@ and Theorem~\ref{3.1} immediately follows from Theorem~\ref{th:3.3}.
 
 \section{Explicit trivial branch for Neo-Hookean materials} 
 \setcounter{equation}{0}
-
-In this section we provide an explicit form for the function $a(\lambda)$ in (\ref{4.1}) and (\ref{4.8}) for the special case of Neo-Hookean solids. 
+In this section, we provide an explicit form for the function $a(\lambda)$ in (\ref{4.1}) and (\ref{4.8}) for the special case of Neo-Hookean solids. 
 In that case the Piola-Kirchhoff stress tensor is given by  
 $$\BP(\BF)=\tilde \mu(\BF-\BF^{-T})+ 2\tilde{\lambda}(J-1)J\BF^{-T},\quad J=\det(\BF),$$
-where $\tilde \mu$ and $\tilde\Gl$ are the Lam'e parameters\footnote{Note that we are using the symbol "tilde" over the letters to avoid confusion between the Lam\'e parameter $\tilde\Gl$ and the loading parameter $\Gl.$}. Letting $b(\Gl)=(1+a(\lambda))^2,$ the system (\ref{4.3}) will reduce to 
+where $\tilde \mu$ and $\tilde\Gl$ are the Lam\'e parameters\footnote{Note that we are using the symbol "tilde" over the letters to avoid confusion between the Lam\'e parameter $\tilde\Gl$ and the loading parameter $\Gl.$}. Letting $b(\Gl)=(1+a(\lambda))^2,$ the system (\ref{4.3}) will reduce to 
 $$b(\Gl)^2(1-\lambda)^2-b(\Gl)(1-\lambda-\frac{\tilde\mu}{\tilde{\lambda}})-\frac{\tilde\mu}{\tilde{\lambda}}=0,$$
 which gives the solution
 $$b(\Gl)=\frac{1-\lambda-\frac{\tilde\mu}{\tilde{\lambda}}+\sqrt{(1-\lambda-\frac{\tilde\mu}{\tilde{\lambda}})^2+4(1-\lambda)^2\frac{\tilde\mu}{\tilde{\lambda}}}

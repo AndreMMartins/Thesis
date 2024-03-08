@@ -1,0 +1,77 @@
+\begin{center}
+\begin{figure}[h]
+   
+    \centering
+            \begin{subfigure}{.45\linewidth}
+            \centering
+            \begin{tikzpicture}[scale=0.70]
+
+
+                \filldraw[fill=gray!40] (0,2) rectangle (3,5);
+                \filldraw[fill=black] (2,3) rectangle (3,4);
+                \filldraw[fill=black] (0,4) rectangle (1,5);
+                
+                \filldraw[fill=gray!40] (6,2) rectangle (8,5);
+                \filldraw[fill=black] (6,2) rectangle (7,3);
+                
+                \filldraw[fill=gray!40] (6,7) rectangle (8,9);
+                \filldraw[fill=black] (7,7) rectangle (8,8);
+                
+                \filldraw[fill=gray!40] (0,7) rectangle (3,9);
+                \filldraw[fill=black] (1,8) rectangle (2,9);
+                
+                %draw a grid 10 by 10
+                \draw[step=1cm,gray,very thin] (0,0) grid (10,10);
+                %outside boundary darker
+                \draw[step=1cm,black,thin] (0,0) rectangle (10,10);
+                
+                 \filldraw[black] (0.5,1.5) circle (0.1cm) node[anchor=north, font=\large] {$D_{i,1}$};
+                 \draw[black] (0.5,1.5) -- (5.5,1.5);
+                 \draw[black,-{triangle 45}] (5.5,1.5) -- (5.5,8.4); 
+                 \filldraw[black] (5.5,8.4) circle (0.1cm) node[above, font=\large] {$D_{k,l}$}; 
+
+            \end{tikzpicture}
+                
+            \caption{For the case that the target cube $D_{k,l}$ is in a good column we can take a similar path as before.}
+            \label{fig:examplea}
+            
+            \end{subfigure}%
+            \hspace{0.5cm}
+            \begin{subfigure}{.45\textwidth}
+            \centering
+            \begin{tikzpicture}[scale=0.70]
+
+                \filldraw[fill=gray!40] (0,2) rectangle (3,5);
+                \filldraw[fill=black] (2,3) rectangle (3,4);
+                \filldraw[fill=black] (0,4) rectangle (1,5);
+                
+                \filldraw[fill=gray!40] (6,2) rectangle (8,5);
+                \filldraw[fill=black] (6,2) rectangle (7,3);
+                
+                \filldraw[fill=gray!40] (6,7) rectangle (8,9);
+                \filldraw[fill=black] (7,7) rectangle (8,8);
+                
+                \filldraw[fill=gray!40] (0,7) rectangle (3,9);
+                \filldraw[fill=black] (1,8) rectangle (2,9);
+                
+                %draw a grid 10 by 10
+                \draw[step=1cm,gray,very thin] (0,0) grid (10,10);
+                %outside boundary darker
+                \draw[step=1cm,black,thin] (0,0) rectangle (10,10);
+                
+                \filldraw[black] (0.5,1.5) circle (0.1cm) node[anchor=north, font=\large] {$D_{i,1}$};
+                \draw[black] (0.5,1.5) -- (4.5,1.5);
+                \draw[black] (4.5,1.5) -- (4.5,6.5); 
+                \draw[black,-{triangle 45}] (4.5,6.5) -- (1.6,6.5);
+                \filldraw[black] (1.5,6.5) circle (0.1cm) node[anchor=north, font=\large] {$D_{k,b_l}$}; 
+                
+                \end{tikzpicture}
+                
+                \caption{When the target cube is not in a good collum but it's in a good row we can take a path like shown in figure.}
+                
+            \end{subfigure}
+            \caption{In this grid we consider that the cubes do not intersect each other for better visualization. The black cubes represent bad cubes because $\omega_{i,j}$ is too big, while gray ones are cubes that are part of a bad row and a bad collumn.}
+            \label{fig:grid2}
+\end{figure}
+\end{center}
+ 

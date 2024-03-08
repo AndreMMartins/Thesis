@@ -1,9 +1,9 @@
-\begin{center}
-    \begin{figure}
+
+    \begin{figure}[h]
     \centering
-    \begin{subfigure}{.48\linewidth}
+    \begin{subfigure}{.45\linewidth}
     \usetikzlibrary {3d}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale = 0.9]
      
     %Base
     \draw[fill=gray, semitransparent] (-3,0,-1) -- (3,0,-1) -- (3,0,4) -- (-3,0,4) -- cycle;
@@ -57,14 +57,14 @@
      
     \end{tikzpicture}
     
-    \caption{Case (i) in Theorem 3.1: uniformly positive positive curvature, $k_\theta>k>0$}
+    \caption{Case (i) in Theorem 3.1: uniformly positive positive curvature, $k_\theta>k>0$ for all $\theta$.}
     \end{subfigure}%
     \hspace{0.5cm}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{.48\linewidth}
     %\includegraphics[scale=1]{0Curvature.jpg}
     %\centering
     \usetikzlibrary {3d}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale = 0.9]
      
     %Base
     \draw[fill=gray, semitransparent] (-3,0,-1) -- (3,0,-1) -- (3,0,4) -- (-3,0,4) -- cycle;
@@ -128,9 +128,7 @@
      \draw[line width=0.2pt,black, domain=-1:1]   plot (2*\x,\top,-\x^2*\x^2/2+3);
      %\draw (-0.5,0) node[anchor=north west] {{{\footnotesize{\color{black}$k(\theta_0)=0$}}}};
     \end{tikzpicture}
-    
     \caption{Case (ii) in Theorem 3.1: curvature vanish in 2 isolated points. Around $\theta_0$ the curve behaves like $\bm\alpha(\theta)=(\theta, \theta^4).$}
     \end{subfigure}
     \caption{Possible Cross-sections,  with positive curvatures}
     \end{figure}
-    \end{center}

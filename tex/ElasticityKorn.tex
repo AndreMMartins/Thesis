@@ -1,0 +1,234 @@
+\chapter{Elasticity, Fracture Mechanics and the importance of Korn Inequalities}
+\label{chap:Elasticity}
+\section{Introduction}
+
+Solid bodies, in general, are not absolutely rigid, so when suitable forces are applied both size and shape can change. When the induced changes are considerable, the body might not return to its original shape. However, depending on the material, the body might return to its original shape when the forces are removed. This property is called elasticity. The literature in Elastic Materials is very rich, and there are several introductory books that the reader can explore \cite{MS1,MS2,MS3,MS4}, with personal preference for the 3 book Series on Mathematical Elasticity from Phillipe G. Ciarlet \cite{MSP,MSP2,MSP3}.
+
+Understanding and predicting the deformation of elastic materials when subjected to external/internal forces has long been a fundamental pursuit in science and engineering. Cauchy started this field in 1825, and after that several models have been proposed to describe the behavior of materials, but the most significant ones boiled down to minimization techniques. Any body can possess energy in various way. If it is moving, it has kinetic energy. If it is in a gravitational field, it has gravitational potential energy. If it is stretched, compressed, or deformed in any way it has strain energy. So to predict how a body will deform we need to be able to minimize the total energy of the system.
+
+Modeling the energy of a body is not a trivial task, and it depends on the type of system we are trying to study.  Throughout this thesis, we will focus only on elastic bodies, an idealization of real materials, that when subjected to small external force, the body deforms, but once that force is removed, the body regains its original shape. This behavior contrasts with plastic deformation, where the material does not return to its original shape after the force is removed. 
+
+Traditional linear models for the elastic energy, have proven successful in describing the behavior of many materials under small deformations. However, these models fail to capture the intricate responses observed in substances that undergo large deformations. To overcome this problem, around 1845, Green introduced "Green elasticity", also known as Hyperelasticity. This model is able to offer a more robust framework by incorporating nonlinear strain-energy functions that better represent the complex behavior of these materials, however, the mathematical analysis of this model is more challenging.
+
+As we will see in the next section, this model still has a lot of limitations and can't model more complex behaviors like fracture of the materials. However, it is a good starting point to understand the minimization techniques used in the field of elasticity.  For more on this topic, Lanczos, C. does a great job explaining the connection of Calculus of Variations and Mechanics in his book \cite{MSVariational}.
+
+Even if the definition of an elastic material is questionable on many grounds, its use has nevertheless led to so many achievements in the analysis of structures, and its mathematical analysis has led
+to many challenging problems (some of them yet unsolved), therefore it still stands as one of the major achievements of continuum mechanics. 
+
+
+In this chapter, we will introduce the main concepts from material science that will be used in the rest of the Thesis. In section \ref{sec:hyper}, we will introduce the concept of hyperelasticity rigorously. After that, in section \ref{sec:introKorn} we will introduce Korn inequalities and their non-linear version, geometric rigidity inequality. We will focus on their importance in the field of elasticity, particularly on the development of plate and shell theory. Finally, in section \ref{sec:fracture} we will introduce the concept of fracture mechanics.
+
+\section{Hyperelastic bodies and Equilibrium equations}
+\label{sec:hyper}
+
+Let $\Omega\subset\mathbb{R}^3$ be a bounded, simply-connected, and open set with a Lipschitz boundary, representing an elastic body in its natural state, and $\Omega^\By$ the deformed state represented by $\By=\By (\Bx)$, with $\Bx\in\Omega$. Consider two close points in $\Omega$, $\Bx, \Bx + \BGd \Bx $,  then applying Taylor expansion to $\By (\Bx + \BGd\Bx)$ we get
+\begin{equation*}
+|\bm y(\bm x + \delta \bm x)-\bm y(\bm x)|^2 = \delta \bm x^T \nabla \bm y^T(\bm x)\nabla \By(\Bx)\delta\Bx + o(\delta \bm x^2),
+\end{equation*}
+The symmetric tensor $ \BC:= \nabla \bm y^T(\bm x)\nabla \By(\Bx)$ from the above expression is normally called in elasticity as the Cauchy-Green tensor, and it is very important to measure the strain of a deformed body. To understand why, consider a rigid deformation, \textit{i.e.}, a deformation that does not change the shape of the body, and its strain energy is zero. Then the deformation as the form
+$$\By^r = \Ba+R\Bx,\ a\in\R^3,\ R\in SO(3),$$
+and the Cauchy-Green tensor is given by
+$$\BC^r = R^TR = I,$$
+so the first possible  strain energy density function we can consider would be the so-called Green-St Venant strain tensor:
+\begin{equation}
+    W(\nabla \Bu) = \frac{1}{2}(C-I)=\frac{1}{2}(\nabla \Bu^T+\nabla \Bu + \nabla \Bu^T\nabla \Bu),
+\end{equation}
+where $u$ is the displacment vector, $\Bu(\Bx) = \By(\Bx) - \Bx$.
+
+%\begin{com}
+%    Add something about linear models and introduce lame parameters if possible
+%\end{com}
+
+However this model is not general enough, so in hyperelasticity, it's normally considered more general density energy functions. More details for this model can be seen in chapter 4 of \cite{MSP} or in  Part1 Section 6 of the original Ph.D. Thesis of Robert Kohn \cite{KohnThesis}. In general, the energy of a hyperelastic body is given by the following functional:
+\begin{equation}
+    \label{2.1}
+    E(\boldsymbol{y})=\int_{\Omega} W(\nabla \boldsymbol{y(\Bx)}) d \Bx -\int_{\partial \Omega} \boldsymbol{y} \cdot \boldsymbol{t}(\boldsymbol{x}) d S(\boldsymbol{x}),
+\end{equation}
+    where $W(\BF)\colon\mathbb R^{3\times 3}\to\mathbb R$ is the elastic energy density function of the body and $\Bt(\Bx)$ are dead traction loads applied to the boundary. Additionally, we will assume that $W$ is of class $C^3$ in some neighborhood of the identity matrix $\BI,$ and the symbols $W_{\BF}$ and $W_{\BF\BF}$ will denote the gradient and the Hessian of $W$ respectively, i.e.,
+    $$
+    W_{\BF}(\BF)=\left(\frac{\partial W}{\partial f_{ij}}(\BF)\right)_{1\leq i,j\leq 3} \quad\text{and} \quad
+    W_{\BF\BF}(\BF)=\left(\frac{\partial^2 W}{\partial f_{ij}\partial f_{kl}}(\BF)\right)_{1\leq i,j,k,l\leq 3},
+    $$
+    where $\BF=(f_{ij})_{1\leq i,j\leq 3.}$ Finally, $W$ will satisfy the following fundamental properties that will be essential for the rest of this Thesis:
+    
+\begin{enumerate}[label={(P\arabic*)}]
+    \item Positivity: $W(\BF)\geq 0$ for all $\BF\in\mathbb R^{3\times 3},$ and $W(\BI)=0.$
+    \item Absence of prestress: $W_{\BF}(\boldsymbol{I})=\mathbf{0}.$
+        
+        Note that this condition follows from (P1) and the fact that $W$ is $C^3$-regular at $\BI.$ However, this condition is traditionally mentioned as it has the mechanical meaning of the absence of prestress. 
+    \item Frame indifference: $W( \boldsymbol{R}\boldsymbol{F})=W(\boldsymbol{F})$ for every $\boldsymbol{R} \in S O(3).$
+     
+    This condition is a general axiom in physics that asserts that any "observable quantity" i.e.,
+    any quantity with an intrinsic character, such as a mass density, an acceleration vector, etc., must be independent of the particular orthogonal basis in which it is computed.
+    This condition is also known as material symmetry, and it means that the energy density function is invariant under rigid rotations of the body.
+    \item Local stability of the trivial deformation $\boldsymbol{y}(\boldsymbol{x})=\boldsymbol{x}:\left(\BL_{0} \boldsymbol{\xi}, \boldsymbol{\xi}\right) \geq 0$ for any 
+    $\boldsymbol{\xi} \in \mathbb{R}^{3 \times 3},$ where $\BL_{0}=W_{\BF\BF}(\BI)$ is the linearly elastic tensor of material properties.
+    \item Non-degeneracy: $\left(\BL_{0} \boldsymbol{\xi}, \boldsymbol{\xi}\right)=0$ if and only if $\boldsymbol{\xi}^{T}=-\boldsymbol{\xi}$.
+\end{enumerate}
+In addition to the above standard properties (P1)-(P5), we will assume that the material is isotropic,\textit{i.e.}, at a given point, the response of the material is the same in all directions. More formally,  the energy density $W$ satisfies the additional property (P6) below.
+\begin{itemize}
+    \item[(P6)] Isotropy: $W(\boldsymbol{F}\BR)=W(\boldsymbol{F})$ for every $\boldsymbol{R} \in S O(3).$    
+\end{itemize}
+Especially in Chapter 3, this condition will be essential, since it is known in mechanics that homogeneous deformations are possible for isotropic materials. Additionally, we will also see in Section~\ref{sec:4.1} that this assumption simplifies the job of proving the existence of a trivial branch.
+
+
+A very important consequence of frame indifference (P3), is that there exists energy function $W$ can actually be represented as a function that only depends on the Cauchy-Green tensor $\BC$, \textit{i.e.}, there exist $\tilde{W}$ such that
+$$W(\BF)=\tilde{W}(\BC).$$ 
+
+Another advantage of hyperelasticity is that the traditional equilibrium equations can be derived in a very simple way from the energy function. In fact, for some admissible set $\cal A$  of the deformations $\By(\Bx)$ (normally a subspace of $W^{1,p}(\Omega)$, $1<p$, that satisfy some Dirichlet or/and natural Neumann boundary conditions on some complementary portions of $\partial\Omega$ yielded from the loading),  the resulting deformation $\bar\By(\Bx)$ must be local minimizer of the energy $E(\By)$. So the minimizer $\bar\By$ must satisfy the Euler-Lagrange equations that match exactly the traditional equilibrium equations together with the natural boundary conditions:
+\begin{equation}
+    \label{eq:EL1}
+    \nabla\cdot \bm P(\nabla \bar\By(\Bx))=0, \qquad \Bx\in \Omega,
+\end{equation} 
+\begin{equation}
+    \label{eq:EL2}
+    \bm P(\nabla \bar\By) \Bn=\Bt(\Bx) \qquad \Bx\in\dOm,
+\end{equation}
+    where $\boldsymbol{P}(\boldsymbol{F})=W_{\boldsymbol{F}}(\boldsymbol{F})$  is the Piola-Kirchhoff stress tensor. 
+
+
+
+\section{Importance of Korn Inequalities in Elasticity}
+\label{sec:introKorn}\
+\subsection{Origin of Korn inequalities and Uniform Rigidity}
+Since Korn’s original contributions in 1906
+\cite{Korn1, Korn2}, Korn’s inequality has played a central role in
+the analysis of boundary value problems and linear elasticity. Later in 1979, Robert Kohn, in his PhD thesis \cite{KohnThesis} generalized and popularized this inequality. The non-linear elasticity field was still very recent, no general existence results were known and the existence of local minimizers under very strong conditions was just being published \cite{john}. However, for hyperelasticity models to be useful, these important results needed to be proved. Kohn then introduced the first version of Korn inequalities, hoping that would lead to more advances in the field and he was right. 
+Since then Korn inequalities have been useful not only in connection with basic theoretical issues such as existence and uniqueness but also in a variety of applications, for example, fundamental studies on the mathematical foundations of finite elements, stability theory, a priori estimates for solutions in terms of boundary data, fracture of bodies, dimension reduction of thin structures \textit{etc}.
+Additionally,  information on the dimensionless optimal constants appearing in the inequalities, the Korn
+constants were shown to also be of importance in many applications, and in the last decades, a lot of effort has been put into finding the optimal constants for different geometries and boundary conditions \cite{bib:Gra.Har.1,bib:Harutyunyan.1,bib:Gra.Har.4,bib:Harutyunyan.2,andre}.
+
+For more information on the history of Korn's inequalities, we refer the reader to the survey paper \cite{bib:Horgan} and the references therein. In this work, we will focus on Korn's inequalities for slender bodies (section \ref{sec:plate}), some weighted generalizations (chapter \ref{chap:wKorn}), and their importance in fracture mechanics (section \ref{sec:fracture} and chapter \ref{chap:KornSBD}).
+
+Korn inequalities can take different forms, however, in this thesis, we will use the following statement:
+
+\begin{theorem}[First and Second Korn Inequality] \label{KornGeneralDomain}
+     Let $n \geq 3$,$1<p<\infty$, and let the domain $\Omega \subset \mathbb{R}^n$ be open, bounded, connected, and Lipschitz.There there exists constants $C_1=C_1(\Omega,p)$ and $C_2=C_2(\Omega,p)$,such that for any vector field $\boldsymbol{u} \in W^{1,p}(\Omega:\R^n)$ there are $R\in\R^{n\times n}_{skw}$ such that:
+        \begin{equation}
+        \label{eq:Korn1}
+        \|\nabla \boldsymbol{u}-R\|_{L^p(\Omega)}^p \leq C_1\|e(\boldsymbol{u})\|_{L^p(\Omega)}^p .
+        \end{equation}
+        and
+        \begin{equation}
+        \label{eq:Korn2}
+        \|\nabla \boldsymbol{u}\|_{L^p(\Omega)}^p \leq C_2\left(\|e(\boldsymbol{u})\|_{L^p(\Omega)}^p+\|\boldsymbol{u}\|_{L^p(\Omega)}^p\right),
+        \end{equation}
+    where $e(\boldsymbol{u})=\frac{1}{2}\left(\nabla \boldsymbol{u}+\nabla \boldsymbol{u}^T\right)$ is the symmetric part of the gradient. 
+\end{theorem}
+The First and second Korn constants would normally be defined as the smallest constant that satisfies \ref{eq:Korn1} and \ref{eq:Korn2} respectively  \textit{i.e.}:
+\begin{equation}
+    \label{eq:KornConstant}
+    K_1(\Omega,p)=\inf_{\substack{\boldsymbol{u} \in W^{1,p} \\ R \in \R^{n\times n}_{skw}}}
+    \frac{\|\nabla \boldsymbol{u}-R\|_{L^p(\Omega)}^p}{\|e(\boldsymbol{u})\|_{L^p(\Omega)}^p} \qquad K_2(\Omega,p)=\inf_{\boldsymbol{u} \in W^{1,p}} \frac{\|\nabla \boldsymbol{u}\|_{L^p(\Omega)}^p}{\left(\|e(\boldsymbol{u})\|_{L^p(\Omega)}^p+\|\boldsymbol{u}\|_{L^p(\Omega)}^p\right)}.
+\end{equation}
+and both constants are invariant under rigid motions of the domain $\Omega$. This result shows up often with  $R=0$, however for that, we need to restrain the function $\Bu$ to a smaller set, for example, $W^{1,p}_0(\Omega)$.
+There are several proofs of these and similar inequalities, some of them can be found in \cite{KohnThesis, KornProof1, KornProof2, conti0, KornProof3}.
+
+When studying boundary-value problems in elasticity and solution of the equilibrium equations, the Korn inequalities are essential to prove the coercivity of the bilinear form, and thus existence of a solution. In fact, to construct the solution from a minimizing sequence one needs to bound $\|\nabla \boldsymbol{\Bu_k}\|_{L^p(\Omega)}$ for a minimizing sequence. However, from the fact that the total
+potential energy approaches its lower limit, one can immediately only conclude that the expression $\|e(\Bu_k)\|$ remains bounded, which will be enough after proving the desired Korn inequalities.
+
+In view of the fundamental importance of Korn’s inequality in linear elasticity, it is not
+surprising that a suitable nonlinear version would play a central role in models in nonlinear elasticity. In fact, the first nonlinear Korn inequality was proved by Friesecke, James and Muller \cite{bib:Fri.Jam.Mue.1} in 2002, and it has been essential to develop the theory of thin structures. This result is commonly known as Geometric Rigidity, and it is stated as follows:
+\begin{theorem}
+    \label{uniformRigidityGeneral}
+    Let $n \geq 2$, $1<p<\infty$, and let the domain $\Omega \subset \mathbb{R}^n$ be open, bounded, connected, and Lipschitz.There exists a constant $C(\Omega)$ with the following property: For each $\Bu\in W^{1,p}(\Omega,\R^n)$, there exists a rotation $S\in SO(n)$ such that:
+    \begin{equation}
+       \label{eq:URig1}
+       \|\nabla \boldsymbol{u}-S\|_{L^p(\Omega)}^p \leq C\|\operatorname{dist}(\nabla \Bu, SO(n))\|_{L^p(\Omega)}^p .
+    \end{equation}
+\end{theorem}
+In other words, this means that if a gradient is close to the set of all rotations (the deformation is close to a rigid motion), then the deformation is close to a rigid motion. 
+
+\subsection{Korn inequalities for slender bodies}
+\label{sec:plate}
+The derivation of plate/shell theories is a problem that has a long history with major contributions from Euler, D. Bernoulli, Cauchy, Kirchhoff, Love, E. and F. Cosserat, Von Karman, and many other recent mathematicians. Most of the theories were based on $\Gamma$-convergence for a controlled asymptotic dimension reduction, and then study the stability problem in a low-dimensional setting. However, this type of work couldn’t capture all types of energy. 
+In fact, the first rigorous derivation of the Kirchhoff-Love plate theory from three-dimensional nonlinear elasticity was obtained by Friesecke, James and Muller \cite{bib:Fri.Jam.Mue.1}, using the geometric rigidity result \ref{eq:URig1} as a key ingredient. From this paper was also possible to conclude the first asymptotics for the first Korn Constant:
+
+\begin{theorem}
+    \label{kornPlate}
+    Let $\Omega_h= S\times [-h,h]$ be a thin domain, where $S$ is a bounded with a Lipschitz boundary, representing the mid-surface of the shell. Then, for $u\in W^{1,2}$, there exists a constant skew-symmetric matrix $A$ a constant $C>0$ such that for all $h \in(0,1)$
+    \begin{equation}
+        \label{eq:KornPlate}
+        \|\nabla \boldsymbol{u}-A\|\leq \frac{C(S)}{h}\|e(\boldsymbol{u})\|.
+    \end{equation}
+\end{theorem}
+
+For general domains, the value of the Korn constant is not very important, however, it is well known in continuum mechanics that the rigidity of a shell $\Omega_h= S\times [-h,h]$ is closely related to the asymptotic of the optimal Korn’s constants. The energy of the plate will, of course, depend on $h$, in fact, we have that $E(\Omega_h)\sim h^\alpha$ where $\alpha$ depends on the time of deformation (stretching corresponds to $\alpha =1$, buckling to $\alpha = 2$ and bending to $\alpha = 3$ for example). While most of the first dimension reduction theory is based on $\Gamma-$convergence, the techniques used only work for $5/3\leq\alpha<2$. However, with the right Korn constants it is possible to extend this theory as we can see in \cite{bib:Fri.Jam.Mue.1}.
+
+To understand a bit more about the importance of the asymptotics of the Korn constants, consider:
+\begin{enumerate}
+    \item A minimizing sequence, $\Bu_h$, for the energy introduced before,
+    \item $\|e(\Bu)\|^p_{L^p(\Omega_h)}\sim E(\Bu_h)^p\sim h^\alpha$ for some $\alpha>0$,
+    \item $K_1^p\sim \frac{1}{h^\beta}$ for some $\beta>0$.
+\end{enumerate}
+Then, applying a change of coordinates in the thin direction we have that 
+\begin{align*}
+    \|\nabla \boldsymbol{\tilde{u}}_h-\tilde{A}_h\|^p_{L^p(\Omega_1)}&= \frac{C}{h}\|\nabla \boldsymbol{u}_h-A_h\|^p_{L^p(\Omega_h)}\\
+    &\leq \frac{C}{h^{\beta+1}}\|e(\Bu)\|^p_{L^p(\Omega_h)}\\
+    &\leq C h^{\alpha-\beta-1}.
+\end{align*}
+So to be able to control the gradient of the deformation in the limit and find a weakly convergent subsequence, we need to have that $\alpha-\beta-1\geq0$. As we will understand in Chapter 3, when studying different type the deformations and consequently different possible $\alpha$'s, we are also changing the set of admissable deformations, so the asymptotic of the Korn constant can also change accordingly, so the study of critical buckling loads is closely related to the asymptotic of the first Korn constant \cite{bib:Gra.Tru.,bib:Gra.Har.2,bib:Gra.Har.3,bib:Harutyunyan.3}. 
+
+Thus finding the optimal constants in Korn’s inequalities is a central task in problems concerning thin domains in general. Davit Harutyunyan and Yury Grabovsky, have been making great progress in this area, by proving the optimal constants for different Gaussian curvatures of middle surfaces and different boundary conditions \cite{bib:Gra.Har.1,bib:Gra.Har.4,bib:Gra.Har.1,bib:Harutyunyan.2}, we can recap most of the important results in the following theorem:
+
+\begin{theorem}[ Harutyunyan and Grabovsky, 2014/2017/2018  ]
+    Let $K_{G},\kappa_{\theta}$ and $\kappa_{z}$ be the Gaussian curvature and the principal curvatures of the mid-surface $S$. Then, for $u\in W_=^{1,2}$, there exists a constant $C>0$ such that for all $h \in(0,1)$
+    \begin{enumerate}
+    \item If $k_z=k_\theta=0$ in an open set
+
+    { $$
+        \|\nabla \boldsymbol{u}\|^{2} \leq \frac{C}{h^2}\|e(\boldsymbol{u})\|^{2}.$$}
+       
+    \item If $K_{G}>0$, 
+
+    { $$\|\nabla \boldsymbol{u}\|^{2} \leq \frac{C}{h}\|e(\boldsymbol{u})\|^{2}.$$}
+
+    \item If $K_{G}<0$,
+    { $$
+    \|\nabla \boldsymbol{u}\|^{2} \leq \frac{C}{h^{4 / 3}}\|e(\boldsymbol{u})\|^{2}.$$}
+    
+    \item If $k_z=0$ and $k_\theta>0$
+     
+    {
+    $$
+    \|\nabla \boldsymbol{u}\|^{2} \leq \frac{C}{h^{3/2}}\|e(\boldsymbol{u})\|^{2}.$$}
+    \end{enumerate}
+    \end{theorem}
+Additionally, the author of this thesis in joint work with Harutyunyan also proved in \cite{andre}, as demonstrated in the next chapter:
+\begin{theorem}
+    Let $K_{G},\kappa_{\theta}$ and $\kappa_{z}$ be the Gaussian curvature and the principal curvatures of the mid-surface $S$. Then there exists a constant $C>0$ such that for all $h \in(0,1)$. If $\kappa_z=0$ and $\kappa_\theta>=0$, with $\kappa_\theta(z,\theta)=\kappa_\theta(\theta)$, having finitely many zeros, then
+    $$C_1h^{12/7}\leq \inf_{\BGf\in V}\frac{\|e(\BGf)\|^2}{\|\nabla \BGf\|^2}\leq C_2h^{5/3}.$$
+\end{theorem}
+
+\section{ Variational Formulation of Fracture Mechanics}
+
+\label{sec:fracture}
+The study of the fracture of materials is a very important topic in material science, and it has been studied for a long time. In fact, the first studies on the fracture of materials date back to the 17th century, when Robert Hooke studied the fracture of glass and metals. However, the first mathematical model for the fracture of materials was proposed by Griffith in 1921 \cite{FracGrif}, and it was the first theory based on energy considerations for the fracture of brittle materials. Even if the formulation used today is not exactly the same as the one introduced by Griffith, this is still the most used model nowadays. Several books and papers discuss the variational approach to Fracture Mechanics \cite{FracBook, Frac2, Frac3}, \textit{etc}, but in this section, we will follow the approach of Francfort and Marigo \cite{Frac1}. 
+
+Extending the approach from elasticity to fracture mechanics is not trivial, and it has two main challenges. First, we need to reconsider the space of admissible deformations, since we need to allow discontinuities, and second, we need to take into account that it takes energy to create and expand the crack. In the spirit of Griffith, if $k(\Bx)>0$ represents the energy required to create an "infinitesimal" crack at the point $\Bx$, then the energy of a crack $\Gamma$ is given by
+\begin{equation*}
+    E_s(\Bu)=\int_{\Gamma} k(\Bx)  d\mathcal{H}^{n-1}(\Bx),
+\end{equation*}
+where $\mathcal{H}^{n-1}$ is the $(n-1)$-dimensional Hausdorff measure (see \cite{evansGa} for more details). Additionally, provided that $\Gamma$ is a $\CH^{n-1}$-rectifiable, this can be generalized a bit more to incorporate the effect of toughness anisotropy and the size of the jump by considering the following generalized  energy :
+\begin{equation*}
+    \label{eq:crackEnergy}
+    E_s(\Bu)=\int_{J_\Bu} k(\Bx,\Gv(\Bx),[\Bu(\Bx)]\cdot\Gv(\Bx))d\mathcal{H}^{n-1}(\Bx),
+\end{equation*}
+where $[\Bu(\Bx)]$ denotes the jump in the direction orthogonal to the crack, $\nu(\Bx)$, and in this case the crack is represented by the jump set of the deformation $J_\Bu$ (more details in the definition of the jump set will be given in section \ref{sec:BD}).
+
+Away from the crack, the energy is simply given by the elastic energy, so the total energy of the system is just the sum of the two energies:
+\begin{equation*}
+    \label{eq:totalEnergy}
+    E(\Bu)=\int_\Omega W(\nabla \Bu(\Bx))d\Bx + \int_{J_\Bu} k(\Bx,\Gv(\Bx),[\Bu(\Bx)]\cdot\Gv(\Bx))d\mathcal{H}^{n-1}(\Bx).
+\end{equation*} 
+
+The first approaches to minimize this energy considered the crack $\Gamma$ and the deformation $\Bu$ different objects, bringing extra complexity to the problem. However, this can be simplified if we choose the correct space of admissible function. In section \ref{sec:BD}, this exposure will be presented more rigorously, however, the goal here is to provide the intuition on how functions of bounded deformations have desired properties. 
+
+They are integrable functions where the symmetric part of the gradient only exists in the sense of distributions. Additionally, it was proven that their jump set is a $\CH^{n-1}$-rectifiable set as desirable and its symmetric gradient can be decomposed into an absolutely continuous part and a singular part by Lebesgue decomposition, where the singular part is responsible for the crack. So for a bounded deformation function, we have that:
+$$\int_\Omega e(\Bu) =\int_\Omega e_{ac} (\Bu) d\Bx + \int_{J_\Bu} e_s(\Bu) d \CH^{n-1}(\Bx),$$
+where $e_{ac}$  absolutely continuous part  of $e(\Bu)$ and $e_s$ is the singular part. 
+
+Although this space fits the problem perfectly, their mathematical properties have only been studied very recently \cite{Ambrosio1997, RogerBook, RogerPaper}, and to be able to approach this minimization problem with rigor we need several approximations, compactness, and Korn-type results. In fact, in the last decade, several authors have been working on this, and we can now prove the existence of minimizers away from the jump set \cite{FracExistence}.
+
+Finally, several Korn inequalities have also been proven for general domains \cite{kornBD1, kornBD2,
+kornBD3}, but no work for plates has been done. Sp in the last chapter of this Thesis we will introduce the first Korn inequality for bounded deformations in thin domains, which will be essential to the development of fracture mechanics theory of plates.

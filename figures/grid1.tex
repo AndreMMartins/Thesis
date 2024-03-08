@@ -1,0 +1,28 @@
+    \usetikzlibrary{arrows.meta}
+    \begin{figure}[ht]
+    \centering
+
+    \begin{tikzpicture}[scale=0.50]
+    %draw a grid 10 by 10
+    \draw[step=1cm,gray,very thin] (0,0) grid (10,10);
+    %outside boundary darker
+    \draw[step=1cm,black,thin] (0,0) rectangle (10,10);
+    %draw point in position 0.5cm and 7.5cm
+    \filldraw[black] (0.5,3.5) circle (0.1cm) node[anchor=north, font=\large] {$D_{i,1}$};
+    % Add a label below the point
+    
+    %add line from 0.5cm and 7.5cm to to 7.5 to 7.5
+    \draw[black] (0.5,3.5) -- (7.5,3.5);
+    \draw[black,-{triangle 45}] (7.5,3.5) -- (7.5,7.4);
+    %make an arrow for  0 0 to 1 1 with a big head
+ 
+
+    %add legend above the tip of the arrow
+    \filldraw[black] (7.5,7.5) circle (0.1cm) node[above, font=\large] {$D_{k,l}$};
+
+    \end{tikzpicture}
+    
+    \caption{In this grid we consider that the cubes do not intersect each other for better visualization. The arrow represents one of the possible paths we can take.}
+    \label{fig:grid1}
+    \end{figure}
+ 

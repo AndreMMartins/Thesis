@@ -1,0 +1,852 @@
+\begin{definition}[Space of Bounded Measures] Let $U$ be an open set in $\R^n$, and $\mu\in D'(U)$ be a linear transformation on $C^\infty_0(U)$ then we say that $\mu$ is  bounded if
+$$
+\sup_{\substack{\phi \in {C}_0^{\infty}(U) \\ |\phi(x)| \leq 1}} <\mu, \phi> < \infty$$
+
+In this work we will call the set of all bounded measures in $U$ to be $M_1(U)$ with norm $\|\mu\|_{M_1(U)}=\int_U|\mu|=|\mu|(U)$ defined by the previous equation.
+\end{definition}
+\begin{remark}
+Is important to notice that we will $\mu$ is not necessary a positive measure, like is use in \cite{evansGa}
+\end{remark}
+
+\begin{definition}[Total variation measure]
+Let $\mu\in M_1(U)$  and let then we can define two positive measures defined on every open set $V\subset U$ (Will be more rigorous in the future)
+\begin{align*}
+   \mu^+&=\sup\left\{\mu(A)\mid B\subset V \right\}\\
+   \mu^+&=-\inf\left\{\mu(A)\mid B\subset V \right\}
+\end{align*}
+so we have that $\mu=\mu^+-\mu^-$ and the total variation of $\mu$ will be defined as
+$$|\mu|(V)=\mu^+(V)-\mu^-(V)=\sup_{\substack{\phi \in {C}_0^{\infty}(V) \\ |\phi(x)| \leq 1}} <\mu, \phi>.$$
+Notice, $|\mu|$ is a positive Radon measure.
+\end{definition}
+
+
+\begin{question}
+Is this rigorous enough? Or is it not correct? I will try to change all the results on Evan to get according to this so we can have a base frame work from now on
+\end{question}
+
+Additionally we can have matrix valued matrix, $\mu= \{\mu_{ij}\}$. We say that $\mu$ is a Radon/Bounded measure if $\mu_{ij}$ are Radon/bounded measures.  Additionally we can define the real-valued Randon measure
+$$
+(\mu \xi, \xi):=\sum_{i, j=1}^n \xi^i \xi^j \mu_{i j}, \qquad (\mu \xi, \xi)(B)= (\mu(B) \xi, \xi)
+$$
+It is easy to check that for any basis $\xi_1, \ldots, \xi_n$ of $\mathbf{R}^n$ there exists a constant $c$, depending on the basis, such that
+$$
+|\mu| \leqq c \sum_{i, j=1}^n\left|\left(\mu\left(\xi_i+\xi_j\right), \xi_i+\xi_j\right)\right|.
+$$
+\begin{lemma}
+Let $f \in L^1\left(\mathbf{R}^n ; \mathbf{R}^n\right)$, let $\mu=\left\{\mu_{i j}\right\}$ be a symmetric matrix of Radon measures in $\mathbf{R}^n$ and assume that, for any $\xi \in \mathbf{R}^n,|(\mu \xi, \xi)|$-almost every point of $\mathbf{R}^n$ is a Lebesgue point of $f^{\xi}$. Then $|\mu|$-almost every point of $\mathbf{R}^n$ is a Lebesgue point for $f$.
+\end{lemma}
+
+\begin{question}
+ All the following results are valid for signed measures right?
+\end{question}
+\begin{definition} Assume $\mu$ and $\nu$ are Borel measures on $\mathbb{R}^n$.
+\begin{enumerate}
+    \item The measure $\nu$ is absolutely continuous with respect to $\mu$, written
+    $$\nu<<\mu$$
+provided $\mu(A)=0$ implies $\nu(A)=0$ for all $A \subseteq \mathbb{R}^n$.
+\item The measures $\nu$ and $\mu$ are mutually singular, written
+$$\nu \perp \mu, \quad$$ 
+if there exists a Borel subset $B \subseteq \mathbb{R}^n$ such that 
+$$
+\mu\left(\mathbb{R}^n-B\right)=\nu(B)=0
+$$
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Lebesgue Decomposition Theorem] Let $\nu$ and $\mu$ be Radon measures on $\mathbb{R}^n$.
+\begin{enumerate}
+    \item Then
+$$
+\nu=\nu_{\mathrm{ac}}+\nu_{\mathrm{s}},
+$$
+where $\nu_{\mathrm{ac}}, \nu_{\mathrm{s}}$ are Radon measures on $\mathbb{R}^n$ with
+$$
+\nu_{\mathrm{ac}}<<\mu,\ \  \nu_{\mathrm{s}} \perp \mu \text {. }
+$$
+\item Furthermore,
+$$
+D_\mu \nu=D_\mu \nu_{\mathrm{ac}},\ \  D_\mu \nu_{\mathrm{s}}=0 \quad \mu \text {-a.e.; }
+$$
+and consequently
+$$
+\nu(A)=\int_A D_\mu \nu d \mu+\nu_s(A)
+$$
+for each Borel set $A \subseteq \mathbb{R}^n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+We call $\nu_{\mathrm{ac}}$ the absolutely continuous part and $\nu_{\mathrm{s}}$ the singular part of $\nu$ with respect to $\mu$. And this results are mainly applied for $\mu=\CL ^n$
+\end{definition} 
+
+\begin{theorem}[Riesz Representation Theorem] Let
+$$
+L: C_c\left(\mathbb{R}^n ; \mathbb{R}^m\right) \rightarrow \mathbb{R}
+$$
+be a linear functional satisfying
+$$
+\sup \left\{L(f)\left|f \in C_c\left(\mathbb{R}^n ; \mathbb{R}^m\right),\right| f \mid \leq 1, \operatorname{spt}(f) \subseteq K\right\}<\infty \quad(\star)
+$$
+for each compact set $K \subset \mathbb{R}^n$. Then there exists signed Radon measure $\mu$ on $\mathbb{R}^n$ such that
+$$L(f) =\int_{\R^n} f \mu$$
+
+for all $f \in C_c\left(\mathbb{R}^n ; \mathbb{R}^m\right)$.
+Additionally we have that
+$$
+|\mu|(V):=\sup \left\{L(f)\left|f \in C_c\left(\mathbb{R}^n ; \mathbb{R}^m\right),\right| f \mid \leq 1, \operatorname{spt}(f) \subseteq V\right\} .
+$$
+\end{theorem}
+
+\begin{question} Theorem in Evans for positive measures:
+\begin{theorem}[Weak convergence of measures]. Let $\mu, \mu_k(k=1,2, \ldots)$ be Radon measures on $\mathbb{R}^n$. The following three statements are equivalent:
+\begin{enumerate}
+    \item $\lim _{k \rightarrow \infty} \int_{\mathbb{R}^n} f d \mu_k=\int_{\mathbb{R}^n} f d \mu$ for all $f \in C_c\left(\mathbb{R}^n\right)$
+    \item(Lower semicontinuity) $\limsup _{k \rightarrow \infty} \mu_k(K) \leq \mu(K)$ for each compact set $K \subseteq \mathbb{R}^n$ and $$\mu(U) \leq \lim \inf _{k \rightarrow \infty} \mu_k(U)$$ for each open set $U \subseteq \mathbb{R}^n$.
+    \item $\lim _{k \rightarrow \infty} \mu_k(B)=\mu(B)$ for each bounded Borel set $B \subseteq \mathbb{R}^n$ with $\mu(\partial B)=0$
+\end{enumerate}
+\end{theorem}
+\end{question}
+
+\begin{theorem}[Lower semicontinuity]
+Let $\mu_k\in M_1(U)$ a sequence of measures that converge weakly to $\mu$ and $V\subset U$ then
+$$
+|\mu|(V) \leq \liminf _{k \rightarrow \infty}|\mu_k|(V)
+$$
+\end{theorem}
+\begin{lemma}
+Let $\mu_k\in M_1(U)$ a sequence of measures that converge weakly to $\mu$ and $|\mu_j|(U)\to|\mu|(U)$ then for any Borel set $V\subset U$, such that $|\mu|(U\cap\partial V)=0$ then
+$$|\mu_k|(V)\to|\mu|(V)$$
+\end{lemma}
+\begin{comment}
+So  basically we have i) from theorem 2.8 implies ii) and iii) dor signed measures also. the equivalence is also true  right?
+\end{comment}
+\begin{theorem}[Convolution with measure] Let 
+function $\eta$ belonging to $\mathscr{C}_0^{\infty}\left(\mathbb{R}^n\right)$, and $\mu\in M_1(\R^n)$ then the convolution $\eta * \mu$ is a function in $\mathscr{C}^{\infty}\left(\mathbb{R}^n\right)$. Additionally we have that
+\begin{enumerate}[label=(\roman*)]
+\item $\int_{\mathbb{R}^n} |\eta * \mu| d x \leq \int_{\mathbb{R}^n}|\eta| d x  \int_{\mathbb{R}^n}|\mu|$
+\item $\int_{\mathbb{R}^n}\left|\eta_\epsilon \star \mu\right| d x \leq \int_{\mathbb{R}^n} |\mu|$
+\item
+$$
+\left\{\begin{array}{l}
+\eta_\epsilon * \mu\rightharpoonup \mu \text { in } M_1\left(\mathbb{R}^n\right) \\
+\int_{\mathbb{R}^n}\left|\eta_\epsilon * \mu\right| d x\to \int_{\mathbb{R}^n}|\mu|
+\end{array}\right.
+$$
+\end{enumerate}
+
+If $\mu$ is not define in $\R^n$ we can consider any compact supported function $\phi \in C^\infty_0(U)$ and consider the  measure $\phi\mu\in M_1(U)$ instead.
+\end{theorem}
+
+\begin{com}
+Maybe add something about Hausdorff measures
+\end{com}
+
+
+\section{Approximation and Compactness}
+
+In both cases we can prove that the variation measure is lower semicontinuity and consequently we can have a local approximation with smooth functions.
+
+
+\subsection{Bounded Variation}
+
+\begin{theorem}[Lower semicontinuity]
+
+Suppose $f_k \in B V(U)(k=1, \ldots)$ and
+$$
+f_k \rightarrow f \text { in } L_{\mathrm{loc}}^1(U)
+$$
+Then
+$$
+\|D f\|(U) \leq \liminf _{k \rightarrow \infty}\left\|D f_k\right\|(U)
+$$
+\end{theorem}
+\begin{theorem}[Local approximation by smooth functions]
+
+Assume $f\in BV(U)$. Then there exist functions $\left\{f_k\right\}_{k=1}^{\infty} \subset B V(U) \cap C^{\infty}(U)$ such that
+\begin{itemize}
+    \item[(i)] $f_k \rightarrow f$ in $L^1(U)$ and
+    \item[(ii)] $\left\|D f_k\right\|(U) \rightarrow\|D f\|(U)$ as $k \rightarrow \infty$.
+    \item [(iii)](theorem 5.4 I think) $\left\|D f_k\right\|  \rightharpoonup \|D f\|$ as $k \rightarrow \infty$.
+\end{itemize}
+\end{theorem}
+\begin{theorem}[Compactness for BV functions]
+ Let $U \subset \mathbb{R}^n$ be open and bounded, with Lipschitz boundary $\partial U$. Assume $\left\{f_k\right\}_{k=1}^{\infty}$ is a sequence in $B V(U)$ satisfying
+$$
+\sup _k\left\|f_k\right\|_{B V(U)}<\infty .
+$$
+Then there exists a subsequence $\left\{f_{k_j}\right\}_{j=1}^{\infty}$ and a function $f \in B V(U)$ such that
+$$
+f_{k_j} \rightarrow f \quad \text { in } L^1(U)
+$$
+as $j \rightarrow \infty$.
+\end{theorem}
+\begin{com}
+the sequence comes from regularization so we can use the same theorem we use from bounded deformation.
+I think it should the in $L^{1star}$
+\end{com}
+\subsection{Bounded Deformation}
+
+Besides the norm topology defined by $\|f\|_{BD(U)}$ there are other 2 important topology defined in \cite{RogerBook} Chapter II, section 3.
+\begin{definition}[Weak topology]
+The weak topology in $BD(U)$ is the topology defined by the family of norms and seminorms:
+$$\|f\|_{L^1(U)},\ \  \left| \int_U  \phi E_{ij} f \right| , \phi \in C^\infty_0(U).$$
+
+in this topology, $f_k$ converges to $f$ if
+$$\begin{cases} f_k\to f in L^1(U),\\
+E_{ij}f_k \to E_{ij}f \ weakly\ in \ M_1(U).\end{cases}
+$$
+\end{definition}
+So for every bounded sequence in BD(U) there is a weakly convergent subsequence.
+
+\begin{definition}[Intermediate topology]
+The intermediate topology can be defined by the distance 
+$$\|f-g\|_{L^1(U)}+\left||Ef|(U)-|Eg|(U)\right|,$$
+
+so $f_k$ converges to $f$ in the intermediate topology if $f_k$ converges in the weakly topology and additionally
+$$
+|Ef_k|(U)\to |Ef|(U)
+$$
+\end{definition}
+
+\begin{theorem}
+ Let $f\in BD(U)$ $f_\epsilon= \eta_\epsilon * f$ (some details need to be consider here for $U\neq \R^n$, but let it keep it simple) then when $\epsilon\to 0$ we have that
+$$\left\{\begin{array}{l}
+f_\epsilon \rightarrow f \text { in } L^1(U) \\
+f_\epsilon(x)\to f^*(x) \text{ for all Lebesgue points},\\
+
+E_{i j}f_\epsilon\to E_{i j}f \text { weakly in } M_1(U)
+\end{array}\right.
+$$
+and
+$$
+\left\{\begin{array}{l}
+\left|E_{i j}f_\epsilon\right|(V)\to\left|E_{i j}f\right|(V), \\
+\text{for all } V\subset\bar{V}\subset U \text{such that } |E_{i j}f|(\partial V) = 0.
+\end{array}\right.$$
+
+Additionally we have that  if $f_k\in C^1$ converges to $f$ in $L^1$ and $$\int|Ef_k|dx < \infty$$
+then $f_k$ converges weakly  to $f$ in $BD(U)$, and in particular $f\in BD(U)$
+\end{theorem}
+\begin{proof} check \cite{RogerBook}, page 147-148, and for the second part page 158/159\end{proof}
+
+\begin{theorem}[More approximation of functions in $BD(U)$( Theorem 3.2,3.3 in \cite{RogerBook}]\ \ 
+$C^\infty(\bar{U})$ is dense in the space $BD(U)$ endowed with the intermediate topology.
+
+\end{theorem}
+
+The following results are from the paper " Compactness and lower semicontinuity properties in $SBD(\Omega)$. (Read Section about the Jump set before)
+\begin{theorem}
+Let $\phi:[0,+\infty[\rightarrow[0,+\infty[$ be a non-decreasing function such that
+$$
+\lim _{t \rightarrow+\infty} \frac{\phi(t)}{t}=+\infty .
+$$
+Let $\left\{f_h\right\}$ be a sequence in $S B D(U)$ such that
+$$\int_{U}\left|f_h\right| d x+\left|E^j f_h\right|(U)+\int_{U} \phi\left(\left|\mathcal{E} f_h\right|\right) d x+\mathcal{H}^{n-1}\left(J_{f_h}\right) \leq K$$
+for some constant $K$ independent of $h$. Then there exist a subsequence, still denoted by $\left\{f_h\right\}$, and a function $f \in S B D(U)$ such that
+\begin{align*}
+f_h \rightarrow f & \text { strongly in } L_{\mathrm{loc}}^1\left(U ; \mathbf{R}^n\right) \\
+\mathcal{E} f_h \rightharpoonup \mathcal{E} f & \text { weakly in } L^1\left(\Omega ; \mathbf{M}_{\mathrm{sym}}^{n \times n}\right) \\
+E^j f_h \rightharpoonup E^j f & \text { weakly }{ }^* \text { in } \mathcal{M}_b\left(\Omega ; \mathbf{M}_{\mathrm{sym}}^{n \times n}\right), \\
+\mathcal{H}^{n-1}\left(J_f\right) &\leq \liminf _{h \rightarrow \infty} \mathcal{H}^{n-1}\left(J_{f_h}\right)
+\end{align*}
+\end{theorem}
+
+
+\begin{corollary}
+Let $\left\{f_h\right\}$ be a sequence in $S B D(\Omega)$ which satisfies the bounds of the previous theorem and converges in $L_{\mathrm{loc}}^1\left(U ; \mathbf{R}^n\right)$ to a function $f \in S B D(U)$. Then
+
+\begin{align*}
+\int_{\Omega} f(x, \mathcal{E} u) d x & \leq \liminf _{h \rightarrow \infty} \int_{\Omega} f\left(x, \mathcal{E} u_h\right) d x \\
+\int_{J_u} g\left(x,\left(u^{+}-u^{-}\right) \odot \nu_u\right) d \mathcal{H}^{n-1} \\
+& \leq \liminf _{h \rightarrow \infty} \int_{J_{u_h}} g\left(x,\left(u_h^{+}-u_h^{-}\right) \odot \nu_{u_h}\right) d \mathcal{H}^{n-1}, \\
+\mathcal{H}^{n-1}\left(J_u\right) & \leq \liminf _{h \rightarrow \infty} \mathcal{H}^{n-1}\left(J_{u_h}\right) .
+\end{align*}
+for 
+\begin{enumerate}
+    \item $f(x, \cdot)$ is convex and lower semicontinuous on $\mathbf{M}_{\mathrm{sym}}^{n \times n}$, 
+    \item $f(\cdot, A)$ is measurable on $\Omega$,
+    \item $g$ is lower semicontinuous on $\bar{\Omega} \times \mathbf{M}_{\mathrm{sym}}^{n \times n}$,
+    \item $g(x, \cdot)$ is convex and positively 1-homogeneous on $\mathbf{M}_{\mathrm{sym}}^{n \times n}$.
+\end{enumerate}
+\end{corollary}
+
+More compactness results in the GSBD section.
+
+\section{Trace Theorems}
+
+On this section we will always consider that $U$ is open and bounded, with a Lipschitz boundary $\partial U$. This means that $\partial U$  is locally a graph of a Lipschitz continuous function so there exists an outer unit normal vector $\nu$, $\mathcal{H}^{n-1}$ almost everywhere on $\partial U$
+
+\subsection{Bounded Variation}
+\begin{theorem}[Traces of BV functions]
+ Assume $U$ is open and bounded, with $\partial U$ Lipschitz continuous. There exists a bounded linear mapping
+$$
+T: B V(U) \rightarrow L^1\left(\partial U ; \mathcal{H}^{n-1}\right)
+$$
+such that
+$$
+\int_U f \operatorname{div} \phi d x=-\int_U \phi \cdot d[D f]+\int_{\partial U}(\phi \cdot \nu) T f d \mathcal{H}^{n-1}
+$$
+for all $f \in B V(U)$ and $\phi \in C^1\left(\mathbb{R}^n ; \mathbb{R}^n\right)$ and that
+$$Tf = f\qquad \CH^{n-1} \text{a.e. in} \partial U$$
+for all $f\in BV(U)\cap C(\bar{U})$
+\end{theorem}
+
+\begin{theorem}[Extension of BV functions]
+ Assume $U \subset \mathbb{R}^n$ is open and bounded, with $\partial U$ Lipschitz continuous. Let $f^1 \in B V(U)$, $f^2 \in B V\left(\mathbb{R}^n-\bar{U}\right)$
+Define
+$$
+\bar{f}(x):= \begin{cases}f^1(x) & x \in U \\ f^2(x) & x \in \mathbb{R}^n-\bar{U}\end{cases}
+$$
+Then
+$\bar{f} \in B V\left(\mathbb{R}^n\right)$
+and
+$$
+\|D \bar{f}\|\left(\mathbb{R}^n\right)=\left\|D f^1\right\|(U)+\left\|D f^2\right\|\left(\mathbb{R}^n-\bar{U}\right)+\int_{\partial U}\left|T f^1-T f^2\right| d \mathcal{H}{ }^{n-1} .
+$$
+In particular $$\tilde{f}:= \begin{cases}f & \text { on } U \\ 0 & \text { on } \mathbb{R}^n-U\end{cases}$$
+belongs to $BV(\R^n)$
+\end{theorem}
+\begin{com}
+Exactly same result in BD, Should join them in the future. Actually in the future it should be just focus on BD since $BV \subset BD$ with some remarks on the things that do not work for BD
+\end{com}
+
+\begin{theorem}[Local Properties of traces]
+Assume $U$ is open, bounded, with $\partial U$ Lipschitz continuous. Suppose also $f \in B V(U)$. Then for $\mathcal{H}^{n-1}-$ a.e. $x \in \partial U$,
+$$
+\lim _{r \rightarrow 0} \dashint_{B(x, r) \cap U}|f-T f(x)| d y=0,
+$$
+and so
+$$
+T f(x)=\lim _{r \rightarrow 0} \dashint_{B(x, r) \cap U} f d y= \tilde{f}^*(x).
+$$
+\end{theorem}
+\begin{question}
+Not sure there are similar results on BD
+\end{question}
+\subsection{Bounded Deformation}
+On \cite{RogerPaper} they actually consider $C^1$ boundaries however all the results will certainly hold for Lipschitz boundary $\CH^{n-1} a.e$, so we will formulate them more similar to how Evans does. 
+Additionally, the main difference is that in this case we can't retreive  the classic Green's formula since we don't know that $Df$ exists, but we can still get a generalized Green's Formula depending on the energy that is enough to prove  uniqueness and  linearity of the operator.
+\begin{question}
+Does  generalized Green's formula implies the classic one? I'm sure it must have.(maybe add the direct relation)
+\end{question}
+
+\begin{theorem}[Traces of BD functions]
+ Assume $U$ is open and bounded, with $\partial U$ Lipschitz continuous. There exists a bounded linear mapping
+$$
+T: B V(U) \rightarrow L^1\left(\partial U ; \mathcal{H}^{n-1}\right)
+$$
+such that
+$$
+\int_U \left(f_j \phi_{,i}+f_i\phi_{,j}\right) d x=-2\int_U \phi \cdot E_{ij}f +\int_{\partial U}\phi(T f_i\nu_j+Tf_j \nu_i) d \mathcal{H}^{n-1}
+$$
+for all $i,j$, $f \in B D(U)$ and $\phi \in C^1\left(\mathbb{R}^n ; \mathbb{R}\right)$ and that
+$$Tf = f\qquad \CH^{n-1} \text{a.e. in } \partial U$$
+for all $f\in BV(U)\cap C(\bar{U})$.
+\end{theorem}
+We can also rewrite the green's formula in a way more similar to the Bounded variation. Given a smooth symmetric matrix-valued function $\varphi=\left\{\phi_{i j}\right\}$ with compact support in $\mathbf{R}^n$, we have that
+$$\int_{U}(f, \operatorname{div} \phi) d x=-\sum_{i, j=1}^n \int_{U} \phi_{ij} E_{ij}f+\int_{\partial U}\left(Tf \odot \nu_{U}, \phi\right) d \CH^{n-1},$$ where $\nu_{U}$ is the outer unit normal to $\partial U$ and $a \odot b=\frac{1}{2}(a \otimes b+b \otimes a)$.
+\begin{remark}
+The trace operator is also continuous for the intermediate topology  but not for the weak topology.Additionally, for any $f$ in $B D(U)$, there exists a sequence $f_k \in \mathscr{C}(U)^n \cap L^1(U)$, $E_{ij}f_k\in L^1(U)$ such that
+$$
+T\left(f_k\right)=T(f), \text { for all } k \text {, }
+$$
+$$f_k \rightarrow f,\ in \ the \ intermediate\ topology$$
+\end{remark}
+
+\begin{theorem}[Extension of BD functions]
+ Assume $U \subset \mathbb{R}^n$ is open and bounded, with $\partial U$ Lipschitz continuous. Let $f^1 \in B D(U)$, $f^2 \in B D\left(\mathbb{R}^n-\bar{U}\right)$
+Define
+$$
+\bar{f}(x):= \begin{cases}f^1(x) & x \in U \\ f^2(x) & x \in \mathbb{R}^n-\bar{U}\end{cases}
+$$
+Then
+$\bar{f} \in B D\left(\mathbb{R}^n\right)$
+and
+$$
+\|E_{ij} \bar{f}\|\left(\mathbb{R}^n\right)=\left\|E_{ij} (f^1)\right\|(U)+\left\|E_{ij}( f^2)\right\|\left(\mathbb{R}^n-\bar{U}\right)+\int_{\partial U}\left|(T (f^1_i-f^2_i)\nu_j+T(f^1_j-f^2_j) \nu_i)\right| d \mathcal{H}{ }^{n-1} .
+$$
+In particular $$\tilde{f}:= \begin{cases}f & \text { on } U \\ 0 & \text { on } \mathbb{R}^n-U\end{cases}$$
+belongs to $BD(\R^n)$
+\end{theorem}
+
+\begin{theorem}
+Let $f$ in $BD(f)$ and let $\CM$ be a $C^1$ hypersurface, then bothd one-sided limits exist for $\CH^{n-1}$-almost every $x\in \CM$ and satisfy
+$$E uf\llcorner M=\left(f^{+}-f^{-}\right) \odot v_M \mathscr{H}^{n-1}\llcorner M.$$
+\end{theorem}
+\begin{question}
+Not 100\% sure about this theorem. Need to reconfirm if necessary. page 152 \cite{RogerBook}.
+\end{question}
+
+\section{Sobolev embedding}
+\subsection{Bounded Variation}
+
+\begin{theorem}[Theorem 5.10 Inequalities for BV functions]\hspace{1cm}
+
+\begin{enumerate}[label=(\roman*)]
+\item There exists a constant $C_1$ such that 
+$$
+\|f\|_{L^{1{ }^*}\left(\mathbb{R}^n\right)} \leq C_1\|D f\|\left(\mathbb{R}^n\right)
+$$
+for all $f \in B V\left(\mathbb{R}^n\right)$, where
+$$
+1^*=\frac{n}{n-1} .
+$$
+\item There exists a constant $C_2$ such that
+$$
+\left\|f-(f)_{x, r}\right\|_{L^{1 *}(B(x, r))} \leq C_2\|D f\|\left(B^0(x, r)\right)
+$$
+for all balls $B(x, r) \subset \mathbb{R}^n$ and $f \in B V_{\text {loc }}\left(\mathbb{R}^n\right)$, where
+$$
+(f)_{x, r}:=f_{B(x, r)} f d y .
+$$
+
+\item For each $0<\alpha \leq 1$, there exists a constant $C_3(\alpha)$ such that
+$$
+\|f\|_{L^{1^*}(B(x, r))} \leq C_3(\alpha)\|D f\|\left(B^0(x, r)\right)
+$$
+for all $B(x, r) \subseteq \mathbb{R}^n$ and all $f \in B V_{\text {loc }}\left(\mathbb{R}^n\right)$ satisfying $$ \frac{\mathcal{L}^n(B(x, r) \cap\{f=0\})}{\mathcal{L}^n(B(x, r))} \geq \alpha \text {. if } f \neq 0 \text { if } f(t) $$
+\end{enumerate}
+\end{theorem}
+\subsection{Bounded Deformation}
+\begin{theorem}[Theorem 2.2 Sobolev embedding of BD functions (Proposition 1.2 in the paper) ]\hspace{1cm}
+
+\begin{enumerate}[label=(\roman*)]
+\item There exists a constant $C_1$ such that 
+$$
+\|f\|_{L^{1{ }^*}\left(U\right)} \leq C_1 \sum_ {i,j} \|E_{ij}f\|\left(\R^n\right)\leq C\|f\|_{BD(U)}
+$$
+for all $f \in B D(U)$, where
+$$
+1^*=\frac{n}{n-1} .
+$$
+
+\item For every $f \in B D(U)$, there exists $R(f)$ such that $ER=0$  and a constant $C_2$ such that
+$$
+\|f-R(f)\|_{BD(U)} \leq C_2 \sum_{i, j=1}^N\left\|e_{i j}(f)\right\|_{M_1(U)}
+$$
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[THEOREM 2.4. (Compactness Theorem)]
+The injection of $B D(\Omega)$ into $L^p(\Omega)^n$ is compact, for all $p$ such that $1 \leq p<n^*=n /(n-1)$.
+\end{theorem}
+A easy way to prove this result is the fact that  that BD(U) is a dual space. (Proposition 2.5, \cite{RogerPaper}
+
+\begin{theorem}[Poincare's inequality  BD functions]
+Let $f \in B D\left(\mathbf{R}^n\right), n \geqq 2$, and for any $x \in \mathbf{R}^n$ and $r>0$ define
+$$
+\beta_{r}(x)=-\frac{1}{2 \omega_n} \int_{\{|y-x| \geqq r\}} \frac{\Gamma(y-x)}{|y-x|^{n+2}} d E f(y) .
+$$
+Then, for suitable vectors $d_\epsilon(x) \in \mathbf{R}^n$,
+$$
+\int_{B_\epsilon(x)}\left|f(y)-d_\epsilon(x)-\beta_\epsilon(x)(y-x)\right| d y \leqq c_n Q|E u|\left(B_{r}(x)\right),
+$$
+where $c_n$ depends only on $n$.
+\end{theorem}
+
+\section{Approximate Differentiability/ Lp differentiable what should I focus on?}
+
+
+\begin{definition}
+DEFINITION 6.1. Let $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$. We say $f$ is approximately differentiable at $x \in \mathbb{R}^n$ if there exists a linear mapping
+$$
+L: \mathbb{R}^n \rightarrow \mathbb{R}^m
+$$
+such that
+$$
+\operatorname{aplim}_{y \rightarrow x} \frac{|f(y)-f(x)-L(y-x)|}{|y-x|}=0
+$$
+\end{definition}
+Additionally, for $g\in L^1$ then every Lebesgue point is actually a point of aproximatly continuous, so
+
+$$\lim _{r \rightarrow 0^{+}} \frac{1}{r^n} \int_{B_(x,r)} \frac{|f(y)-f(x)-(L f(x), y-x)|}{|y-x|}dy=0$$ 
+implies the approximate differentiable at $x$. ( the oposite implication does not hold, unless $f$ is locally bounded)
+If $L$ exists and is uniqye we write $$L= ap\ Df$$
+
+Additionally we recall that functions wich are approximately differentiable $\CL^n$ a.e. can be approximated by lipschitz functions (and $C^1$)
+\subsection{Bounded Variation}
+\begin{theorem}
+THEOREM 6.1 (Differentiability for BV functions). Assume that $f \in B V_{\mathrm{loc}}\left(\mathbb{R}^n\right)$. Then for $\mathcal{L}^n$-a.e. $x \in \mathbb{R}^n$,
+$$
+\left(f_{B(x, r)}|f(y)-f(x)-\nabla f(x) \cdot(y-x)|^{1^*} d y\right)^{\frac{1}{1^*}}=o(r)
+$$
+-as $r \rightarrow 0$.
+\end{theorem}
+\begin{theorem}
+Assume $f\in BV(U)$. Then f is approximately differentiable $\CL^n$ a.e. Additionally we have that
+$$ap\ Df = Df\qquad \CL^n\text{ a.e.}$$
+\end{theorem}
+\subsection{Bounded Deformation}
+\begin{theorem}
+Theorem 4.3. Let $f \in B D(U)$. For $\mathscr{L}^n$-almost every $x \in U$,
+$$
+\lim _{r \rightarrow 0^{+}} \frac{1}{\varrho^n} \int_{B(x,r)} \frac{|(f(y)-f(x)-\CE f(x)(y-x), y-x)|}{|y-x|^2} d y=0
+$$
+where $\CE f$ is the density of E to respect to the Lebesgue measure.
+\end{theorem}
+
+\begin{theorem}
+Theorem 7.4. Let $f \in B D\left(\mathbf{R}^n\right)$. Then for $\mathscr{L}^n$-almost every $x \in \mathbf{R}^n$ there exists an $n \times n$ matrix ap $Df$ such that
+$$
+\lim _{r \rightarrow 0^{+}} \frac{1}{r^n} \int_{B(x,r)} \frac{|f(y)-f(x)-ap\ Df (x)(y-x)|}{r} d y=0 .
+$$
+In particular, $f$ is approximately differentiable $\mathscr{L}^n$-almost everywhere in $\mathbf{R}^n$. Moreover the function ap $Df$ satisfies the weak $L^1$ estimate
+$$
+\mathscr{L}^n\left(\left\{x \in \mathbf{R}^n:|ap\  Df|>t\right\}\right) \leq \frac{c(n)}{t}|E u|\left(\mathbf{R}^n\right) \quad \forall t>0,
+$$
+where $c(n)$ is a constant which depends only on $n$.
+\end{theorem}
+
+
+\section{Regularity theorems}
+I didn't see this result directly on BV functions but it kinda sounds important
+\begin{theorem}[Regularity]
+\begin{enumerate}[label=(\roman*)]
+\item If $f \in \mathscr{D}^{\prime}(U)$ and if each $e_{i j}(f) \in M_1(U)$, then $f$ is a function in $=L^{n /(n-1)}(U)$
+\begin{question}
+I actually do not understand this prove, is it important?
+\end{question}
+\item If each $e_{ij}(f_k)$ converges in $\mathscr{D}^{\prime}(U)$ there there exists $f\in\mathscr{D}^{\prime}(U)$ such that $e_{ij}=e_{ij}(f)$,  $i,j=1,\ldots,n$
+\end{enumerate}
+\end{theorem}
+
+\subsection{Lebesgue points, Approximate Continuity, jump points}
+
+\begin{theorem}[Lebesgue points for Randon measure]
+Let $\mu$ be a Radon measure on $\mathbb{R}^n$ and $f \in L_{\text {loc }}^1\left(\mathbb{R}^n, \mu\right)$. Then
+$$
+\lim _{r \rightarrow 0} \dashint_{B(x, r)} f d \mu=f(x)
+$$
+for $\mu$-a.e. $x \in \mathbb{R}^n$.
+Additionally, if $f \in L_{\text {loc }}^p\left(\mathbb{R}^n, \mu\right)$ for some $1 \leq p<\infty$ then
+$$
+\lim _{r \rightarrow 0} \dashint_{B(x, r)}|f-f(x)|^p d \mu=0
+$$
+for $\mu$-a.e. point $x$.
+\end{theorem}
+
+\begin{definition}
+ A point $x$ for which $(\star)$ holds is called a Lebesgue point of $f$ with respect to $\mu$. When $\mu=\CL^n$ we will define
+ \begin{enumerate}
+     \item The Lebesgue points of $f$ in $U$ as $U_f$.
+     \item The Lebesgue discontinuity set $S_f:=U-U_f$
+     \item The  precise representative of $f$
+$$
+f^*(x):= \begin{cases}\lim _{r \rightarrow 0} \dashint_{B(x, r)} f  d y & \text { if this limit exists } \\ 0 & \text { otherwise }\end{cases}
+$$
+\end{enumerate}
+\end{definition}
+
+
+
+
+
+
+
+
+\section{Bounded Variation and Bounded Deformation Functions}
+
+
+
+
+\section{One Dimension Representation}
+\subsection{Functions of one variable}
+
+Is trivially to see that for  a function of one variable we have that $$BV(\R)=BD(\R)\qquad Df=Ef,$$
+
+And additionally, for $f\in BD(a,b)$ we have that
+$$Df(a,b)=Ef(a,b)=\operatorname{ess} V_a^b f:=\sup \left\{\sum_{j=1}^m\left|f\left(t_{j+1}\right)-f\left(t_j\right)\right|\right\}
+$$
+where the supremum taken over all finite partitions $\left\{a<t_1<\cdots<t_{m+1}<b\right\}$ such that each $t_i$ is a point of approximate continuity of $f$.
+
+Equivalently we can also $$\operatorname{ess} V_a^b f = V_a^b f^*=\sup \left\{\sum_{j=1}^m\left|f^*\left(t_{j+1}\right)-f^*\left(t_j\right)\right|\right\}$$
+where the supremum taken over all finite partitions $\left\{a<t_1<\cdots<t_{m+1}<b\right\}$ such that each $t_i$ is a point of Lebesgue continuity of $f$.
+
+Additionally, we can extend this to a non negative Randon measure to any open subset $U_1$ of $\R$, $ess Vf=Vf*$.
+
+To use this results we can define the the one dimensional function for
+$$f_y^{\xi}(t)=f^{\xi}(y+t \xi)=(f(y+t \xi), \xi) \quad \forall t \in U_y^{\xi} .$$
+
+for  each multi variable function $f\in L^1(U)$, and  every $\xi,y\in\R^n$, and the respective measure $V f_y^{*\xi}$
+
+
+ 
+\subsection{Bounded Variation}
+\begin{theorem} [THEOREM $5.22$ Essential variation on lines]. Assume that $f \in L_{\text {loc }}^1\left(\mathbb{R}^n\right)$. Then $f \in B V_{\mathrm{loc}}\left(\mathbb{R}^n\right)$ if and only if
+$$
+\int_K \operatorname{ess} V_a^b f_y^{e_i+ e_j} d y<\infty \quad(i,j=1, \ldots, n)
+$$
+for all $-\infty<a<b<\infty$ and all compact sets $K \subset \mathbb{R}^{n-1}$.
+\end{theorem}
+\begin{com}
+I would assume that we can have something very similar for a set $U$. Also this is not exactly the same result since evans just consider functions whit co-domain $\R$. but this makes sense in my opinion.
+\end{com}
+\subsection{Bounded Deformation}
+
+
+\begin{proposition}[Proposition 3.2 Ambrosio's]
+ Let $f \in B D(U)$ and let $\xi \in \mathbf{R}^n$ with $\xi \neq 0$. Then the following two conditions hold for $\CH^{n-1}$-almost every y $\in U^{\xi}$ :\begin{enumerate}
+\item ${f^*}_y^{\xi}$ is defined and coincides with $f_y^\xi \ \CL ^1$-almost everywhere in $U_y^{\xi}$;
+\item $f_y^{\xi} \in B V\left(U_y^{\xi}\right)$ and the measures $|D f_y^{\xi}|$ and $V f^*_{y^{\xi}}$ coincide on $U_y^{\xi}$.
+\end{enumerate}
+
+Moreover,(review notation)
+$$(Ef \xi, \xi)=\int_{U^{\xi}} \|D f_y^{\xi}\| d \CH^{n-1}(y), \quad|(E f \xi, \xi)|=\int_{U^{\xi}}\left|D f_y^{\xi}\right| d \CH^{n-1}(y)$$
+as measures in $U$. Conversely, let $f \in L^1\left(\Omega ; \mathbf{R}^n\right)$ and let $\xi_1, \ldots, \xi_n$ be a basis of $\mathbf{R}^n$. Assume that for every $\xi$ of the form $\xi_i+\xi_j$,
+$$
+\begin{aligned}
+&f_y^{\xi} \in B V\left(U_y^{\xi}\right) \text { for } \CH^{n-1} \text {-a.e. } y \in U^{\xi}, \\
+&\int_{U^{\epsilon}}\left|D f_y^{\xi}\right|\left(U_y^{\xi}\right) d \CH^{n-1}(y)<+\infty .
+\end{aligned}
+$$
+Then $f \in B D(U)$.
+\end{proposition}
+
+\subsection{Bounded Deformation Functions}
+For bounded deformation not all this results can be proved. In fact we can prove that $S_f$ is $H^{n-1}$ rectifiable but is still an open problem ( at least when this paper was written) that $\CH^{n-1}(S_f-J_f)=0$.
+
+So let consider the set $\Theta_f$ first defined in Korn Phd Thesis,
+$$\Theta_f:=\left\{x \in U: \limsup _{r\rightarrow 0^{+}} \frac{|E f|\left(B_{r}(x)\right)}{r^{n-1}}>0\right\}$$
+\begin{proposition}
+For every $f \in B D(\Omega)$, the jump set $J_f$ is a countably $\left(\mathscr{H}^{n-1}, n-1\right)$-rectifiable Borel set. Moreover, $J_f\subset\Theta_f$ and $\CH^{n-1}\left(\Theta_u \backslash J_u\right)=0.$ 
+\end{proposition}
+\begin{proof}
+They prove first that $\Theta_f$ is rectifiable and then that $\CH^{n-1}\left(\Theta_u \backslash J_u\right)=0.$ The proves use a lot of resultes form Federer which I can't really understand the notation. however the techniques look very similar to the ones with BV, so maybe in the future I could just prove them directly.
+
+Additionally, After knowing that $J_f$ is rectifiable then the conclusion that both definition work come from the lemma 2.2 in \cite{RogerBook}
+\end{proof}
+
+\begin{question}
+ does this work for our $J_f$ also? I need to re-look into the proof. I think this $\Theta$ set will be deeply related to the measure theoretic boundary...
+\end{question}
+
+Even that $\CH^{n-1}(S_f-J_f)=0$ is not known it was proven that $\CH^{n-1+\epsilon}(S_f-J_f)=0$ by Kohn and 
+\begin{theorem}
+ If $u, v \in B D(\Omega)$, then $|E v|\left(S_u \backslash J_u\right)=0$. In other words, $|E v|-a l-$ most every point $x \in \Omega$ is either a Lebesgue point or a jump point of $u$.
+\end{theorem}
+\begin{com}
+Look into remark 6.3 in more details.
+\end{com}
+From "Which special functions of bounded deformation
+have bounded variation?"
+\begin{theorem}
+Theorem 4.1. If $u \in S B D^p(\Omega)$ for some $p>1$, with $\Omega \subset \mathbb{R}^n$ open, then $\mathcal{H}^{n-1}\left(S_u \backslash J_u\right)=0$
+\end{theorem}
+
+
+
+\subsection{Bounded Variation Functions}
+
+
+\begin{theorem}[Approximate lim sup and lim inf]. We have
+$$
+-\infty<\lambda(x) \leq \mu(x) <+\infty
+$$
+
+for $\mathcal{H}^{n-1}$-a.e. $x \in \mathbb{R}^n$.
+Which implies that the function $f$ has one sided Lebesgue limit $\mathcal{H}^{n-1}$-a.e. and $\CH^{n-1}(S_f-J_f)=0$ (do you agree?????????????????)
+\end{theorem}
+Now define  $F(x):=\frac{\lambda(x)+\mu(x)}{2},$ to be the average of the ap $\limsup f$ and ap $\liminf f$. 
+\begin{theorem}[Fine properties of BV functions] Assume $f \in B V\left(\mathbb{R}^n\right)$.
+\begin{enumerate}[label=(\roman*)]
+    \item  Then for $\mathcal{H}^{n-1}$-a.e. $x \in \mathbb{R}^n-J$, we have 
+$$
+\lim _{r \rightarrow 0} \dashint_{B(x, r)}|f-F(x)|^{\frac{n}{n-1}} d y=0 .
+$$
+\item Furthermore, for $\mathcal{H}^{n-1}$-a.e. $x \in J$, there exists a unit vector $\nu_f=$ $\nu_f(x)$ such that
+$$
+\lim _{r \rightarrow 0} \dashint_{B(x, r) \cap H_{\nu_f}^{-}}|f-\mu(x)|^{\frac{n}{n-1}} d y=0
+$$
+and
+$$
+\lim _{r \rightarrow 0} \dashint_{B(x, r) \cap H_{\nu_f}^{+}}|f-\lambda(x)|^{\frac{n}{n-1}} d y=0 .
+$$
+\end{enumerate}
+\end{theorem}
+Thus we see that for $\mathcal{H}^{n-1}$-a.e. $x \in J, f$ has a "measure theoretic jump" across the hyperplane $H_{\nu(x)}$.
+\begin{remark}
+This theorem also conclude that for  $\mathcal{H}^{n-1}$-a.e. $x \in J$ there exists one side Lebesgue limits and $f^+=\mu(x),f^-=\lambda(x)$
+\end{remark}
+
+
+\section{Generalized Bounded Deformation}
+
+It looks like considering just BD functions creates difficulties on obtain a priori bounds of the minimizing sequence.
+To solve that problem in the BV settings the following functions were introduced:
+\begin{definition}
+Let $f: U \to \R^n$ be  a $\CL^n$ measurable function. We say that $f\in GSBV$ if for all $\phi(f)\in C^1(\R^n:\R^n)$ such that $\nabla\phi$ as compact support, then $\phi(f)\in BV_{loc}(U:\R^n)$
+\end{definition}
+
+However the same strategy goes not work for BD functions because in general for $f\in BD$ we do not have that $\phi(f)\ in BD$.
+
+\begin{definition}
+ The space $G B D(U)$ of generalised functions of bounded deformation is the space of all $\mathcal{L}^n$-measurable functions $f: U \rightarrow \mathbb{R}^n$ with the following property: there exists $\lambda \in \mathcal{M}_b^{+}(\Omega)$ such that the following equivalent conditions hold for every $\xi \in \mathbb{S}^{n-1}:$
+\begin{enumerate}
+     \item for every $\tau \in \mathcal{T}$ the partial derivative $D_{\xi}(\tau(u \cdot \xi))$ belongs to $\mathcal{M}_b(\Omega)$ and its total variation satisfies
+$$
+\left|D_{\xi}(\tau(u \cdot \xi))\right|(B) \leq \lambda(B)
+$$
+for every Borel set $B \subset \Omega$;
+\item for $\mathcal{H}^{n-1}$-a.e. $y \in \Pi \Pi^{\xi}$ the function $\hat{u}_y^{\xi}:=u_y^{\xi} \cdot \xi$ belongs to $B V_{l o c}\left(\Omega_y^{\xi}\right)$ and
+$$
+\int_{\Pi \xi}\left(\left|D \hat{u}_y^{\xi}\right|\left(B_y^{\xi} \backslash J_{\hat{u}_y^{\xi}}^1\right)+\mathcal{H}^0\left(B_y^{\xi} \cap J_{\hat{u}_y^{\xi}}^1\right)\right) d \mathcal{H}^{n-1}(y) \leq \lambda(B)
+$$
+for every Borel set $B \subset \Omega$.
+\end{enumerate}
+This second property is equivalent to \\
+
+
+$\left(ii^{\prime}\right)$ for $\mathcal{H}^{n-1}$-a.e. $y \in \Pi^{\xi}$ the function $\hat{u}_y^{\xi}:=u_y^{\xi} \cdot \xi$ belongs to $G B V\left(\Omega_y^{\xi}\right)$ and $$\int_{\Pi \xi}\left(\left|D\left(\sigma_a\left(\hat{u}_y^{\xi}\right)\right)\right|\left(B_y^{\xi} \backslash J_{\sigma_a\left(\hat{u}_y^{\xi}\right)}^1\right)+\mathcal{H}^0\left(B_y^{\xi} \cap J_{\sigma_a\left(\hat{u}_y^{\xi}\right)}^1\right)\right) d \mathcal{H}^{n-1}(y) \leq \lambda(B)$$ for every Borel set $B \subset \Omega$ and for every $a>0$,
+where $\sigma_a$ be the truncation function defined by $\sigma_a(t)=-a$ for $t \leq-a, \sigma_a(t)=t$ for $-a \leq t \leq a$, and $\sigma_a(t)=a$ for $t \geq a$. 
+\end{definition}
+
+
+\begin{definition}
+ The space $G S B D(\Omega)$ of generalised special functions of bounded deformation is the set of all functions $u \in G B D(\Omega)$ such that for every $\xi \in \mathbb{S}^{n-1}$ and for $\mathcal{H}^{n-1}$-a.e. $y \in \Pi^{\xi}$ the function $\hat{u}_y^{\xi}:=u_y^{\xi} \cdot \xi$ belongs to $S B V_{l o c}\left(\Omega_y^{\xi}\right)$ 
+\end{definition}
+
+Another important measure related to $f$ is $$\hat{\mu}^{\xi}(B):=\int_{\Pi \xi} \hat{\mu}_y^{\xi}\left(B_y^{\xi}\right) d \mathcal{H}^{n-1}(y)$$
+with
+$$\hat{\mu}_y^{\xi}(B):=\left|D \hat{u}_y^{\xi}\right|\left(B \backslash J_{\hat{u}_y^{\xi}}^1\right)+\mathcal{H}^0\left(B \cap J_{\hat{u}_y^{\xi}}^1\right)$$
+and
+$$\hat{\mu}_u(B):=\sup _k \sup \sum_{i=1}^k \hat{\mu}_u^{\xi_i}\left(B_i\right)$$
+Some important properties:
+\begin{enumerate}
+    \item $BD\subset GBD$, $SBD\subset GSBD$, with $\lambda(B)= |Ef|(B)$
+    \item $\hat{\mu}^{\xi}(B)<\lambda<(B)$ and $\hat{\mu}_{f}(B)<\lambda<(B)$
+    \item $\hat{\mu}_u^{\xi}(U) \leq \liminf _{k \rightarrow \infty} \hat{\mu}_{u_k}^{\xi}(U)$
+    \item some simillar Trace Theorem
+    \item One side limits for any $C^1$ hyperplane
+    \item $\Omega_f$ is also countably rectifiable and $\CH^{n-1}(\Omega_f-S_f)=0$
+    \item $\left(J_u^{\xi}\right)_y^{\xi}=J_{\hat{u}_y^{\xi}}$
+    \item it has an appproximate symmetric gradient $L^n$ almost everywhere
+    \item Some Comcpactness results I do not completely understand:  Similar result  for sbd functions. in "Compactness and lower semicontinuity properties
+in SBD()"
+    Theorem 11.3. Let $u_k$ be a sequence in $G S B D(\Omega)$. Suppose that there exist a constant $M \in \mathbb{R}^{+}$and two increasing continuous functions $\psi_0: \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}$and $\psi_1: \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}$, with
+$$
+\lim _{s \rightarrow+\infty} \psi_0(s)=+\infty \quad \text { and } \quad \lim _{s \rightarrow+\infty} \frac{\psi_1(s)}{s}=+\infty,
+$$
+such that
+$$
+\int_{\Omega} \psi_0\left(\left|u_k\right|\right) d x+\int_{\Omega} \psi_1\left(\left|\mathcal{E} u_k\right|\right) d x+\mathcal{H}^{n-1}\left(J_{u_k}\right) \leq M
+$$
+for every $k$. Then there exist a subsequence, still denoted by $u_k$, and a function $u \in$ $\operatorname{GSBD}(\Omega)$, such that
+$$
+\begin{gathered}
+u_k \rightarrow u \quad \text { pointwise } \mathcal{L}^n \text {-a.e. on } \Omega, \\
+\mathcal{E} u_k \rightarrow \mathcal{E} u \quad \text { weakly in } L^1\left(\Omega ; \mathbb{M}_{\text {sym }}^{n \times n}\right), \\
+\mathcal{H}^{n-1}\left(J_u\right) \leq \liminf _{k \rightarrow \infty} \mathcal{H}^{n-1}\left(J_{u_k}\right) .
+\end{gathered}
+$$
+If, in addition, (11.3) holds, then $u_k \in L^1\left(\Omega ; \mathbb{R}^n\right)$ for every $k, u \in L^1\left(\Omega ; \mathbb{R}^n\right)$, and the subsequence converges strongly in $L^1\left(\Omega ; \mathbb{R}^n\right)$.
+\end{enumerate}
+
+One more important compactness result shows up in "Compactness and lower semicontinuity in GSBD"
+
+\begin{theorem}
+Let \( \phi: \mathbb{R}^{+} \rightarrow \mathbb{R}^{+} \)be a non-decreasing function with
+\[
+\lim _{t \rightarrow+\infty} \frac{\phi(t)}{t}=+\infty,
+\]
+and let \( \left(u_h\right)_h \) be a sequence in \( G S B D(\Omega) \) such that
+\[
+\int_{\Omega} \phi\left(\left|e\left(u_h\right)\right|\right) \mathrm{d} x+\mathcal{H}^{n-1}\left(J_{u_h}\right)<M
+\]
+for some constant \( M \) independent of \( h \). Then there exists a subsequence, still denoted by \( \left(u_h\right)_h \), such that
+\[
+A:=\left\{x \in \Omega:\left|u_h(x)\right| \rightarrow+\infty\right\}
+\]
+has finite perimeter, and \( u \in G S B D(\Omega) \) with \( u=0 \) on A for which
+\[
+\begin{aligned}
+&u_h \rightarrow u \quad \mathcal{L}^n \text {-a.e. in } \Omega \backslash A, \\
+&e\left(u_h\right) \rightarrow e(u) \quad \text { in } L^1\left(\Omega \backslash A ; \mathbb{M}_{\text {sym }}^{n \times n}\right), \\
+&\mathcal{H}^{n-1}\left(J_u \cup \partial^* A\right) \leq \liminf _{h \rightarrow \infty} \mathcal{H}^{n-1}\left(J_{u_h}\right) .
+\end{aligned}
+\]
+\end{theorem}
+
+We have again a Korn-Type inequality:
+\begin{proposition}
+ Let $0<\theta^{\prime \prime}<\theta^{\prime}<1, r>0$. Let $Q=(-r, r)^n, Q^{\prime}=\left(-\theta^{\prime} r, \theta^{\prime} r\right)^n, p \in[1, \infty), u \in$ $G S D^p(Q)$
+1. There exists a set $\omega \subset Q^{\prime}$ and an affine function $a: \mathbb{R}^n \rightarrow \mathbb{R}^n$ with $e(a)=0$ such that
+$$
+|\omega| \leq c_* r \mathcal{H}^{n-1}\left(J_u\right)
+$$
+and
+$$
+\int_{Q^{\prime} \backslash \omega}|u-a|^{n p /(n-1)} \leq c_* r^{n(p-1) /(n-1)}\left(\int_Q|e(u)|^p d x\right)^{n /(n-1)}
+$$
+2. If additionally $p>1$ then there is $\bar{p}>0$ (depending on $p$ and $n$ ) such that, for a given mollifier $\rho_r \in C_c^{\infty}\left(B_{\left(\theta^{\prime}-\theta^{\prime \prime}\right) r}\right), \rho_r(x)=r^{-n} \rho_1(x / r)$, the function $v=u \chi_{Q^{\prime} \backslash \omega}+a \chi_\omega$ obeys
+$$
+\int_{Q^{\prime \prime}}\left|e\left(v * \rho_r\right)-e(u) * \rho_r\right|^p d x \leq c\left(\frac{\mathcal{H}^{n-1}\left(J_u\right)}{r^{n-1}}\right)^{\bar{p}} \int_Q|e(u)|^p d x,
+$$
+where $Q^{\prime \prime}=\left(-\theta^{\prime \prime} r, \theta^{\prime \prime} r\right)^n$
+The constant $c_*$ in 1. depends only on $p, n$ and $\theta^{\prime}$, the one in 2. also on $\rho_1$ and $\theta^{\prime \prime}$.
+\end{proposition}
+
+An important result to get strong solution of GE is to approximate $GSBD^p(SBD^p)$ functions by  $W^{1,p}$
+From: Approximation of functions with small jump sets and existence of
+strong minimizers of Griffith’s energy (more useful results in the paper, some existence of strong minimizers...)
+
+Let $f_0(\xi):=\frac{1}{p}(\mathbb{C} \xi \cdot \xi)^{p / 2}$, for $\xi \in \mathbb{R}_{\mathrm{sym}}^{n \times n}$, with $\mathbb{C}$ obeying (1). Let $Q_r:=(-r, r)^n$ and let $Q:=Q_1=(-1,1)^n$.
+\begin{theorem}
+There exist a mollifier $\rho \in C_c^{\infty}\left(B(0,1) ; \mathbb{R}_{+}\right)$and $\eta, c$ positive constants such that if $u \in$ GSBD $D^p\left(Q_1\right)$ and $\delta:=\mathcal{H}^{n-1}\left(J_u\right)^{1 / n}$ satisfies $\delta<\eta$, then there exist $R \in(1-\sqrt{\delta}, 1), \tilde{u} \in G S B D^p\left(Q_1\right)$, and $\tilde{\omega} \subset Q_R \subset \subset Q_1$, such that
+1. $\tilde{u} \in C^{\infty}\left(Q_{1-\sqrt{\delta}}\right), \tilde{u}=u$ in $Q_1 \backslash Q_R, \mathcal{H}^{n-1}\left(J_u \cap \partial Q_R\right)=\mathcal{H}^{n-1}\left(J_{\tilde{u}} \cap \partial Q_R\right)=0$;
+2. $\mathcal{H}^{n-1}\left(J_{\tilde{u}} \backslash J_u\right) \leq c \sqrt{\delta} \mathcal{H}^{n-1}\left(J_u \cap\left(Q_1 \backslash Q_{1-\sqrt{\delta}}\right)\right)$;
+3. It holds
+$$
+\left\|e(\tilde{u})-\rho_\delta * e(u)\right\|_{L^p\left(Q_{1-\sqrt{\delta}}\right)} \leq c \delta^s\|e(u)\|_{L^p(Q)}
+$$
+and for any open set $\Omega \subset Q$ we have
+$$
+\int_{\Omega} f_0(e(\tilde{u})) d x \leq \int_{\Omega_\delta} f_0(e(u)) d x+c \delta^s \int_{Q_1} f_0(e(u)) d x,
+$$
+where $\Omega_\delta:=Q \cap \cup_{x \in \Omega}\left(x+(-3 \delta, 3 \delta)^n\right)$; and $s \in(0,1)$ depends only on $n$ and $p$.
+4. $|\tilde{\omega}| \leq c \delta \mathcal{H}^{n-1}\left(J_u \cap Q_R\right)$ and $\int_{Q \backslash \tilde{\omega}}|\tilde{u}-u|^p d x \leq c \delta^p \int_Q|e(u)|^p d x$
+5. If $\psi \in \operatorname{Lip}(Q ;[0,1])$, then
+$$
+\int_Q \psi f_0(e(\tilde{u})) d x \leq \int_Q \psi f_0(e(u)) d x+c \delta^s(1+\operatorname{Lip}(\psi)) \int_Q|e(u)|^p d x
+$$
+6. If in addition $u \in L^p(Q)$, then for $\Omega \subset Q$,
+$$
+\|\tilde{u}\|_{L^p(\Omega)} \leq\|u\|_{L^p(\Omega)}+c \delta^{\frac{1}{2 p}}\left(\|u\|_{L^p(Q)}+\|e(u)\|_{L^p(Q)}\right)
+$$
+The constant $c$ depends only on $n, p$, and $\mathbb{C}$.
+\end{theorem}
+
+So now for every $y\in U^\xi$ we can consider an oscillation measure( similar to section 1.9.4 in \cite{evansGa})
+$v_y\in M_1(U^\xi_y)$ such that
+$$
+\int_{U^{\xi}}\left|v_y\right|\left(U_y^{\xi}\right) d \CH^{n-1}(y)< \infty
+$$
+
+This hypotheses make it possible to define a bounded measure in $U$ as $\lambda = \int_{U^\xi}v_yd\CH^{n-1}(y)\in M_1(U)$ such that
+$$
+\lambda(B):=\int_{U^{\xi}} v_y\left(B_y^{\xi}\right) d \mathscr{H}^{n-1}(y) \quad \forall B \in \CB(U)
+$$
+and 
+$$
+|\lambda| = \int_{U^{\xi}}\left|v_y\right| d \CH^{n-1}(y)
+$$
+
+We say that $f$ is a special function of bounded Deformation in $U$ if and $E _cf=0$ in $U$, and  we write the set of this functions as $S B D(U)$. 
+
+
+
+Lastly we can get a better representation of the jump set:
+\begin{theorem}
+Let $f \in B D(\Omega)$ and define the non-negative Borel measure $\lambda_f$ on $U$ as
+$$
+\lambda_f(B):=\kappa_n \int_{\mathbf{S}^{n-1}} \lambda_f^{\xi}(B) d \mathscr{H}^{n-1}(\xi) \quad \forall B \in \mathscr{B}(U),
+$$
+where $\kappa_n:=\left(2 \omega_{n-1}\right)^{-1}$ and for every $\xi \in \mathbf{S}^{n-1}$ and
+$$
+\lambda_f^{\xi}(B):=\int_{U^{\xi}} \mathscr{H}^0\left(J_{f_y^{\xi}} \cap B_y^{\xi}\right) d \mathscr{H}^{n-1}(y) \quad \forall B \in \mathscr{B}(U)
+$$
+then
+$$
+\lambda_f^\xi(B)=\int_{J_f^{\xi} \cap B}\left|\left(\mu_f, \xi\right)\right| d \mathscr{H}^{n-1} \quad \forall B \in \mathscr{B}(U),
+$$
+where $\mu_f$ is the approximate unit normal to $J_f$. Moreover $$\lambda_f=\mathscr{H}^{n-1}\left\llcorner J_f\right.$$.
+\end{theorem}
